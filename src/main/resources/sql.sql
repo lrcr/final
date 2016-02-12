@@ -1,0 +1,2 @@
+--sql 명령어는 여기다 저장
+--data는 resource에 메모장(cvs)으로 저장

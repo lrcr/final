@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- 수업내용 복사..임시파일 -->
+
+<mapper namespace="test">
+  <select id="selectAll" resultType="com.hb.model.DTO">
+    select * from guest2 order by sabun
+  </select>
+  <insert id="insertOne" parameterType="com.hb.model.DTO">
+  	insert into guest2 values (#{sabun},#{name},#{title},sysdate,#{pay})
+  </insert>
+</mapper>
