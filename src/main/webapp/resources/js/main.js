@@ -16,7 +16,7 @@ var player;
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('player', {
     width: '100%',
-    height: '720',
+    height: '100%',
     videoId: videoid, //'fFZwgPcW7FM',
     playerVars: {
 		autoplay: 1,
@@ -24,7 +24,7 @@ function onYouTubeIframeAPIReady() {
 		loop: 1,
 		rel: 0,
 		showinfo: 0,
-		modestbranding:1,
+		//modestbranding:1,
 		playlist:videoid,//'fFZwgPcW7FM',
 		wmode:"transparent"
 	},
