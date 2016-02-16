@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class controller {
+public class Ccontroller {
 	
 	@RequestMapping("test.go")
 	public String testnav() {
@@ -13,7 +13,7 @@ public class controller {
 		return "navbar";
 	}
 	
-	@RequestMapping(value="main.go", method = RequestMethod.POST)//POST∑Œ ≈Î¿œ
+	@RequestMapping(value="main.go")
 	public String index() {
 		
 		return "";

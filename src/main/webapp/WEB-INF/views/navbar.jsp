@@ -5,11 +5,13 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>임시 네이게이션</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>test</title>
         <link rel="stylesheet" href="https://bootswatch.com/slate/bootstrap.min.css" type="text/css" />
         <link rel="stylesheet" href="css/star.css" type="text/css" />
         <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
         
         <style>
             .modal-dialog{
@@ -29,7 +31,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">HOME</a>
+              <a class="navbar-brand" href="test.go">HOME</a>
             </div>
         
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -100,7 +102,7 @@
         <!-- 회원가입 -->
         
         <div id="sign-up" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg">
+          <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -109,73 +111,60 @@
               <div class="modal-body">
                 <form class="form-horizontal">
                   <fieldset>
-                    <div class="form-group">
-                      <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-                      <div class="col-lg-10">
-                        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                    
+                    <div class="form-group col-lg-12">
+                      <div class="input-group">
+                        <input type="email" class="form-control" id="emailinput" placeholder="E-Mail">
+                        <span class="input-group-btn">
+                          <button class="btn btn-default" type="button">중복체크</button>
+                        </span>
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-                      <div class="col-lg-10">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox"> Checkbox
-                          </label>
-                        </div>
+                    
+                    <div class="form-group col-lg-12">
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="nicknameinput" placeholder="Nick Name">
+                        <span class="input-group-btn">
+                          <button class="btn btn-default" type="button">중복체크</button>
+                        </span>
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label for="textArea" class="col-lg-2 control-label">Textarea</label>
-                      <div class="col-lg-10">
-                        <textarea class="form-control" rows="3" id="textArea"></textarea>
-                        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
-                      </div>
+                    
+                    <div class="form-group col-lg-12">
+                      <input class="form-control" id="password1" type="password" placeholder="password">
                     </div>
-                    <div class="form-group">
-                      <label class="col-lg-2 control-label">Radios</label>
-                      <div class="col-lg-10">
+                    
+                    
+                    <div class="form-group col-lg-12">
+                      <input class="form-control" id="password2" type="password" placeholder="password check">
+                    </div>
+                    
+                    <div class="form-group col-lg-12">
+                      <input class="form-control" id="phone" placeholder="phone(- 없이 입력)">
+                    </div>
+                    
+                     <div class="form-group">
+                      <label class="col-lg-6 control-label">카카오톡 알림 수신 동의 여부</label>
+                      <div class="col-lg-5">
                         <div class="radio">
+                          <label for="optionsRadios1">
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="수신" checked="">
+                            수신
+                          </label>
                           <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                            Option one is this
+                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="거부">
+                            거부
                           </label>
                         </div>
-                        <div class="radio">
-                          <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                            Option two can be something else
-                          </label>
-                        </div>
                       </div>
                     </div>
+                    
                     <div class="form-group">
-                      <label for="select" class="col-lg-2 control-label">Selects</label>
-                      <div class="col-lg-10">
-                        <select class="form-control" id="select">
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                        </select>
-                        <br>
-                        <select multiple="" class="form-control">
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                        </select>
+                      <div class=" col-lg-offset-5">
+                        <button type="submit" class="btn btn-primary">회원가입</button>
                       </div>
                     </div>
-                    <div class="form-group">
-                      <div class="col-lg-10 col-lg-offset-2">
-                        <button type="reset" class="btn btn-default">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                      </div>
-                    </div>
+                    
                   </fieldset>
                 </form>
               </div>

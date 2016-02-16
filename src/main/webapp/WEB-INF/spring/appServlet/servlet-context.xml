@@ -29,5 +29,6 @@
 	
 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="false" />
 	<!-- 트랜잭션 사용 , tx에러 뜰경우 namespace에서 tx 체크-->
-	
+	<beans:bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver"></beans:bean>
+	<!-- 파일 업로드 -->
 </beans:beans>
