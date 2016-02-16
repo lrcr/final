@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class Ccontroller {
 	
-	@RequestMapping("test.go")
+	@RequestMapping("test")
 	public String testnav() {
 		
-		return "navbar";
+		return "main";
 	}
 	
 	@RequestMapping(value="main.go")

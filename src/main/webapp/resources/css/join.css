@@ -1,0 +1,7 @@
+#sign-up #emailMsg, 
+#sign-up #nicknmMsg, 
+#sign-up #pw1Msg,
+#sign-up #pw2Msg,
+#sign-up #phoneMsg{
+	color:red;
+}
