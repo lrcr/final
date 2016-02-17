@@ -25,7 +25,8 @@
 						<li><a href="#">Separated link</a></li>
 						<li class="divider"></li>
 						<li><a href="#">One more separated link</a></li>
-					</ul></li>
+					</ul>
+				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#" data-toggle="modal" data-target="#sign-in">로그인</a></li>
@@ -40,5 +41,8 @@
 				</li>
 			</ul>
 		</div>
+		<button type="button" class="main_btn">
+			<span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+		</button>
 	</div>
 </nav>

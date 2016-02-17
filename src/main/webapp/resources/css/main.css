@@ -1,0 +1,89 @@
+@CHARSET "UTF-8";
+html {height:100%;}
+body {height:100%; margin:0;}
+#tv_box_out {overflow:hidden; background:#383838; width:100%; height:100%; border:5px solid #b5b5b5; border-radius:25px;}
+#tv_box_in {position:relative; width:90%; height:95%; overflow:hidden; border:5px solid #1c1c1c; border-radius:25px; margin:15px auto; z-index:4;}
+#main_main {height:100%; width:100%;}
+#main_main:after {content:""; clear:both; display:block;}
+.container-fluid {padding:0; height:100%;}
+.navbar {margin:0;}
+.main_index {text-align:center; overflow:hidden; width:100%; height:100%;}
+.main_index .main_menu {width:20%; height:100%; float:left; padding-top:10%;}
+.sub_menu {position:absolute; top:0; width:90%; height:100%;}
+.sub_menu_d {margin:0; width:25%; float:left; height:33.33%; padding-top:10%; text-align:center; font-size:20px; color:#eee; transition-property:background-color; transition-duration:0.6s;}
+.sub_menu_d:nth-child(1) {width:50%;}
+.sub_menu_d:nth-child(3) {height:66.66%; float:right;}
+.sub_menu_d:nth-child(4) {height:66.66%;}
+.sub_menu_d:nth-child(8) {width:50%;}
+.sub_menu a {display:inline-block; vertical-align:middle; text-decoration:none; color:inherit;}
+.main_text {color:#fff;}
+.main_menu .main_text {font-size:40px; font-weight:bold;}
+.main_player {position:absolute; top:0; z-index:-1;}
+.main_other {width:2.5%;}
+.main_icon-bar {display:block; width:24px; height:3px; border-radius:1px; margin-top:5px; background-color:#fff;}
+.main_btn {position:absolute; margin-left:50%; top:-3px; z-index:5; background:none; border:none; outline:0;}
+.main_btn:hover,.main_btn:active,.main_btn:focus,.main_btn:visited,.main_btn:link {text-decoration:none; border:0; outline:0; box-shadow:none;}
+.glyphicon {font-size:24px;}
+
+.map_bg {margin:0px; list-style:none; width:378px; height:550px; position:relative; background:url("../resources/images/map_bg.png") no-repeat 0 0;}
+.map_bg li {position:absolute;}
+
+.incheon {width:61px;height:65px;top:98px;left:62px;}
+.seoul {width:48px;height:44px;top:109px;left:108px;}
+.gyunggi {width:115px;height:146px;top:61px;left:91px;}
+.kangwon {width:186px;height:150px;top:38px;left:139px;}
+.chungnam {width:129px;height:120px;top:179px;left:60px;}
+.sejong {width:56px;height:50px;top:203px;left:119px;}
+.daejeon {width:42px;height:47px;top:231px;left:143px;}
+.chungbuk {width:116px;height:140px;top:154px;left:151px;}
+.gyungbuk {width:153px;height:174px;top:162px;left:193px;}
+.jeonbuk {width:130px;height:95px;top:269px;left:83px;}
+.daegu {width:48px;height:49px;top:280px;left:234px;}
+.jeonnam {width:178px;height:143px;top:333px;left:36px;}
+.kwangju {width:48px;height:38px;top:354px;left:97px;}
+.gyeongnam {width:145px;height:133px;top:286px;left:172px;}
+.ulsan {width:52px;height:55px;top:301px;left:288px;}
+.busan {width:77px;height:59px;top:341px;left:247px;}
+.jeju {width:83px;height:51px;top:477px;left:56px;}
+.map_bg li a {display:block;outline:none;height:100%;}
+.map_bg li a {text-indent:-9000px;}
+.map_bg li a:hover {background:url(../resources/images/map_over.png) no-repeat 0 0;}
+
+.map_bg li.incheon a:hover {background-position:-385px -47px;}
+.map_bg li.kangwon a:hover {background-position:-8px -5px;}
+.map_bg li.gyunggi a:hover {background-position:-199px -8px;}
+.map_bg li.seoul a:hover {background-position:-326px -56px;}
+.map_bg li.chungbuk a:hover {background-position:-451px -7px;}
+.map_bg li.gyungbuk a:hover {background-position:-569px -4px;}
+.map_bg li.sejong a:hover {background-position:-882px -45px;}
+.map_bg li.chungnam a:hover {background-position:-725px -17px;}
+.map_bg li.daejeon a:hover {background-position:-8px -187px;}
+.map_bg li.daegu a:hover {background-position:-77px -177px;}
+.map_bg li.jeonbuk a:hover {background-position:-149px -163px;}
+.map_bg li.gyeongnam a:hover {background-position:-599px -186px;}
+.map_bg li.ulsan a:hover {background-position:-773px -225px;}
+.map_bg li.jeonnam a:hover {background-position:-384px -164px;}
+.map_bg li.kwangju a:hover {background-position:-313px -197px;}
+.map_bg li.jeju a:hover {background-position:-28px -330px;}
+.map_bg li.busan a:hover {background-position:-860px -192px;}
+@media screen and (max-width:767px) {
+	/* 매우 작은 기기들 (모바일폰, 768px 보다 작은) screen-xs */
+	body {background:#000;}
+	#main_main {height:100%; width:100%;}
+	.main_index .main_menu {width:100%; height:20%;}
+	.sub_menu {width:100%; margin-left:0;}
+	.sub_menu_d {text-align:center; background:rgba(119, 119, 119, 0.4); font-size:20px; color:#eee; transition-property:background-color; transition-duration:0.6s;}
+	#player {display:none;}
+}
+
+@media screen and (min-width:768px) and (max-width:991px) { /* 작은 기기들 (태블릿, 768px 이상) screen-sm*/
+	/* #main_main {height:432px; width:768px; margin:0 auto; position:relative;} */
+}
+
+@media screen and (min-width:992px) and (max-width:1199px) { /* 중간 기기들 (데스크탑, 992px 이상) screen-md */
+	/* #main_main {height:558px; width:992px; margin:0 auto; position:relative;} */
+}
+
+@media screen and (min-width:1200px) { /* 큰 기기들 (큰 데스크탑, 1200px 이상) screen-lg */
+	/* #main_main {height:675px; width:1200px; margin:0 auto; position:relative;} */
+}
