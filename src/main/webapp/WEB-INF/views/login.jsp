@@ -6,18 +6,19 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">로그인</h4>
+                <h4 class="modal-title" >로그인</h4>
               </div>
               <div class="modal-body">
-                <form role="form">
+                <form id="login-form" role="form">
                     <fieldset>
-                        <div class="form-group">
-                            <input class="form-control" placeholder="E-mail" name="email" type="email" id="loginid" autofocus="">
-                            <label class="control-label" for="loginid"></label>
+                    
+                        <div class="form-group col-lg-12">
+                            <input type="email"  class="form-control login-box" placeholder="E-mail" name="email" id="loginid" >
+                            <label id="id-label" class="control-label login-label" for="loginid"></label>
                         </div>
-                        <div class="form-group">
-                            <input class="form-control" placeholder="Password" name="password" type="password" id="loginpw" >
-                            <label class="control-label" for="loginpw"></label>
+                        <div class="form-group col-lg-12">
+                            <input type="password"  class="form-control login-box" placeholder="Password" name="password" id="loginpw" >
+                            <label id="pw-label" class="control-label login-label"  for="loginpw"></label>
                         </div>
                         <!-- <div class="checkbox">
                             <label>
@@ -28,7 +29,7 @@
                 </form>
               </div>
               <div class="modal-footer">
-                    <a href="#" class="btn btn-lg btn-primary btn-block">Login</a>
+                    <input type="button" id="login-btn" class="btn btn-lg btn-primary btn-block" data-dismiss="modal" value="Login">
               </div>
             </div>
           </div>

@@ -2,14 +2,22 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-<!-- 수업내용 복사..임시파일 -->
 
-<mapper namespace="test">
+<mapper namespace="member">
   <select id="selectAll" resultType="com.hb.model.DTO">
     select * from guest2 order by sabun
   </select>
-  <insert id="insertOne" parameterType="com.hb.model.DTO">
-  	insert into guest2 values (#{sabun},#{name},#{title},sysdate,#{pay})
+  
+  <select id="selectmail" resultType="Integer">
+     select count(*) as cnt from member where email=#{email}
+  </select>
+  
+   <select id="selectnm" resultType="Integer">
+     select count(*) as cnt from member where nickname=#{nicknm}
+  </select>
+  
+  <insert id="join" parameterType="com.hb.model.DTO">
+     insert into member values (#{email},#{pw},#{nicknm},#{phone},#{agree})
   </insert>
+  
 </mapper>

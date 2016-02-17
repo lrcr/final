@@ -13,7 +13,7 @@
 <beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" 
 	p:driverClassName="oracle.jdbc.driver.OracleDriver" 
 	p:url="jdbc:oracle:thin:@127.0.0.1:1521:xe" 
-	p:username="hb" p:password="hb" p:maxActive="50"/>
+	p:username="system" p:password="oracle" p:maxActive="50"/>
 	
 <!-- hb/hb 계정 확인  -->
 
@@ -21,7 +21,7 @@
 	p:dataSource-ref="dataSource"/>
 
 <beans:bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean" 
-	p:dataSource-ref="dataSource" p:mapperLocations="classpath:/mappers/Query.xml" />
+	p:dataSource-ref="dataSource" p:mapperLocations="classpath:/mappers/*.xml" />
 
 <beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 	<beans:constructor-arg index="0" ref="sqlSessionFactoryBean" />

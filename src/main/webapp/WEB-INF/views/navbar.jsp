@@ -29,8 +29,8 @@
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#" data-toggle="modal" data-target="#sign-in">로그인</a></li>
-				<li><a href="#" data-toggle="modal" data-target="#sign-up">회원가입</a></li>
+				<li><a href="#" id="go-login" data-toggle="modal" data-target="#sign-in">로그인</a></li>
+				<li><a href="#" id="go-join" data-toggle="modal" data-target="#sign-up">회원가입</a></li>
 				<li>
 					<form class="navbar-form navbar-right" role="search">
 						<div class="form-group">

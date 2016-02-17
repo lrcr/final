@@ -2,6 +2,8 @@
 #sign-up #nicknmMsg, 
 #sign-up #pw1Msg,
 #sign-up #pw2Msg,
-#sign-up #phoneMsg{
+#sign-up #phoneMsg,
+#id-label, #pw-label 
+{
 	color:red;
 }

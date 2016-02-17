@@ -28,6 +28,7 @@
         <%@include file="join.jsp" %>
         <%@include file="content.jsp" %> 
         <script type="text/javascript" src="js/join.js"></script>
+        <script type="text/javascript" src="js/login.js"></script>
         <script type="text/javascript" src="js/star.js"></script>
         
         
