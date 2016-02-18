@@ -38,7 +38,7 @@ function onYouTubeIframeAPIReady() {
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
 	event.target.setVolume(0);
-  event.target.playVideo();
+	event.target.playVideo();
 }
 
 // 5. The API calls this function when the player's state changes.
@@ -46,9 +46,9 @@ function onPlayerReady(event) {
 //    the player should play for six seconds and then stop.
 var done = false;
 function onPlayerStateChange(event) {
-  if (event.data == YT.PlayerState.ENDED && !done) {
+  if (event.data == YT.PlayerState.ENDED) {
     //setTimeout(stopVideo, 6000);
-	  player1.playVideo();
+	  player.playVideo();
     done = true;
   }
   event.target.setVolume(0);

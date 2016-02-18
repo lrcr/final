@@ -1,12 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<nav class="navbar navbar-default navbar-collapse navbar-fixed-top hid" id="main_navbar">
+<nav class="navbar navbar-default navbar-collapse navbar-fixed-top" id="nav_navbar">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 				<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">HOME</a>
+			<a class="navbar-brand" href="./">HOME</a>
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
@@ -25,8 +25,7 @@
 						<li><a href="#">Separated link</a></li>
 						<li class="divider"></li>
 						<li><a href="#">One more separated link</a></li>
-					</ul>
-				</li>
+					</ul></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#" id="go-login" data-toggle="modal" data-target="#sign-in">로그인</a></li>
@@ -41,8 +40,11 @@
 				</li>
 			</ul>
 		</div>
-		<button type="button" class="main_btn">
+		<button type="button" class="nav_btn nav_btn_top">
 			<span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+		</button>
+		<button type="button" class="nav_btn nav_btn_bottom">
+			<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
 		</button>
 	</div>
 </nav>

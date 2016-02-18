@@ -6,17 +6,16 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="https://bootswatch.com/slate/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="css/common.css">
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 <link rel="stylesheet" href="css/main.css">
 <script type="text/javascript">
 	var main_back = [ "#f1ac1d", "#e57d04", "#dc0030", "#b10058", "#7c378a", "#3465aa", "#09a275" ];
-	var main_vid = [ "fFZwgPcW7FM", "ly6J5BQkXgA", "4OFAY0Du65A", "Tc67umPKFss", "u_f2gzaDTKA" ];
+	var main_vid = [ "fFZwgPcW7FM", "ly6J5BQkXgA", "4OFAY0Du65A", "Tqa9LGsC5SU", "u_f2gzaDTKA" ];
 	var main_sub_back = [ "#ee6334", "#ff8200", "#ed1369", "#777777", "#00aba8", "#666633", "#13cced", "#456c6c", "#4dbf13", "#794b80", "#ec3b4b", "#00fdfd" ];
 	var main_sub_rgb = [ "238,99,52", "255,130,0", "237,19,105", "77,191,19", "0,171,168", "102,102,51", "19,204,237", "121,75,128", "69,108,108", "236,59,75", "0,253,253", "119,119,119" ];
 	$(document).ready(function() {
@@ -30,6 +29,9 @@
 				$(this).css({ "background" : "rgba(" + main_sub_rgb[i] + ",0.4)" });
 				//$(this).animate({"background":"rgba("+main_sub_rgb[i]+",0.4)"},400);
 			});
+		});
+		$(".onoff > img").click(function(){
+			$("#player").toggle();
 		});
 		if ($(window).width() < 768) {}
 		$(window).resize(function() {
@@ -45,16 +47,6 @@
 					}
 				}
 			});
-		});
-		$(".main_btn").click(function() {
-			if ($("#main_navbar").hasClass("hid")) {
-				$(this).children().prop("src", "images/btn_x.png");
-				$("body").css("padding-top", "51px");
-			} else {
-				$(this).children().prop("src", "images/btn_list.png");
-				$("body").css("padding-top", "0");
-			}
-			$("#main_navbar").toggleClass("hid");
 		});
 		$(".main_menu").each(function(i, e) {
 			$(e).css({ "background" : main_back[i] });
@@ -80,15 +72,9 @@
 </head>
 <body>
 	<div id="tv_box_out">
-<%@include file="navbar.jsp" %>
-<%@include file="login.jsp" %>
-<%@include file="join.jsp" %>
-		<!-- <button class="main_btn glyphicon glyphicon-triangle-bottom">
-			<img src="images/btn_list.png" />
-		</button> -->
-		<button type="button" class="main_btn">
-			<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
-		</button>
+		<%@include file="navbar.jsp" %>
+        <%@include file="login.jsp" %>
+        <%@include file="join.jsp" %>
 		<div id="tv_box_in">
 			<div id="main_main">
 				<div class="main_index">
@@ -158,10 +144,15 @@
 			</div>
 			<div id="player" class="main_player hid"></div>
 		</div>
-		<div class="main_sub_menu hid">
-			<video class="main_player1" preload="none" loop autoplay width="100%"></video>
+		<div class="onoff">
+			<img alt="배경동영상 끄기" src="images/onoff.png" width="15px">
 		</div>
 	</div>
+	<div class="main_support">
+		<img src="images/support.png" width="80%" />
 	</div>
+	<script type="text/javascript" src="js/join.js"></script>
+	<script type="text/javascript" src="js/login.js"></script>
+	<script type="text/javascript" src="js/star.js"></script>
 </body>
 </html>

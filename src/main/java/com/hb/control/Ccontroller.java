@@ -23,7 +23,10 @@ public class Ccontroller {
    private static final Logger logger = LoggerFactory.getLogger(Ccontroller.class);
    @Autowired
    interfaceDAO dao;
-   
+   @RequestMapping("/")
+   public String main() {
+      return "index";
+   }
    @RequestMapping("test")
    public String testnav() {
       return "main";
