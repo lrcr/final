@@ -15,17 +15,18 @@ agree varchar2(10) not null
 drop table rest;
 create table rest(
 no number(5) NOT NULL,
-nm varchar2(30) PRIMARY KEY,
+nm varchar2(50) PRIMARY KEY,
 addr varchar2(300),
 tel varchar2(20),
 info varchar2(4000),
 site varchar2(80),
-time varchar2(35),
 keyword varchar2(100),
+time varchar2(35),
 reserve varchar2(10) NOT NULL,
 delivery varchar2(10) NOT NULL,
 tv varchar2(100),
 link varchar2(100),
+loc varchar2(100),
 eval number(5,1)
 );
 

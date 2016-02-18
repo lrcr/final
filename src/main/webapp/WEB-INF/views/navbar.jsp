@@ -1,12 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <nav class="navbar navbar-default navbar-collapse navbar-fixed-top" id="nav_navbar">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 				<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="./">HOME</a>
+			<a class="navbar-brand" href="#tv_box_out">HOME</a>
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
@@ -16,7 +17,24 @@
 				<li><a href="#">먹방의달인</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown" id="login-nav">
+			
+				<li >
+					<a href="broadcast"  id="broadcast">방송맛집</a>
+				</li>
+							
+			
+			
+			<!-- 사용자 맛집 추천 게시판 -->
+				<li >
+					<a href="#" >맛집추천</a>
+				</li>
+				
+				
+				<li >
+					<a href="#request-board" >공지사항</a>
+				</li>
+				
+				<li id="login-nav">
 					<c:if test="${sessionScope.nicknm eq null}">
 						<a href="#" id="go-login" data-toggle="modal" data-target="#sign-in">로그인</a>
 					</c:if>
@@ -31,7 +49,14 @@
 					</ul>
 					</c:if>
 				</li>
-				<li id="signup-nav"><a href="#" id="go-join" data-toggle="modal" data-target="#sign-up">회원가입</a></li>
+				<li id="signup-nav">
+					<c:if test="${sessionScope.nicknm eq null}">
+						<a href="#" id="go-join" data-toggle="modal" data-target="#sign-up">회원가입</a>
+					</c:if>
+					<c:if test="${sessionScope.nicknm != null}">
+						<a href="logout" id="logout">로그아웃</a>
+					</c:if>
+				</li>
 				<li>
 					<form class="navbar-form navbar-right" role="search">
 						<div class="form-group">

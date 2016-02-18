@@ -60,5 +60,10 @@ $("#login-btn").on("click",function(){
 	        	
 	        }//통신완료
 	     });//ajax끝
-	
 });
+
+
+
+
+
+

@@ -11,13 +11,6 @@ public class DAO implements interfaceDAO {
 
    @Autowired
    SqlSession SqlSession;
-   
-   @Override
-   public List<DTO> selectAll() {
-      
-      
-      return null;
-   }
 
    @Override
    public int emailchk(String email) {
@@ -30,14 +23,19 @@ public int nicknmchk(String nicknm) {
 }
 
 @Override
-public void join(DTO dto) {
+public void join(memberDTO dto) {
 	SqlSession.insert("member.join",dto);
 	
 }
 
 @Override
-public String login(DTO dto) {
+public String login(memberDTO dto) {
 	return SqlSession.selectOne("member.login",dto);
+}
+
+@Override
+public List<storeDTO> loadstore() {
+	return SqlSession.selectList("store.broadcast");
 }
 
 

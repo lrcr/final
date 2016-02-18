@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="member">
-  <select id="selectAll" resultType="com.hb.model.DTO">
+  <select id="selectAll" resultType="com.hb.model.memberDTO">
     select * from guest2 order by sabun
   </select>
   
@@ -17,11 +17,11 @@
   </select>
   
 
-  <select id="login" parameterType="com.hb.model.DTO" resultType="String">
+  <select id="login" parameterType="com.hb.model.memberDTO" resultType="String">
      select nickname from member where email=#{email} and pw=#{pw}
   </select>
   
-  <insert id="join" parameterType="com.hb.model.DTO">
+  <insert id="join" parameterType="com.hb.model.memberDTO">
      insert into member values (#{email},#{pw},#{nicknm},#{phone},#{agree})
   </insert>
   

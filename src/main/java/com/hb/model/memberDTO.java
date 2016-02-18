@@ -1,6 +1,6 @@
 package com.hb.model;
 
-public class DTO {
+public class memberDTO {
 	String email, pw, nicknm, agree; 
 	int phone;
 	

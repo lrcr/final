@@ -1,50 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div class="row">
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<div class="row">
+		<c:forEach items="${broadcast}"  var="dto">
         <!--sample1-->
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-2 col-md-2">
           <div class="thumbnail">
             <div class="embed-responsive embed-responsive-4by3">
-              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/fFZwgPcW7FM"></iframe>
+              <iframe class="embed-responsive-item" src=${dto.link}></iframe>
             </div>
             <div class="caption">
-              <h3>등나무집</h3>
-              <p>꼬리찜 뿐만아니라 도가니무침과 도가니탕 그리고 꼬리탕까지 야무지게 먹어야지</p>
-              <p><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#storedetail">상세정보</a> <a href="#" class="btn btn-default" role="button">예약하기</a></p>
+              <h3>${dto.nm}</h3>
+              <p>${dto.keyword }</p>
+              <p><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#storedetail">상세정보</a>
             </div>
           </div>
         </div>
+        </c:forEach>
         
-        <!--sample2-->
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <div class="embed-responsive embed-responsive-4by3">
-              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ly6J5BQkXgA"></iframe>
-            </div>
-            <div class="caption">
-              <h3>디저트리</h3>
-              <p>디저트 카페? 디저트 뷔페! 디저트도 코스로 즐겨보자!!</p>
-              <p><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#storedetail" >상세정보</a> <a href="#" class="btn btn-default" role="button">예약하기</a></p>
-            </div>
-          </div>
-        </div>
-        
-        <!--sample3-->
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <div class="embed-responsive embed-responsive-4by3">
-              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/qWvuqFhrTTU"></iframe>
-            </div>
-            <div class="caption">
-              <h3>줄리에뜨</h3>
-              <p>파리 르 꼬르동 블루 출신 쉐프의 수제 타르트!</p>
-              <p><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#storedetail">상세정보</a> <a href="#" class="btn btn-default" role="button">예약하기</a></p>
-            </div>
-          </div>
-        </div>
-       
-      </div><!--.row 끝-->
+</div><!--.row 끝-->
       
       <!--#storedetail-->
       
