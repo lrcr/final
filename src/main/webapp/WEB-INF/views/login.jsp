@@ -17,7 +17,7 @@
                             <label id="id-label" class="control-label login-label" for="loginid"></label>
                         </div>
                         <div class="form-group col-lg-12">
-                            <input type="password"  class="form-control login-box" placeholder="Password" name="password" id="loginpw" >
+                            <input type="password"  class="form-control login-box" placeholder="Password" name="pw" id="loginpw" >
                             <label id="pw-label" class="control-label login-label"  for="loginpw"></label>
                         </div>
                         <!-- <div class="checkbox">

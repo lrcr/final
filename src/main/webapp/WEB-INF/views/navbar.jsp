@@ -14,22 +14,24 @@
 						Link <span class="sr-only">(current)</span>
 					</a></li>
 				<li><a href="#">먹방의달인</a></li>
-				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-						Dropdown <span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="#">Action</a></li>
-						<li><a href="#">Another action</a></li>
-						<li><a href="#">Something else here</a></li>
-						<li class="divider"></li>
-						<li><a href="#">Separated link</a></li>
-						<li class="divider"></li>
-						<li><a href="#">One more separated link</a></li>
-					</ul></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#" id="go-login" data-toggle="modal" data-target="#sign-in">로그인</a></li>
-				<li><a href="#" id="go-join" data-toggle="modal" data-target="#sign-up">회원가입</a></li>
+				<li class="dropdown" id="login-nav">
+					<c:if test="${sessionScope.nicknm eq null}">
+						<a href="#" id="go-login" data-toggle="modal" data-target="#sign-in">로그인</a>
+					</c:if>
+					<c:if test="${sessionScope.nicknm != null}">
+					 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+						${nicknm}님<span class="caret"></span>
+					 </a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="#">나의 정보</a></li>
+						<li><a href="#">나의 맛집</a></li>
+						<li><a href="#">예약 확인</a></li>
+					</ul>
+					</c:if>
+				</li>
+				<li id="signup-nav"><a href="#" id="go-join" data-toggle="modal" data-target="#sign-up">회원가입</a></li>
 				<li>
 					<form class="navbar-form navbar-right" role="search">
 						<div class="form-group">

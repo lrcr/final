@@ -12,8 +12,13 @@
      select count(*) as cnt from member where email=#{email}
   </select>
   
-   <select id="selectnm" resultType="Integer">
+  <select id="selectnm" resultType="Integer">
      select count(*) as cnt from member where nickname=#{nicknm}
+  </select>
+  
+
+  <select id="login" parameterType="com.hb.model.DTO" resultType="String">
+     select nickname from member where email=#{email} and pw=#{pw}
   </select>
   
   <insert id="join" parameterType="com.hb.model.DTO">

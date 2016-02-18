@@ -36,8 +36,10 @@ public void join(DTO dto) {
 }
 
 @Override
-public List<DTO> login(DTO dto) {
-	return SqlSession.selectList("member.login",dto);
+public String login(DTO dto) {
+	return SqlSession.selectOne("member.login",dto);
 }
+
+
 
 }
