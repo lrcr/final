@@ -25,7 +25,6 @@ public int nicknmchk(String nicknm) {
 @Override
 public void join(memberDTO dto) {
 	SqlSession.insert("member.join",dto);
-	
 }
 
 @Override
@@ -36,6 +35,11 @@ public String login(memberDTO dto) {
 @Override
 public List<storeDTO> loadstore() {
 	return SqlSession.selectList("store.broadcast");
+}
+
+@Override
+public storeDTO detail(int no) {
+	return SqlSession.selectOne("store.detail",no);
 }
 
 

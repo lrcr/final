@@ -2,7 +2,7 @@
 html {height:100%;}
 body {height:100%; margin:0;}
 #tv_box_out {overflow:hidden; background:#000; width:100%; height:90%; border:5px solid #c8c8c8; border-radius:25px;}
-#tv_box_in {position:relative; width:98%; height:90%; overflow:hidden; margin:15px auto 0; z-index:4;}
+#tv_box_in {position:relative; width:98%; height:90%; overflow:auto; margin:15px auto 0; z-index:4;}
 #main_main {height:100%; width:100%;}
 #main_main:after {content:""; clear:both; display:block;}
 .container-fluid {padding:0; height:100%;}

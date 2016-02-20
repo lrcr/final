@@ -2,7 +2,7 @@
   font-size: 0;
   white-space: nowrap;
   display: inline-block;
-  width: 253px;
+  width: 247px;
   height: 50px;
   overflow: hidden;
   position: relative;
@@ -57,3 +57,12 @@
   padding: 20px;
   display: block;
 }
+
+/* .small{
+	width:125px;
+	height: 25px;
+} */
+
+/* .on{
+	opacity:1; !Important;
+} */

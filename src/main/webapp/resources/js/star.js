@@ -1,5 +1,5 @@
 $(':radio').change(
   function(){
-    $('.choice').text( $(this).val() + ' stars' );
+    $('.choice').html("<strong>"+$(this).val() +"점</strong>");
   } 
 )

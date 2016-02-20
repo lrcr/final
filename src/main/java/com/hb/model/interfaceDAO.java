@@ -7,5 +7,6 @@ public interface interfaceDAO {
 	public int emailchk(String email);
 	public int nicknmchk(String nicknm);
 	public void join(memberDTO dto);
-	public String login(memberDTO dto); 
+	public String login(memberDTO dto);
+	public storeDTO detail(int no); 
 }

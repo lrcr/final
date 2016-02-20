@@ -4,9 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="store">
-  <select id="broadcast" resultType="com.hb.model.storeDTO">
-    select nm, keyword, link from rest where link is not null
-  </select>
-  
-  
+	<select id="broadcast" resultType="com.hb.model.storeDTO">
+		select * from rest where link is not null
+	</select>
+
+	<select id="detail" resultType="com.hb.model.storeDTO">
+		select * from rest where no=#{no}
+	</select>
 </mapper>
