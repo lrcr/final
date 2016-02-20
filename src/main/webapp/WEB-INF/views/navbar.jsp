@@ -1,37 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page session="false" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<nav class="navbar navbar-default navbar-collapse navbar-fixed-top"
-	id="nav_navbar">
+<nav class="navbar navbar-default navbar-collapse navbar-fixed-top nav_blk" id="nav_navbar">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index">HOME</a>
+			<a class="navbar-brand" href="./">HOME</a>
 		</div>
-		<div class="collapse navbar-collapse"
-			id="bs-example-navbar-collapse-1">
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#"> Link <span class="sr-only">(current)</span>
-				</a></li>
+				<li class="active"><a href="test">list<span class="sr-only">(current)</span></a></li>
 				<li><a href="#">먹방의달인</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-
 				<li><a href="broadcast" id="broadcast">방송맛집</a></li>
-
-
 
 				<!-- 사용자 맛집 추천 게시판 -->
 				<li><a href="#">맛집추천</a></li>
-
-
 				<li><a href="#request-board">공지사항</a></li>
-
 				<li id="login-nav"><c:if test="${sessionScope.nicknm eq null}">
 						<a href="#" id="go-login" data-toggle="modal"
 							data-target="#sign-in">로그인</a>
@@ -65,7 +52,7 @@
 		<button type="button" class="nav_btn nav_btn_top">
 			<span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
 		</button>
-		<button type="button" class="nav_btn nav_btn_bottom">
+		<button type="button" class="nav_btn nav_btn_bottom hid">
 			<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
 		</button>
 	</div>

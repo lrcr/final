@@ -1,6 +1,5 @@
+<%@ page session="false" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -15,36 +14,49 @@
 <script type="text/javascript" src="js/main.js"></script>
 <link rel="stylesheet" href="css/main.css">
 <script type="text/javascript">
-	var main_back = [ "#f1ac1d", "#e57d04", "#dc0030", "#b10058", "#7c378a", "#3465aa", "#09a275" ];
+	var main_back = [ "#f1ac1d", "#dc0030", "#b10058", "#7c378a", "#3465aa", "#09a275", "#e57d04" ];
 	var main_vid = [ "fFZwgPcW7FM", "ly6J5BQkXgA", "4OFAY0Du65A", "Tqa9LGsC5SU", "u_f2gzaDTKA" ];
 	var main_sub_back = [ "#ee6334", "#ff8200", "#ed1369", "#777777", "#00aba8", "#666633", "#13cced", "#456c6c", "#4dbf13", "#794b80", "#ec3b4b", "#00fdfd" ];
-	var main_sub_rgb = [ "238,99,52", "255,130,0", "237,19,105", "77,191,19", "0,171,168", "102,102,51", "19,204,237", "121,75,128", "69,108,108", "236,59,75", "0,253,253", "119,119,119" ];
+	var main_sub_rgb = [ "238,99,52", "255,130,0", "237,19,105", "77,191,19", "0,171,168", "102,102,51", "19,204,237", "255,130,0", "121,75,128", "69,108,108",
+			"236,59,75", "0,253,253", "119,119,119" ];
 	$(document).ready(function() {
 		$(".sub_menu_d").each(function(i, e) {
-			//alert(e);
 			$(e).css({ "background" : "rgba(" + main_sub_rgb[i] + ",0.4)" });
 			$(e).hover(function() {
+				//alert(i);
 				$(this).css({ "background" : "rgba(" + main_sub_rgb[i] + ",1)" });
-				//$(this).animate({"background":main_sub_back[i]},400);
 			}, function() {
 				$(this).css({ "background" : "rgba(" + main_sub_rgb[i] + ",0.4)" });
-				//$(this).animate({"background":"rgba("+main_sub_rgb[i]+",0.4)"},400);
 			});
 		});
-		$(".onoff > img").click(function(){
-			$("#player").toggle();
+		$(".onoff > img").click(function() {
+			if ($(".onoff").hasClass("btn_onoff")) {
+				$(".main_menu").each(function(i, e) {
+					if ($(this).hasClass("this_view")) {
+						createYouTubeAPI(main_vid[i]);
+						changeVideoId(main_vid[i]);
+						$("#player").animate({ "display" : "black" }, 700, function() {
+							$(this).animate({ "width" : "100%", "height" : "100%", "margin" : "0" }, 300);
+						});
+					}
+				});
+				$(".onoff").removeClass("btn_onoff");
+			} else {
+				$("#player").animate({ "width" : "0", "height" : "0", "margin" : "20% 50%" }, 300, function() {
+					stopVideo();
+				});
+				$(".onoff").addClass("btn_onoff");
+			}
 		});
-		if ($(window).width() < 768) {}
+		if ($(window).width() < 768) {
+		}
 		$(window).resize(function() {
 			$(".main_menu").each(function(i, e) {
 				if ($(window).width() < 768) {
-					//stopVideo();
 					$(".sub_menu").css("margin-left", 0);
 				} else {
 					if ($(e).hasClass("this_view")) {
 						$(".sub_menu").css("margin-left", (i * 2.5) + "%");
-						//createYouTubeAPI(main_vid[i]);
-						//changeVideoId(main_vid[i]);
 					}
 				}
 			});
@@ -56,11 +68,10 @@
 				$(".main_menu").removeClass("this_view");
 				$("#player,.sub_menu").addClass("hid");
 				$(this).addClass("this_view");
-				//$(".main_sub_menu").removeClass("hid").children().html("<source src=\"video/main_v"+(i+1)+".mp4\" type=\"video/mp4\"><source src=\"video/main_v"+(i+1)+".webm\" type=\"video/webm\">");
 				$(".main_menu").stop().animate({ "opacity" : 1, "width" : "2.5%" }, 400);
 				$(this).stop().animate({ "opacity" : 0.4, "width" : "90%" }, 400, function() {
-					$(".sub_menu").stop().css("margin-left", (i * 2.5) + "%");
-					$("#player,.sub_menu").removeClass("hid");
+					$(".sub_menu_" + (i + 1)).stop().css("margin-left", (i * 2.5) + "%");
+					$("#player,.sub_menu_" + (i + 1)).removeClass("hid");
 				}).children().hide();
 				createYouTubeAPI(main_vid[i]);
 				changeVideoId(main_vid[i]);
@@ -73,29 +84,29 @@
 </head>
 <body>
 	<div id="tv_box_out">
-		<%@include file="navbar.jsp" %>
-        <%@include file="login.jsp" %>
-        <%@include file="join.jsp" %>
+		<%@include file="navbar.jsp"%>
+		<%@include file="login.jsp"%>
+		<%@include file="join.jsp"%>
 		<div id="tv_box_in">
-			<div id="main_main">
-				<div class="main_index">
-					<div class="main_menu">
-						<span class="main_text">먹<span class="hid">는방송</span></span>
-					</div>
-					<div class="main_menu">
-						<span class="main_text">방<span class="hid">방곳곳</span></span>
-					</div>
-					<div class="main_menu">
-						<span class="main_text">의<span class="hid">기양양</span></span>
-					</div>
-					<div class="main_menu">
-						<span class="main_text">달<span class="hid">라잡이</span></span>
-					</div>
-					<div class="main_menu">
-						<span class="main_text">인<span class="hid">기맛집</span></span>
-					</div>
+			<div class="main_index">
+				<div class="main_menu">
+					<span class="main_text">먹<span class="hid">는방송</span></span>
 				</div>
-				<div class="sub_menu hid">
+				<div class="main_menu">
+					<span class="main_text">방<span class="hid">방곳곳</span></span>
+				</div>
+				<div class="main_menu">
+					<span class="main_text">의<span class="hid">기양양</span></span>
+				</div>
+				<div class="main_menu">
+					<span class="main_text">달<span class="hid">라잡이</span></span>
+				</div>
+				<div class="main_menu">
+					<span class="main_text">인<span class="hid">기맛집</span></span>
+				</div>
+			</div>
+			<div id="main_main">
+				<div class="sub_menu sub_menu_2 hid">
 					<ul class="map_bg">
 						<li class="incheon"><a href="#" target="_self">인천광역시</a></li>
 						<li class="kangwon"><a href="#" target="_self">강원도</a></li>
@@ -117,31 +128,11 @@
 					</ul>
 				</div>
 			</div>
-			<div class="sub_menu_2 hid">
-				<a href="#" class="sub_menu_d">
-					<span class="main_text">한식</span>
-				</a>
-				<a href="#" class="sub_menu_d">
-					<span class="main_text">일식</span>
-				</a>
-				<a href="#" class="sub_menu_d">
-					<span class="main_text">중식</span>
-				</a>
-				<a href="#" class="sub_menu_d">
-					<span class="main_text">양식</span>
-				</a>
-				<a href="#" class="sub_menu_d">
-					<span class="main_text">주식</span>
-				</a>
-				<a href="#" class="sub_menu_d">
-					<span class="main_text">냉면</span>
-				</a>
-				<a href="#" class="sub_menu_d">
-					<span class="main_text">간식</span>
-				</a>
-				<a href="#" class="sub_menu_d">
-					<span class="main_text">분식</span>
-				</a>
+			<div class="sub_menu sub_menu_1 hid">
+				<a href="#" class="sub_menu_d"><span class="main_text">식신로드</span></a> <a href="#" class="sub_menu_d"><span class="main_text">테이스티로드</span></a> <a href="#" class="sub_menu_d"><span class="main_text">백종원의 3대천왕</span></a> <a href="#" class="sub_menu_d"><span class="main_text">맛있는 녀석들</span></a> <a href="#" class="sub_menu_d"><span class="main_text">찾아라!맛있는TV</span></a>
+			</div>
+			<div class="sub_menu sub_menu_3 hid">
+				<a href="#" class="sub_menu_d"><span class="main_text">한식</span></a> <a href="#" class="sub_menu_d"><span class="main_text">일식</span></a> <a href="#" class="sub_menu_d"><span class="main_text">중식</span></a> <a href="#" class="sub_menu_d"><span class="main_text">양식</span></a> <a href="#" class="sub_menu_d"><span class="main_text">주식</span></a> <a href="#" class="sub_menu_d"><span class="main_text">냉면</span></a> <a href="#" class="sub_menu_d"><span class="main_text">간식</span></a> <a href="#" class="sub_menu_d"><span class="main_text">분식</span></a>
 			</div>
 			<div id="player" class="main_player hid"></div>
 		</div>

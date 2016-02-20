@@ -1,7 +1,7 @@
 package com.hb.model;
 
-public class storeDTO {
-	String nm, addr, tel, info, site, keyword, time, reserve, delivery, tv, link, loc;
+public class StoreDTO {
+	String nm, addr, tel, info, site, keyword, time, reserve, delivery, tv, link, loc, indu;
 	int no;
 	double eval;
 	
@@ -48,6 +48,9 @@ public class storeDTO {
 	public double getEval() {
 		return eval;
 	}
+	public String getIndu() {
+		return indu;
+	}
 	public void setNm(String nm) {
 		this.nm = nm;
 	}
@@ -90,12 +93,15 @@ public class storeDTO {
 	public void setEval(double eval) {
 		this.eval = eval;
 	}
+	public void setIndu(String indu) {
+		this.indu = indu;
+	}
 	
 	@Override
 	public String toString() {
-		return "storeDTO [nm=" + nm + ", addr=" + addr + ", tel=" + tel + ", info=" + info + ", site=" + site
-				+ ", keyword=" + keyword + ", time=" + time + ", reserve=" + reserve + ", delivery=" + delivery
-				+ ", tv=" + tv + ", link=" + link + ", loc=" + loc + ", no=" + no + ", eval=" + eval + "]";
+		return "StoreDTO [no=" + no + ", nm=" + nm + ", addr=" + addr + ", tel=" + tel + ", info=" + info + ", site=" + site + ", keyword=" + keyword
+				+ ", time=" + time + ", reserve=" + reserve + ", delivery=" + delivery + ", tv=" + tv + ", link=" + link + ", loc=" + loc + ", indu=" + indu
+				+ ", eval=" + eval + "]";
 	}
 
 }
