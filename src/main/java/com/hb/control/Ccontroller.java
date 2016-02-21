@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.hb.model.BoardDTO;
 import com.hb.model.InterfaceDAO;
 import com.hb.model.MemberDTO;
 import com.hb.model.StoreDTO;
@@ -27,19 +28,43 @@ public class Ccontroller {
 	@Autowired
 	InterfaceDAO dao;
 	
+	@RequestMapping("/") // 메인페이지
+	public String main() {
+		return "index";
+	}
+	
+	@RequestMapping("test") // 맛집리스트(임시)
+	public String testnav() {
+		return "main";
+	}
 	@RequestMapping("eval")
 	public String eval() {
 		
 		return "eval";
 	}
-	@RequestMapping("/") // 메인페이지
-	public String main() {
-		return "index";
+	
+	@RequestMapping("notify")
+	public String gongzy(Model model) {
+		List<BoardDTO> list=dao.boardlist();
+		model.addAttribute("list",list);
+		return "notifyform";
 	}
-
-	@RequestMapping("test") // 맛집리스트(임시)
-	public String testnav() {
-		return "main";
+	
+	@RequestMapping(value="addboard", method=RequestMethod.POST)
+	public void addboard(BoardDTO dto,HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		if(!("".equals(dto.getTitle())||"".equals(dto.getContent()))){
+			HttpSession session=req.getSession();
+			String nicknm=(String)session.getAttribute("nicknm");
+			dto.setNicknm(nicknm);
+			dao.addboard(dto);
+			PrintWriter out = resp.getWriter();
+			StringBuffer st = new StringBuffer();
+			st.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
+			st.append("<item>");
+			st.append("<nicknm>" + URLEncoder.encode(nicknm, "UTF-8") + "</nicknm>");
+			st.append("</item>");
+			out.write(st.toString());
+		}
 	}
 	
 	@RequestMapping(value="listlink", method=RequestMethod.GET)
@@ -59,9 +84,7 @@ public class Ccontroller {
 
 	@RequestMapping("detail") // 상세페이지
 	public void detail(int no) {
-		System.out.println(no);
 		StoreDTO dto = dao.detail(no);
-		
 	}
 
 	@RequestMapping(value = "join", method = RequestMethod.POST)
@@ -92,7 +115,7 @@ public class Ccontroller {
 	public String logout(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		session.invalidate();
-		return "/";
+		return "redirect:/";
 	}
 
 	@RequestMapping(value = "emailchk", method = RequestMethod.POST) // 이메일 중복체크

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+	<select id="boardlist" resultType="com.hb.model.BoardDTO">
+		select rownum, no, title, content ,nicknm, hits, submit from board order by rownum desc
+	</select>
+
+	<insert id="addboard" parameterType="com.hb.model.BoardDTO">
+		insert into board values (seq.nextval,#{title},#{content},#{nicknm},0,sysdate)
+	</insert>
+</mapper>

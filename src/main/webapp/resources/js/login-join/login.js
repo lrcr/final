@@ -51,8 +51,11 @@ $("#login-btn").on("click",function(){
 					"</ul>"
 					);
 	                 $("#signup-nav").html(
-	                		 "<a href=\"#\" id=\"logout\">로그아웃</a>"
+	                		 "<a href=\"logout\" id=\"logout\">로그아웃</a>"
 	                 );
+	                 
+	                 $("#write-check").html("<button type=\"button\" class=\"btn btn-primary btn-lg write-login\" data-toggle=\"modal\" data-target=\"#writemodal\">"+
+						"글쓰기</button>");
                 }
                 else {
                 	alert("잘못된 로그인 정보입니다");

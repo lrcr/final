@@ -1,4 +1,4 @@
-<%@ page session="false" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <nav class="navbar navbar-default navbar-collapse navbar-fixed-top nav_blk" id="nav_navbar">
 	<div class="container-fluid">
@@ -18,7 +18,7 @@
 
 				<!-- 사용자 맛집 추천 게시판 -->
 				<li><a href="#">맛집추천</a></li>
-				<li><a href="#request-board">공지사항</a></li>
+				<li><a href="notify">공지사항</a></li>
 				<li id="login-nav"><c:if test="${sessionScope.nicknm eq null}">
 						<a href="#" id="go-login" data-toggle="modal"
 							data-target="#sign-in">로그인</a>
@@ -36,7 +36,8 @@
 				<li id="signup-nav"><c:if test="${sessionScope.nicknm eq null}">
 						<a href="#" id="go-join" data-toggle="modal"
 							data-target="#sign-up">회원가입</a>
-					</c:if> <c:if test="${sessionScope.nicknm != null}">
+					</c:if>
+					 <c:if test="${sessionScope.nicknm != null}">
 						<a href="logout" id="logout">로그아웃</a>
 					</c:if></li>
 				<li>

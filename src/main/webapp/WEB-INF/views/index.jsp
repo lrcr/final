@@ -1,4 +1,4 @@
-<%@ page session="false" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -84,9 +84,9 @@
 </head>
 <body>
 	<div id="tv_box_out">
-		<%@include file="navbar.jsp"%>
-		<%@include file="login.jsp"%>
-		<%@include file="join.jsp"%>
+		<%@include file="sub/navbar.jsp"%>
+		<%@include file="sub/login.jsp"%>
+		<%@include file="sub/join.jsp"%>
 		<div id="tv_box_in">
 			<div class="main_index">
 				<div class="main_menu">
@@ -143,8 +143,8 @@
 	<div class="main_support">
 		<img src="images/support.png" width="80%" />
 	</div>
-	<script type="text/javascript" src="js/join.js"></script>
-	<script type="text/javascript" src="js/login.js"></script>
-	<script type="text/javascript" src="js/star.js"></script>
+	<script type="text/javascript" src="js/login-join/join.js"></script>
+	<script type="text/javascript" src="js/login-join/login.js"></script>
+	<script type="text/javascript" src="js/login-join/star.js"></script>
 </body>
 </html>

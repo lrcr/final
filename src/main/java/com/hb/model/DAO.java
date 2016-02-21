@@ -36,9 +36,10 @@ public class DAO implements InterfaceDAO {
 	public List<StoreDTO> loadstore() {
 		return SqlSession.selectList("store.broadcast");
 	}
+
 	@Override
-	public List<StoreDTO> listlink(String col,String val) {
-		String[] sch = {col,val};
+	public List<StoreDTO> listlink(String col, String val) {
+		String[] sch = { col, val };
 		return SqlSession.selectList("store.listlink", sch);
 	}
 
@@ -46,5 +47,17 @@ public class DAO implements InterfaceDAO {
 	public StoreDTO detail(int no) {
 		return SqlSession.selectOne("store.detail", no);
 	}
+
+	@Override
+	public void addboard(BoardDTO dto) {
+		SqlSession.insert("board.addboard", dto);
+	}
+
+	@Override
+	public List<BoardDTO> boardlist() {
+		return SqlSession.selectList("board.boardlist");
+	}
+
+
 
 }
