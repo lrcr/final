@@ -11,4 +11,10 @@
 	<insert id="addboard" parameterType="com.hb.model.BoardDTO">
 		insert into board values (seq.nextval,#{title},#{content},#{nicknm},0,sysdate)
 	</insert>
+	
+	<update id="addhit">
+		update board set hits=hits+1 where no=#{no}
+	</update>
+	
+	
 </mapper>

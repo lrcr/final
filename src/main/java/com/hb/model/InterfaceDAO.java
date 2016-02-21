@@ -12,4 +12,5 @@ public interface InterfaceDAO {
 	public void addboard(BoardDTO dto);
 	public List<BoardDTO> boardlist();
 	public List<StoreDTO> listlink(String loc, String val);
+	public int addhit(int no);
 }

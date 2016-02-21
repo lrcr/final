@@ -69,14 +69,7 @@ $("#write-done").on("click",function(){
            dataType:"xml",
            error:function(){alert("Ajax error!!")},
            success:function(result){
-        	  var nicknm=decodeURIComponent($(result).find("nicknm").text());
-        	  
-        	  $("#board-list").html("<tr>"+
-					"<td>2</td>"+
-					"<td><a data-toggle=\"modal\" data-target=\"#boarddetail\" href=\"#\">test</a></td>"+
-					"<td>"+nickname+"</td>"+
-					"<td>Column content</td>"+
-				"</tr>"+$("#board-list").html());
+        	  location.replace("/project3/notify");
            }//통신완료
         });//ajax끝
 		

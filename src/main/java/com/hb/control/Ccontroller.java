@@ -43,27 +43,26 @@ public class Ccontroller {
 		return "eval";
 	}
 	
-	@RequestMapping("notify")
+	@RequestMapping("notify")//공지사항
 	public String gongzy(Model model) {
 		List<BoardDTO> list=dao.boardlist();
 		model.addAttribute("list",list);
 		return "notifyform";
 	}
 	
-	@RequestMapping(value="addboard", method=RequestMethod.POST)
+	@RequestMapping(value="addhit", method=RequestMethod.POST)
+	public void addhit(int no) {
+		int hit=dao.addhit(no);
+		
+	}
+	
+	@RequestMapping(value="addboard", method=RequestMethod.POST)//글쓰기
 	public void addboard(BoardDTO dto,HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		if(!("".equals(dto.getTitle())||"".equals(dto.getContent()))){
 			HttpSession session=req.getSession();
 			String nicknm=(String)session.getAttribute("nicknm");
 			dto.setNicknm(nicknm);
 			dao.addboard(dto);
-			PrintWriter out = resp.getWriter();
-			StringBuffer st = new StringBuffer();
-			st.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
-			st.append("<item>");
-			st.append("<nicknm>" + URLEncoder.encode(nicknm, "UTF-8") + "</nicknm>");
-			st.append("</item>");
-			out.write(st.toString());
 		}
 	}
 	

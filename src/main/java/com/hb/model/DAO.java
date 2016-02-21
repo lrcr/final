@@ -58,6 +58,11 @@ public class DAO implements InterfaceDAO {
 		return SqlSession.selectList("board.boardlist");
 	}
 
+	@Override
+	public int addhit(int no) {
+		return SqlSession.update("board.addhit",no);
+	}
+
 
 
 }
