@@ -1,5 +1,6 @@
 package com.hb.model;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface InterfaceDAO {
@@ -11,6 +12,6 @@ public interface InterfaceDAO {
 	public StoreDTO detail(int no);
 	public void addboard(BoardDTO dto);
 	public List<BoardDTO> boardlist();
-	public List<StoreDTO> listlink(String loc, String val);
+	public List<StoreDTO> listlink(HashMap<String, String> sch);
 	public int addhit(int no);
 }

@@ -10,8 +10,13 @@
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="test">list<span class="sr-only">(current)</span></a></li>
-				<li><a href="#">먹방의달인</a></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">메뉴<span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="#">방송 프로그램</a></li>
+						<li><a href="#">지역별</a></li>
+						<li><a href="#">업종별</a></li>
+					</ul>
+				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="broadcast" id="broadcast">방송맛집</a></li>
@@ -42,10 +47,12 @@
 					</c:if></li>
 				<li>
 					<form class="navbar-form navbar-right" role="search">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="인생맛집">
+						<div class="input-group">
+						<input type="text" class="form-control" placeholder="인생맛집">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="submit">검색</button>
+							</span>
 						</div>
-						<button type="submit" class="btn btn-default">검색</button>
 					</form>
 				</li>
 			</ul>

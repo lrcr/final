@@ -12,7 +12,7 @@
 		select * from rest where no=#{no}
 	</select>
 
-	<select id="listlink" resultType="com.hb.model.StoreDTO">
-		select nm, keyword, link from rest where #{sch.col}=#{sch.val}
+	<select id="listlink" parameterType="hashmap" resultType="com.hb.model.StoreDTO">
+		select * from rest where ${col} like '%'||#{val}||'%'
 	</select>
 </mapper>

@@ -1,10 +1,9 @@
 @CHARSET "UTF-8";
-#main_main {height:100%; width:100%;}
 #main_main:after {content:""; clear:both; display:block;}
 .main_index {text-align:center; overflow:hidden; width:100%; height:100%;}
 .main_index .main_menu {width:20%; height:100%; float:left; padding-top:10%;}
 .sub_menu_1,.sub_menu_2,.sub_menu_3,.sub_menu_4,.sub_menu_5 {position:absolute; top:0; width:90%; height:100%;}
-.sub_menu_d {margin:0; float:left; height:33.33%; padding-top:10%; text-align:center; font-size:20px; color:#eee; transition-property:background-color; transition-duration:0.6s;}
+.sub_menu_d {margin:0; float:left; height:33.33%; width:33.33%; padding-top:10%; text-align:center; font-size:20px; color:#eee; transition-property:background-color; transition-duration:0.6s;}
 .sub_menu_1 .sub_menu_d {margin:0; width:33.33%; height:33.33%;}
 .sub_menu_1 .sub_menu_d:nth-child(1) {height:66.66%;}
 .sub_menu_1 .sub_menu_d:nth-child(2) {width:66.66%;}
@@ -21,7 +20,6 @@
 .main_player {position:absolute; top:0; z-index:-1;}
 .main_other {width:2.5%;}
 .main_icon-bar {display:block; width:24px; height:3px; border-radius:1px; margin-top:5px; background-color:#fff;}
-
 
 .onoff {height:5%; text-align:right; margin:2px 20px 0 0;}
 
@@ -68,18 +66,16 @@
 .map_bg li.busan a:hover {background-position:-860px -192px;}
 @media screen and (max-width:767px) {
 	/* 매우 작은 기기들 (모바일폰, 768px 보다 작은) screen-xs */
-	#main_main {height:100%; width:100%;}
-	#tv_box_out {height:100%;}
-	#tv_box_in {height:95%;}
-	.main_index .main_menu {width:100%; height:20%; padding-top:8%;}
+	#tv_box_in {background:#535353;}
+	.main_index .main_menu {width:100%; height:20%; padding-top:0;}
 	.sub_menu {width:100%; margin-left:0;}
-	.sub_menu_d {text-align:center; background:rgba(119, 119, 119, 0.4); font-size:20px; color:#eee; transition-property:background-color; transition-duration:0.6s;}
-	#player {display:none;}
-	.main_support,.onoff {display:none;}
+	.sub_menu_d {text-align:center; font-size:20px; color:#eee; transition-property:background-color; transition-duration:0.6s;}
+	.sub_menu_1,.sub_menu_2,.sub_menu_3,.sub_menu_4,.sub_menu_5 {position:static;}
+	#player,.onoff {display:none;}
 }
-
-@media screen and (min-width:768px) and (max-width:991px) { /* 작은 기기들 (태블릿, 768px 이상) screen-sm*/
-	/* #main_main {height:432px; width:768px; margin:0 auto; position:relative;} */
+@media screen and (min-width:768px) and (max-width:991px) { 
+	/* 작은 기기들 (태블릿, 768px 이상) screen-sm*/
+	
 }
 
 @media screen and (min-width:992px) and (max-width:1199px) { /* 중간 기기들 (데스크탑, 992px 이상) screen-md */

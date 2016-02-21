@@ -15,15 +15,14 @@ $(document).ready(function() {
 		}
 		$("#nav_navbar").toggleClass("nav_blk");
 	});
+	$(window).resize(function() {
+		if ($(window).width() < 768) {
+			$("#nav_navbar").css({ "top" : "0" }).addClass("nav_blk");
+			$("body").css({ "padding-top" : "51px" });
+			$(".nav_btn_bottom").addClass("hid");
+//			stopVideo();
+		}else{
+			
+		}
+	});
 });
-function listlink(col, val) {
-	$.ajax({ 
-		url : "listlink", 
-		type : "get", 
-		data : "col="+col+"&val="+val, 
-		error : function() { alert("Ajax error!!")}, 
-		success : function(result) {
-			success = $(result).find("success").text();
-			success = parseInt(success);
-	} });
-}

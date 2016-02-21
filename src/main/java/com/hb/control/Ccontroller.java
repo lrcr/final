@@ -3,6 +3,7 @@ package com.hb.control;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -66,13 +67,16 @@ public class Ccontroller {
 		}
 	}
 	
-	@RequestMapping(value="listlink", method=RequestMethod.GET)
-	   public String listlink(String col,String val, Model model) {
-		   List<StoreDTO> list=dao.listlink(col,val);
-		   model.addAttribute("list",list);
-		return "listlink";
+	@RequestMapping(value = "listlink", method = RequestMethod.GET)
+	public String listlink(String col, String val, Model model) {
+		HashMap<String, String> sch = new HashMap<String, String>();
+		sch.put("col", col);
+		sch.put("val", val);
+		List<StoreDTO> list = dao.listlink(sch);
+		model.addAttribute("broadcast", list);
+		return "main";
 	}
-	
+
 	@RequestMapping("broadcast")
 	public String broadcast(Model model) {// ¹æ¼Û¸ÀÁý
 		List<StoreDTO> list = dao.loadstore();

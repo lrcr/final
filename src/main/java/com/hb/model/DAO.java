@@ -1,5 +1,6 @@
 package com.hb.model;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -38,8 +39,7 @@ public class DAO implements InterfaceDAO {
 	}
 
 	@Override
-	public List<StoreDTO> listlink(String col, String val) {
-		String[] sch = { col, val };
+	public List<StoreDTO> listlink(HashMap<String, String> sch) {
 		return SqlSession.selectList("store.listlink", sch);
 	}
 
