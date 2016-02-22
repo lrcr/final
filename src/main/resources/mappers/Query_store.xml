@@ -15,4 +15,8 @@
 	<select id="listlink" parameterType="hashmap" resultType="com.hb.model.StoreDTO">
 		select * from rest where ${col} like '%'||#{val}||'%'
 	</select>
+	
+	<select id="search" resultType="com.hb.model.StoreDTO">
+		select * from rest where addr like '%'||#{search}||'%' or nm like '%'||#{search}||'%' or keyword like '%'||#{search}||'%' or info like '%'||#{search}||'%' or tv like '%'||#{search}||'%' or indu like '%'||#{search}||'%'
+	</select>
 </mapper>

@@ -59,8 +59,13 @@ public class DAO implements InterfaceDAO {
 	}
 
 	@Override
-	public int addhit(int no) {
-		return SqlSession.update("board.addhit",no);
+	public void addhit(BoardDTO dto) {
+		SqlSession.update("board.addhit",dto);
+	}
+
+	@Override
+	public List<StoreDTO> search(String text) {
+		return SqlSession.selectList("store.search",text);
 	}
 
 

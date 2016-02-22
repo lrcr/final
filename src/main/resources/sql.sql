@@ -12,7 +12,7 @@ agree varchar2(10) not null
 );
 
 --맛집정보 테이블
-drop table rest purge;
+drop table rest;
 create table rest(
 no number(5) NOT NULL,
 nm varchar2(50) PRIMARY KEY,
@@ -30,5 +30,24 @@ loc varchar2(100), --위도,경도
 indu varchar2(15), --업종
 eval number(5,1) --평점
 );
+
+
+--공지사항 테이블
+drop table board;
+create table board(
+no number(30) primary key,
+title varchar2(500) not null,
+content varchar2(4000) not null,
+nicknm varchar2(100) not null,
+hits number(30) not null,
+submit date not null
+);
+
+--시퀀스
+create sequence seq
+increment by 1
+start with 1
+;
+
 
 

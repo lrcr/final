@@ -9,15 +9,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>True맛집</title>
 	<link rel="stylesheet" href="https://bootswatch.com/slate/bootstrap.min.css" type="text/css" />
-    <!-- MetisMenu CSS -->
     <link href="css/board/metisMenu.min.css" rel="stylesheet">
-    <!-- DataTables CSS -->
     <link href="css/board/dataTables.bootstrap.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <!-- Custom Fonts -->
     <link href="css/board/font-awesome.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css" type="text/css" />
 	<link rel="stylesheet" href="css/common.css">
-	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/index.css">
 	<link rel="stylesheet" href="css/star.css" type="text/css" />
 	<link rel="stylesheet" href="css/join.css" type="text/css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.0/summernote.css" >
@@ -32,14 +29,16 @@
 		<%@include file="sub/navbar.jsp"%>
 		<%@include file="sub/login.jsp"%>
 		<%@include file="sub/join.jsp"%>
+		<div id="tv_box_in" class="mCustomScrollbar">
 		<div id="tv_box_in">
 			<%@include file="sub/notify.jsp" %>
 		</div>
+		<%@include file="sub/notifymodal.jsp" %>
 	</div>
 	<div class="main_support">
 		<img src="images/support.png" width="80%" />
 	</div>
-	
+	<script type="text/javascript" src="js/jquery.mCustomScrollbar.min.js"></script>
     <script src="js/board/metisMenu.min.js"></script>
     <script src="js/board/jquery.dataTables.min.js"></script>
     <script src="js/board/dataTables.bootstrap.min.js"></script>
@@ -48,5 +47,6 @@
 	<script type="text/javascript" src="js/login-join/join.js"></script>
 	<script type="text/javascript" src="js/login-join/login.js"></script>
 	<script type="text/javascript" src="js/board/texteditor.js"></script>
+	<script type="text/javascript" src="js/search.js"></script>
 </body>
 </html>

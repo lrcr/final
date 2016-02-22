@@ -7,13 +7,13 @@ public class MemberDTO {
 	public String getEmail() {
 		return email;
 	}
-	
-	public String getPw() {
-		return pw;
-	}
 	public String getNicknm() {
 		return nicknm;
 	}
+	public String getPw() {
+		return pw;
+	}
+	
 	public String getAgree() {
 		return agree;
 	}
@@ -26,19 +26,21 @@ public class MemberDTO {
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
-	public void setNicknm(String nicknm) {
-		this.nicknm = nicknm;
-	}
+	
 	public void setAgree(String agree) {
 		this.agree = agree;
 	}
 	public void setPhone(int phone) {
 		this.phone = phone;
 	}
-	
+	public void setNicknm(String nicknm) {
+		this.nicknm = nicknm;
+	}
 	@Override
 	public String toString() {
-		return "DTO [email=" + email + ", pw=" + pw + ", nicknm=" + nicknm + ", phone=" + phone + ", agree=" + agree
-				+ "]";
+		return "MemberDTO [email=" + email + ", pw=" + pw + ", nicknm=" + nicknm + ", phone=" + phone + ", agree="
+				+ agree + "]";
 	}
+	
+
 }

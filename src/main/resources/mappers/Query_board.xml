@@ -5,14 +5,14 @@
 
 <mapper namespace="board">
 	<select id="boardlist" resultType="com.hb.model.BoardDTO">
-		select rownum, no, title, content ,nicknm, hits, submit from board order by rownum desc
+		select no, title, content, nicknm, hits, submit, rownum from (select * from board order by rownum desc)board order by no
 	</select>
 
 	<insert id="addboard" parameterType="com.hb.model.BoardDTO">
 		insert into board values (seq.nextval,#{title},#{content},#{nicknm},0,sysdate)
 	</insert>
 	
-	<update id="addhit">
+	<update id="addhit" parameterType="com.hb.model.BoardDTO">
 		update board set hits=hits+1 where no=#{no}
 	</update>
 	

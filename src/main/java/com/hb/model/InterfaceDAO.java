@@ -13,5 +13,7 @@ public interface InterfaceDAO {
 	public void addboard(BoardDTO dto);
 	public List<BoardDTO> boardlist();
 	public List<StoreDTO> listlink(HashMap<String, String> sch);
-	public int addhit(int no);
+	public void addhit(BoardDTO dto);
+	public List<StoreDTO> search(String text);
+	
 }

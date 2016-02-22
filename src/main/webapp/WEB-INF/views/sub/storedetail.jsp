@@ -62,9 +62,31 @@
 										<thead>
 											<tr>
 												<th><h4>[평점]</h4></th>
-												<th></th>
-												<th>${dto.eval}</th>
-												<th></th>
+												<th>
+													<span class="star-rating small"> 
+													<c:if test="${dto.eval < 1} ">
+														<i></i><i></i><i></i><i></i><i></i>
+													</c:if>
+													<c:if test="${dto.eval>=1 && dto.eval < 2} ">
+														<i class="on"></i><i></i><i></i><i></i><i></i>
+													</c:if>
+													<c:if test="${dto.eval>=2 && dto.eval < 3} ">
+														<i></i><i class="on"></i><i></i><i></i><i></i>
+													</c:if>
+													<c:if test="${dto.eval>=3 && dto.eval < 4} ">
+														<i></i><i></i><i class="on"></i><i></i><i></i>
+													</c:if>
+													
+													<c:if test="${dto.eval>=4 && dto.eval < 5} ">
+														<i></i><i></i><i></i><i class="on"></i><i></i>
+													</c:if>
+													<c:if test="${dto.eval==5} ">
+														<i></i><i></i><i></i><i></i><i class="on"></i>
+													</c:if>
+													</span>
+												</th>
+												<th><h4>${dto.eval}</h4></th>
+												<th><h4>[분류]${dto.indu }</h4></th>
 											</tr>
 										</thead>
 										<thead>
@@ -86,18 +108,59 @@
 
 
 							<div class="col-lg-12">
-								<strong class="choice col-lg-6">제 점수는요</strong> <span class="star-rating col-lg-6"> <input type="radio" name="rating" value="1"><i></i> <input type="radio" name="rating" value="2"><i></i> <input type="radio" name="rating" value="3"><i></i> <input type="radio" name="rating" value="4"><i></i> <input type="radio" name="rating" value="5"><i></i>
+								<strong class="choice col-lg-9"><h4>제 점수는요</h4></strong> <span class="star-rating small col-lg-3 right"> <input type="radio" name="rating" value="1"><i></i> <input type="radio" name="rating" value="2"><i></i> <input type="radio" name="rating" value="3"><i></i> <input type="radio" name="rating" value="4"><i></i> <input type="radio" name="rating" value="5"><i></i>
 								</span>
-							</div>
-
-							<div class="form-group col-lg-12">
-								<div class="input-group">
-									<input type="text" class="form-control" placeholder="댓글 내용을 입력하세요"> 
-									<span class="input-group-btn">
-										<button class="btn btn-default" type="button">평가하기</button>
-									</span>
+							</div >
+							
+							
+							<div class="col-lg-12">
+								<div class="form-group col-lg-12" >
+								  <div class="input-group">
+								    <input type="text" class="form-control" placeholder="댓글 내용을 입력하세요">
+								    <span class="input-group-btn">
+								      <button class="btn btn-default" type="button">평가하기</button>
+								    </span>
+								  </div>
 								</div>
 							</div>
+								
+								<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="dataTable_wrapper">
+					<table class="table table-striped table-bordered table-hover dataTables-example" >
+						<thead>
+							<tr>
+								<th class="col-lg-1">번호</th>
+								<th class="col-lg-8">제목</th>
+								<th class="col-lg-2">닉네임</th>
+								<th class="col-lg-1">조회수</th>
+							</tr>
+						</thead>
+						<tbody id="board-list">
+							<c:forEach items="${list}" var="bdlist">
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+				<!-- /.table-responsive -->
+			</div>
+			<!-- /.panel-body -->
+		</div>
+		<!-- /.panel -->
+	</div>
+	<!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+								
+								
 						</fieldset>
 					</form>
 				</div>

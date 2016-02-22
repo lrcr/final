@@ -129,6 +129,7 @@
 	</div>
 	<script type="text/javascript" src="js/login-join/join.js"></script>
 	<script type="text/javascript" src="js/login-join/login.js"></script>
-	<script type="text/javascript" src="js/login-join/star.js"></script>
+	<script type="text/javascript" src="js/star.js"></script>
+	<script type="text/javascript" src="js/search.js"></script>
 </body>
 </html>

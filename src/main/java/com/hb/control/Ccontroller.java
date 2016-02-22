@@ -38,10 +38,13 @@ public class Ccontroller {
 	public String testnav() {
 		return "main";
 	}
-	@RequestMapping("eval")
-	public String eval() {
-		
-		return "eval";
+	
+	
+	@RequestMapping("search")
+	public String search(String text,Model model) {
+		List<StoreDTO> list=dao.search(text);
+		model.addAttribute("broadcast",list);
+		return "main";
 	}
 	
 	@RequestMapping("notify")//공지사항
@@ -51,10 +54,10 @@ public class Ccontroller {
 		return "notifyform";
 	}
 	
-	@RequestMapping(value="addhit", method=RequestMethod.POST)
-	public void addhit(int no) {
-		int hit=dao.addhit(no);
-		
+	@RequestMapping("addhit")
+	public void addhit(BoardDTO dto) {
+		System.out.println(dto.getNo());
+		dao.addhit(dto);
 	}
 	
 	@RequestMapping(value="addboard", method=RequestMethod.POST)//글쓰기

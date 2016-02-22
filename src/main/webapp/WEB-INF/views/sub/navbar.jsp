@@ -46,11 +46,11 @@
 						<a href="logout" id="logout">로그아웃</a>
 					</c:if></li>
 				<li>
-					<form class="navbar-form navbar-right" role="search">
+					<form class="navbar-form navbar-right" action="search" method="post" role="search">
 						<div class="input-group">
-						<input type="text" class="form-control" placeholder="인생맛집">
+						<input type="text" class="form-control search-input"  name="text" placeholder="인생맛집">
 							<span class="input-group-btn">
-								<button class="btn btn-default" type="submit">검색</button>
+								<input type="submit" class="btn btn-default search-btn" value="검색">
 							</span>
 						</div>
 					</form>

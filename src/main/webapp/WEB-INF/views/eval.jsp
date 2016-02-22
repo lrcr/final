@@ -3,35 +3,76 @@
 <!DOCTYPE>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>평점</title>
-	<link rel="stylesheet"
-		href="https://bootswatch.com/slate/bootstrap.min.css" type="text/css" />
-	<link rel="stylesheet" href="css/star.css" type="text/css" />
-	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>True맛집</title>
+<link rel="stylesheet"
+	href="https://bootswatch.com/slate/bootstrap.min.css" type="text/css" />
+<link href="css/board/metisMenu.min.css" rel="stylesheet">
+<link href="css/board/dataTables.bootstrap.css" rel="stylesheet">
+<link href="css/board/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css"
+	type="text/css" />
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/star.css" type="text/css" />
+<link rel="stylesheet" href="css/join.css" type="text/css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.0/summernote.css">
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.0/summernote.js"></script>
+<script src="js/board/kor.js"></script>
 </head>
 <body>
-	<span class="star-rating"> 
-		<input type="radio" name="rating" value="1"><i></i> 
-		<input type="radio" name="rating" value="2"><i></i>
-		<input type="radio" name="rating" value="3"><i></i>
-		<input type="radio" name="rating" value="4"><i></i>
-		<input type="radio" name="rating" value="5"><i></i>
-	</span>
-	
-	<strong class="choice">제 점수는요</strong>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="dataTable_wrapper">
+						<table class="table table-striped table-bordered table-hover" id="store-detail">
+							<thead>
+								<tr>
+									<th>Rendering engine</th>
+									<th>Browser</th>
+									<th>Platform(s)</th>
+									<th>Engine version</th>
+									<th>CSS grade</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="odd gradeX">
+									<td>Trident</td>
+									<td>Internet Explorer 4.0</td>
+									<td>Win 95+</td>
+									<td class="center">4</td>
+									<td class="center">X</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- /.table-responsive -->
+				</div>
+				<!-- /.panel-body -->
+			</div>
+			<!-- /.panel -->
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
+	<!-- /.row -->
 
-	<span class="star-rating small"> 
-		<input type="radio" name="rating" value="1"><i></i> 
-		<input type="radio" name="rating" value="2"><i></i>
-		<input type="radio" name="rating" value="3"><i></i>
-		<input type="radio" name="rating" value="4"><i></i>
-		<input type="radio" name="rating" value="5"><i></i>
-	</span>
+	<script type="text/javascript" src="js/jquery.mCustomScrollbar.min.js"></script>
+	<script src="js/board/metisMenu.min.js"></script>
+	<script src="js/board/jquery.dataTables.min.js"></script>
+	<script src="js/board/dataTables.bootstrap.min.js"></script>
+	<script src="js/board/sb-admin-2.js"></script>
+	<script type="text/javascript" src="js/board/responsive.js"></script>
+	<script type="text/javascript" src="js/login-join/join.js"></script>
+	<script type="text/javascript" src="js/login-join/login.js"></script>
+	<script type="text/javascript" src="js/board/texteditor.js"></script>
 
-	<script type="text/javascript" src="js/star.js"></script>
 </body>
 </html>
