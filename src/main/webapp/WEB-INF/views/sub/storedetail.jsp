@@ -94,7 +94,12 @@
 												<th><h4>[위치]</h4></th>
 												<th><h4>${dto.addr }</h4></th>
 												<th><a class="btn btn-primary" href="javascript:viewmap(${dto.loc },${dto.no });">지도보기</a></th>
-												<th><a class="btn btn-primary" href="${dto.site}" target="block">홈페이지</a></th>
+												<c:if test="${dto.site !=null}">
+													<th><a class="btn btn-primary" href="${dto.site}" target="block">홈페이지</a></th>
+												</c:if>
+												<c:if test="${dto.site == null}">
+													<th></th>
+												</c:if>
 											</tr>
 										</thead>
 									</table>
