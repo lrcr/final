@@ -68,6 +68,11 @@ public class DAO implements InterfaceDAO {
 		return SqlSession.selectList("store.search",text);
 	}
 
+	@Override
+	public List<StoreDTO> cacaolink(String nm) {
+		return SqlSession.selectList("store.cacaolink",nm);
+	}
+
 
 
 }

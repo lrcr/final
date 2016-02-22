@@ -15,5 +15,6 @@ public interface InterfaceDAO {
 	public List<StoreDTO> listlink(HashMap<String, String> sch);
 	public void addhit(BoardDTO dto);
 	public List<StoreDTO> search(String text);
+	public List<StoreDTO> cacaolink(String nm);
 	
 }

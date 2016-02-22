@@ -33,6 +33,17 @@ public class Ccontroller {
 	public String main() {
 		return "index";
 	}
+	@RequestMapping("/mobile") // 모바일페이지
+	public String mobile() {
+		return "index";
+	}
+	@RequestMapping("/cacao") // 카카오링크
+	public String cacao(String nm, Model model) {
+		List<StoreDTO> list=dao.cacaolink(nm);
+		model.addAttribute("broadcast",list);
+		return "main";
+	}
+	
 	
 	@RequestMapping("test") // 맛집리스트(임시)
 	public String testnav() {

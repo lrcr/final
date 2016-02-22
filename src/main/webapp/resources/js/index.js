@@ -53,9 +53,12 @@ function changeVideoId(vid) {
 	player.loadVideoById(vid);
 }
 
-var col_arr = [ "tv", "addr", "indu", "", "" ];
+var col_arr = [ "tv", "addr", "indu", "", "eval" ];
 var col;
-function listlink(val) {
+var val;
+function listlink(val_a) {
+	if(val_a=="★") val = 1;
+	val = val_a;
 	location.href = "listlink?col=" + col + "&val=" + val;
 }
 /* 서브메뉴 배경색 */

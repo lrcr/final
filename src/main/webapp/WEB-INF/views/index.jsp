@@ -6,13 +6,14 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://bootswatch.com/slate/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="https://bootswatch.com/slate/bootstrap.min.css">
+<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
 <link rel="stylesheet" href="css/common.css">
-<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
 <link rel="stylesheet" href="css/index.css">
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/common.js"></script>
+<script src="js/index.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(".sub_menu_d").each(function(i, e) {mainSubBack(i,e);});
@@ -24,12 +25,12 @@
 			$(".main_menu").each(function(i, e) {
 				if ($(window).width() < 768) {
 					if ($(e).hasClass("this_view")) {
-						$(".main_menu").css("height","20%");
-						console.log(i);
 						$(".main_index").css({"height":"30px" ,"line-height":"30px"});
-						$(".main_menu").css({ "opacity" : 1, "width" : "20%","height":"30px" ,"line-height":"30px"});
+						$(".main_menu").css({ "opacity" : 1, "width" : "20%","height":"100%" ,"line-height":"30px"});
 						$(".sub_menu_" + (i + 1)).css({"margin-left": "0"}).removeClass("hid");
 						$(this).children().show();
+					}else{
+						$(".main_menu").css("height","20%");
 					}
 				} else {
 					$(".main_menu").css("height","100%");
@@ -68,28 +69,28 @@
 				<a href="#" class="sub_menu_d"><span class="main_text">테이스티로드</span></a> 
 				<a href="#" class="sub_menu_d"><span class="main_text">백종원의 3대천왕</span></a> 
 				<a href="#" class="sub_menu_d"><span class="main_text">맛있는 녀석들</span></a> 
-				<a href="#" class="sub_menu_d"><span class="main_text">찾아라!맛있는TV</span></a>
+				<a href="#" class="sub_menu_d"><span class="main_text">찾아라 맛잇는TV</span></a>
 			</div>
-			<div class="sub_menu sub_menu_2 hid">
-				<ul class="map_bg">
-					<li class="incheon"><a href="#">인천광역시</a></li>
-					<li class="kangwon"><a href="#">강원도</a></li>
-					<li class="gyunggi"><a href="#">경기도</a></li>
-					<li class="chungnam"><a href="#">충청남도</a></li>
-					<li class="sejong"><a href="#">세종특별자치시</a></li>
-					<li class="chungbuk"><a href="#">충청북도</a></li>
-					<li class="daejeon"><a href="#">대전광역시</a></li>
-					<li class="gyeongnam"><a href="#">경상남도</a></li>
-					<li class="gyungbuk"><a href="#">경상북도</a></li>
-					<li class="daegu"><a href="#">대구광역시</a></li>
-					<li class="jeonbuk"><a href="#">전라북도</a></li>
-					<li class="jeonnam"><a href="#">전라남도</a></li>
-					<li class="kwangju"><a href="#">광주광역시</a></li>
-					<li class="ulsan"><a href="#">울산광역시</a></li>
-					<li class="jeju"><a href="#">제주특별자치도</a></li>
-					<li class="busan"><a href="#">부산광역시</a></li>
-					<li class="seoul"><a href="#">서울특별시</a></li>
-				</ul>
+			<div class="sub_menu sub_menu_2 mCustomScrollbar hid container-fluid">
+				<div class="map_bg">
+					<div class="incheon col-xs-6"><a href="#">인천광역시</a></div>
+					<div class="kangwon col-xs-6"><a href="#">강원도</a></div>
+					<div class="gyunggi col-xs-6"><a href="#">경기도</a></div>
+					<div class="seoul col-xs-6"><a href="#">서울특별시</a></div>
+					<div class="chungnam col-xs-6"><a href="#">충청남도</a></div>
+					<div class="sejong col-xs-6"><a href="#">세종특별자치시</a></div>
+					<div class="chungbuk col-xs-6"><a href="#">충청북도</a></div>
+					<div class="daejeon col-xs-6"><a href="#">대전광역시</a></div>
+					<div class="gyeongnam col-xs-6"><a href="#">경상남도</a></div>
+					<div class="gyungbuk col-xs-6"><a href="#">경상북도</a></div>
+					<div class="daegu col-xs-6"><a href="#">대구광역시</a></div>
+					<div class="jeonbuk col-xs-6"><a href="#">전라북도</a></div>
+					<div class="jeonnam col-xs-6"><a href="#">전라남도</a></div>
+					<div class="kwangju col-xs-6"><a href="#">광주광역시</a></div>
+					<div class="ulsan col-xs-6"><a href="#">울산광역시</a></div>
+					<div class="jeju col-xs-6"><a href="#">제주특별자치도</a></div>
+					<div class="busan col-xs-6"><a href="#">부산광역시</a></div>
+				</div>
 			</div>
 			<div class="sub_menu sub_menu_3 hid">
 				<a href="#" class="sub_menu_d"><span class="main_text">한식</span></a>
@@ -127,9 +128,9 @@
 	<div class="main_support">
 		<img src="images/support.png" width="80%" />
 	</div>
-	<script type="text/javascript" src="js/login-join/join.js"></script>
-	<script type="text/javascript" src="js/login-join/login.js"></script>
-	<script type="text/javascript" src="js/star.js"></script>
-	<script type="text/javascript" src="js/search.js"></script>
+	<script src="js/login-join/join.js"></script>
+	<script src="js/login-join/login.js"></script>
+	<script src="js/star.js"></script>
+	<script src="js/search.js"></script>
 </body>
 </html>

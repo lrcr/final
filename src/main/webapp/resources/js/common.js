@@ -26,3 +26,22 @@ $(document).ready(function() {
 		}
 	});
 });
+function cacaolink(a,store_name){
+	// 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('160294267f9390d543bcdaab1b98c0ce');
+
+    // 카카오톡 링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+    Kakao.Link.createTalkLinkButton({
+      container: '#kakao-link-btn',
+      label: a,
+      image: {
+        src: 'http://dn.api1.kage.kakao.co.kr/14/dn/btqaWmFftyx/tBbQPH764Maw2R6IBhXd6K/o.jpg',
+        width: '300',
+        height: '200'
+      },
+      webButton: {
+        text: store_name,
+        url: 'http://192.168.10.165:8080/project3/cacao?nm='+store_name // 앱 설정의 웹 플랫폼에 등록한 도메인의 URL이어야 합니다.
+      }
+    });
+}

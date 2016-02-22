@@ -93,7 +93,7 @@
 											<tr>
 												<th><h4>[위치]</h4></th>
 												<th><h4>${dto.addr }</h4></th>
-												<th><a class="btn btn-primary" href="javascript:viewmap(${dto.loc },${dto.no });">지도보기</a></th>
+												<th><a class="btn btn-primary" href="javascript:viewmap(${dto.loc},${dto.no});">지도보기</a></th>
 												<c:if test="${dto.site !=null}">
 													<th><a class="btn btn-primary" href="${dto.site}" target="block">홈페이지</a></th>
 												</c:if>
@@ -113,11 +113,18 @@
 
 
 							<div class="col-lg-12">
-								<strong class="choice col-lg-9"><h4>제 점수는요</h4></strong> <span class="star-rating small col-lg-3 right"> <input type="radio" name="rating" value="1"><i></i> <input type="radio" name="rating" value="2"><i></i> <input type="radio" name="rating" value="3"><i></i> <input type="radio" name="rating" value="4"><i></i> <input type="radio" name="rating" value="5"><i></i>
+								<strong class="choice col-lg-9"><h4>제 점수는요</h4></strong> 
+								<span class="star-rating small col-lg-3 right"> 
+									<input type="radio" name="rating" value="1"><i></i> 
+									<input type="radio" name="rating" value="2"><i></i> 
+									<input type="radio" name="rating" value="3"><i></i> 
+									<input type="radio" name="rating" value="4"><i></i> 
+									<input type="radio" name="rating" value="5"><i></i>
 								</span>
+								<span><a id="kakao-link-btn" href="javascript:cacaolink('${dto.keyword}','${dto.nm}');">
+									<img src="http://dn.api1.kage.kakao.co.kr/14/dn/btqa9B90G1b/GESkkYjKCwJdYOkLvIBKZ0/o.jpg" width="30px"/>
+								</a></span>
 							</div >
-							
-							
 							<div class="col-lg-12">
 								<div class="form-group col-lg-12" >
 								  <div class="input-group">
