@@ -18,7 +18,7 @@ public interface InterfaceDAO {
 	public void addreply(ReplyDTO dto);
 	public int peoplecnt(int no);
 	public Double sumeval(int no);
-	public int chkreply(String nickname);
+	public int chkreply(ReplyDTO dto);
 	public void editeval(ReplyDTO dto);
 	public List<StoreDTO> cacaolink(String nm);
 	public List<ReplyDTO> getreply(ReplyDTO dto);

@@ -45,7 +45,6 @@
     <script src="js/board/responsive.js"></script>
 	<script src="js/login-join/join.js"></script>
 	<script src="js/login-join/login.js"></script>
-	<script src="js/star.js"></script>
 	<script src="js/search.js"></script>
 	<script src="js/detail.js"></script>
 </body>

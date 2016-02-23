@@ -84,8 +84,8 @@ public class DAO implements InterfaceDAO {
 	}
 
 	@Override
-	public int chkreply(String nickname) {
-		return SqlSession.selectOne("board.chkreply",nickname);
+	public int chkreply(ReplyDTO dto) {
+		return SqlSession.selectOne("board.chkreply",dto);
 	}
 
 	@Override

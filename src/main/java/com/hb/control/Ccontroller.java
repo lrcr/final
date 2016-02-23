@@ -56,15 +56,8 @@ public class Ccontroller {
 	public String addreply(ReplyDTO dto,HttpServletRequest req, HttpServletResponse resp,Model model) throws IOException {
 		HttpSession session=req.getSession();
 		if(!"".equals(session.getAttribute("nicknm"))) dto.setNickname((String)session.getAttribute("nicknm"));
-		int chk=dao.chkreply(dto.getNickname());//댓글 썼는지 유무 체크
+		int chk=dao.chkreply(dto);//댓글 썼는지 유무 체크
 		if(chk>0){//썼을 경우
-			PrintWriter out = resp.getWriter();
-			StringBuffer st = new StringBuffer();
-			st.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
-			st.append("<item>");
-			st.append("<success>" + chk + "</success>");
-			st.append("</item>");
-			out.write(st.toString());
 			return null;
 		}
 		else {//안썼을 경우
@@ -75,23 +68,14 @@ public class Ccontroller {
 			avg=((int)(avg*10))/10.0;
 			dto.setEval(avg);
 			dao.editeval(dto);
+			StoreDTO storedto = dao.detail(dto.getNo());
 			List<ReplyDTO> list=dao.getreply(dto);
+			model.addAttribute("store",storedto);
 			model.addAttribute("myno",dto.getNo());
 			model.addAttribute("reply",list);
 			return "tmp";
 		}
-//		else{
-//		PrintWriter out = resp.getWriter();
-//		StringBuffer st = new StringBuffer();
-//		st.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
-//		st.append("<item>");
-//		st.append("<success>" + chk + "</success>");
-//		st.append("</item>");
-//		out.write(st.toString());
-//		return null;
-//		}
 	}
-	
 	
 	@RequestMapping("search")
 	public String search(String text,Model model) {
@@ -148,8 +132,8 @@ public class Ccontroller {
 
 	@RequestMapping(value="detail", method=RequestMethod.POST) // 상세페이지
 	public String detail(int no, ReplyDTO dto, Model model, HttpServletResponse resp) throws IOException {
-		StoreDTO storedto = dao.detail(no);
 		List<ReplyDTO> list=dao.getreply(dto);
+		StoreDTO storedto = dao.detail(no);
 		model.addAttribute("store",storedto);
 		model.addAttribute("myno",dto.getNo());
 		model.addAttribute("reply",list);
@@ -203,10 +187,9 @@ public class Ccontroller {
 	}
 
 	@RequestMapping(value = "nicknmchk", method = RequestMethod.POST) // 닉네임
-																		// 중복체크
 	public void nicknmchk(HttpServletRequest req, HttpServletResponse resp, String nicknm) throws IOException {
 		int chknicknm = dao.nicknmchk(req.getParameter("nickname"));
-		if (chknicknm > 0) {
+		if (chknicknm > 0) { //중복체크
 			PrintWriter out = resp.getWriter();
 			StringBuffer st = new StringBuffer();
 			st.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>");

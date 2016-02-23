@@ -47,10 +47,10 @@ submit date not null
 drop table reply;
 create table reply(
 no number(10) not null,
-nickname varchar2(100) primary key,
+nickname varchar2(100) not null,
 ment varchar2(4000) not null,
 eval number(5,1) not null,
-seq number(10) not null,
+seq number(10) primary key,
 submit date not null
 );
 

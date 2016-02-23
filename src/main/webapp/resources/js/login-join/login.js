@@ -32,7 +32,7 @@ $("#login-btn").on("click",function(){
 	        type:"post",
 	        data: idpw,
 	        dataType:"xml",
-	        error:function(){alert("로그인 실패")},
+	        error:function(){alert("잘못된 로그인 정보입니다")},
 	        success:function(result){
 	        	
 	        	var nicknm=decodeURIComponent($(result).find("nicknm").text());

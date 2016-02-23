@@ -10,8 +10,7 @@
 	<!--#storedetail-->
 	<div class="detail-frame col-lg-12">
 		<c:if test="${store.link eq null }">
-			<img class="detail-img" src="images/storeimg/${store.no}.jpg"
-				alt="이미지 로딩 실패">
+			<img class="detail-img" src="images/storeimg/${store.no}.jpg" 	alt="이미지 로딩 실패">
 		</c:if>
 		<c:if test="${store.link !=null}">
 			<div class="embed-responsive embed-responsive-16by9">
@@ -105,17 +104,19 @@
 
 
 	<div class="col-lg-12">
-		<strong class="choice col-lg-9"><h4>제 점수는요</h4></strong> <span
-			class="star-rating small col-lg-3 right"> <input type="radio"
-			name="rating" value="1"><i></i> <input type="radio"
-			name="rating" value="2"><i></i> <input type="radio"
-			name="rating" value="3"><i></i> <input type="radio"
-			name="rating" value="4"><i></i> <input type="radio"
-			name="rating" value="5"><i></i>
-		</span> <span><a id="kakao-link-btn"
-			href="javascript:cacaolink('${store.keyword}','${store.nm}');"> <img src="http://dn.api1.kage.kakao.co.kr/14/dn/btqa9B90G1b/GESkkYjKCwJdYOkLvIBKZ0/o.jpg"
-				width="30px" />
-		</a></span>
+		<strong class="choice col-lg-9"><h4>제 점수는요</h4></strong>
+		<span class="star-rating small col-lg-3 right">
+			<input type="radio" name="rating" value="1" onclick="starval(1);"><i></i>
+			<input type="radio" name="rating" value="2" onclick="starval(2);"><i></i>
+			<input type="radio" name="rating" value="3" onclick="starval(3);"><i></i>
+			<input type="radio" name="rating" value="4" onclick="starval(4);"><i></i>
+			<input type="radio" name="rating" value="5" onclick="starval(5);"><i></i>
+		</span>
+		<span>
+			<a id="kakao-link-btn" href="javascript:cacaolink('${store.keyword}','${store.nm}');">
+				<img src="http://dn.api1.kage.kakao.co.kr/14/dn/btqa9B90G1b/GESkkYjKCwJdYOkLvIBKZ0/o.jpg" width="30px" />
+			</a>
+		</span>
 	</div>
 
 	<div class="col-lg-12">
@@ -124,7 +125,7 @@
 				<c:if test="${sessionScope.nicknm != null}">
 					<input type="text" id="${store.no}th-input" class="form-control" placeholder="댓글 내용을 입력하세요">
 					<span class="input-group-btn">
-						<button class="btn btn-default eval-btn" type="button">평가하기</button>
+						<a class="btn btn-default eval-btn" href="javascript:evaluate('${store.no}');">평가하기</a>
 					</span>
 				</c:if>
 				<c:if test="${sessionScope.nicknm == null}">
@@ -134,7 +135,6 @@
 						<button class="btn btn-default eval-btn" type="button" disabled>평가하기</button>
 					</span>
 				</c:if>
-
 			</div>
 		</div>
 	</div>
@@ -147,7 +147,6 @@
 						<table
 							class="table table-striped table-bordered table-hover dataTables-example">
 							<thead>
-								<th>번호</th>
 								<th>닉네임</th>
 								<th>내용</th>
 								<th>점수</th>
@@ -157,7 +156,6 @@
 								<c:if test="${store.no==myno }">
 									<c:forEach items="${reply}" var="comment">
 										<tr>
-											<td class="col-lg-1">${comment.seq}</td>
 											<td class="col-lg-2">${comment.nickname}</td>
 											<td class="col-lg-7">${comment.ment}</td>
 											<td class="col-lg-1">${comment.eval}</td>
@@ -176,6 +174,5 @@
 		</div>
 		<!-- /.col-lg-12 -->
 	</div>
-	<script src="js/detail.js"></script>
 </body>
 </html>

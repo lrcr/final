@@ -28,8 +28,8 @@
 		select sum(eval) from reply where no=#{no}	
 	</select>
 	
-	<select id="chkreply" resultType="Integer">
-		select count(*) as cnt from reply where nickname=#{nickname}
+	<select id="chkreply" parameterType="com.hb.model.ReplyDTO" resultType="Integer">
+		select count(*) as cnt from reply where no=#{no} and nickname=#{nickname}
 	</select>
 	
 	<select id="getreply" resultType="com.hb.model.ReplyDTO">
