@@ -43,8 +43,25 @@ hits number(30) not null,
 submit date not null
 );
 
---½ÃÄö½º
+--´ñ±Û Å×ÀÌºí
+drop table reply;
+create table reply(
+no number(10) not null,
+nickname varchar2(100) primary key,
+ment varchar2(4000) not null,
+eval number(5,1) not null,
+seq number(10) not null,
+submit date not null
+);
+
+--°Ô½ÃÆÇ ½ÃÄö½º
 create sequence seq
+increment by 1
+start with 1
+;
+
+--´ñ±Û ½ÃÄö½º
+create sequence ment
 increment by 1
 start with 1
 ;

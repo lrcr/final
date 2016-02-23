@@ -16,5 +16,19 @@
 		update board set hits=hits+1 where no=#{no}
 	</update>
 	
+	<insert id="addreply" parameterType="com.hb.model.ReplyDTO">
+		insert into reply values (#{no}, #{nickname}, #{ment}, #{eval}, ment.nextval, sysdate)
+	</insert>
 	
+	<select id="cnt" resultType="Integer">
+		select count(*) as cnt from reply where no=#{no}
+	</select>
+	
+	<select id="sumeval" resultType="Double">
+		select sum(eval) from reply where no=#{no}	
+	</select>
+	
+	<select id="chkreply" resultType="Integer">
+		select count(*) as cnt from reply where nickname=#{nickname}
+	</select>
 </mapper>

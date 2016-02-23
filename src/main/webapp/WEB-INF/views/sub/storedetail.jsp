@@ -19,7 +19,7 @@
 
 							<div class="detail-frame col-lg-12">
 								<c:if test="${dto.link eq null }">
-									<img alt="이미지 대체">
+									<img class="detail-img" src="images/storeimg/${dto.no}.jpg"alt="이미지 로딩 실패">
 								</c:if>
 								<c:if test="${dto.link !=null}">
 									<div class="embed-responsive embed-responsive-16by9">
@@ -114,24 +114,34 @@
 
 							<div class="col-lg-12">
 								<strong class="choice col-lg-9"><h4>제 점수는요</h4></strong> 
-								<span class="star-rating small col-lg-3 right"> 
-									<input type="radio" name="rating" value="1"><i></i> 
-									<input type="radio" name="rating" value="2"><i></i> 
-									<input type="radio" name="rating" value="3"><i></i> 
-									<input type="radio" name="rating" value="4"><i></i> 
-									<input type="radio" name="rating" value="5"><i></i>
-								</span>
-								<span><a id="kakao-link-btn" href="javascript:cacaolink('${dto.keyword}','${dto.nm}');">
-									<img src="http://dn.api1.kage.kakao.co.kr/14/dn/btqa9B90G1b/GESkkYjKCwJdYOkLvIBKZ0/o.jpg" width="30px"/>
-								</a></span>
-							</div >
+ 								<span class="star-rating small col-lg-3 right"> 
+ 									<input type="radio" name="rating" value="1"><i></i> 
+ 									<input type="radio" name="rating" value="2"><i></i> 
+ 									<input type="radio" name="rating" value="3"><i></i> 
+ 									<input type="radio" name="rating" value="4"><i></i> 
+ 									<input type="radio" name="rating" value="5"><i></i>
+  								</span>		  								
+ 								<span><a id="kakao-link-btn" href="javascript:cacaolink('${dto.keyword}','${dto.nm}');">
+ 									<img src="http://dn.api1.kage.kakao.co.kr/14/dn/btqa9B90G1b/GESkkYjKCwJdYOkLvIBKZ0/o.jpg" width="30px"/>
+ 								</a></span>
+  							</div >		  							
+							
 							<div class="col-lg-12">
 								<div class="form-group col-lg-12" >
-								  <div class="input-group">
-								    <input type="text" class="form-control" placeholder="댓글 내용을 입력하세요">
-								    <span class="input-group-btn">
-								      <button class="btn btn-default" type="button">평가하기</button>
+								  <div class="input-group detail-input">
+								  <c:if test="${sessionScope.nicknm != null}">
+								     <input type="text" id="${dto.no}th-input" class="form-control"  placeholder="댓글 내용을 입력하세요">
+								     <span class="input-group-btn">
+								      <button class="btn btn-default eval-btn" type="button">평가하기</button>
 								    </span>
+								   </c:if>
+								   <c:if test="${sessionScope.nicknm == null}">
+								   	 <input type="text" id="${dto.no}th-input" class="form-control disabled-input"  placeholder="로그인이 필요합니다" disabled>
+								   	 <span class="input-group-btn">
+								      <button class="btn btn-default eval-btn" type="button" disabled>평가하기</button>
+								    </span>
+								   </c:if>
+								   
 								  </div>
 								</div>
 							</div>

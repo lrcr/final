@@ -32,7 +32,7 @@ $("#login-btn").on("click",function(){
 	        type:"post",
 	        data: idpw,
 	        dataType:"xml",
-	        error:function(){alert("Ajax error!!")},
+	        error:function(){alert("로그인 실패")},
 	        success:function(result){
 	        	
 	        	var nicknm=decodeURIComponent($(result).find("nicknm").text());
@@ -56,6 +56,10 @@ $("#login-btn").on("click",function(){
 	                 
 	                 $("#write-check").html("<button type=\"button\" class=\"btn btn-primary btn-lg write-login\" data-toggle=\"modal\" data-target=\"#writemodal\">"+
 						"글쓰기</button>");
+	               
+	                 $(".disabled-input").attr("disabled",false);
+	                 $(".disabled-input").attr("placeholder","댓글을 입력하세요");
+	                 $(".eval-btn").attr("disabled",false);
                 }
                 else {
                 	alert("잘못된 로그인 정보입니다");

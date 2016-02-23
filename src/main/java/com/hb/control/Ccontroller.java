@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.hb.model.BoardDTO;
 import com.hb.model.InterfaceDAO;
 import com.hb.model.MemberDTO;
+import com.hb.model.ReplyDTO;
 import com.hb.model.StoreDTO;
 
 @Controller
@@ -33,28 +34,65 @@ public class Ccontroller {
 	public String main() {
 		return "index";
 	}
-	@RequestMapping("/mobile") // 모바일페이지
-	public String mobile() {
-		return "index";
-	}
-	@RequestMapping("/cacao") // 카카오링크
-	public String cacao(String nm, Model model) {
-		List<StoreDTO> list=dao.cacaolink(nm);
-		model.addAttribute("broadcast",list);
-		return "main";
-	}
-	
 	
 	@RequestMapping("test") // 맛집리스트(임시)
 	public String testnav() {
 		return "main";
 	}
 	
+	@RequestMapping("/mobile") // 모바일페이지
+ 	public String mobile() {
+ 		return "index";
+ 	}
+	
+ 	@RequestMapping("/cacao") // 카카오링크
+ 	public String cacao(String nm, Model model) {
+ 		List<StoreDTO> list=dao.cacaolink(nm);
+ 		model.addAttribute("broadcast",list);
+ 		return "main";
+ 	}
+	
+	@RequestMapping(value="addreply", method=RequestMethod.POST)
+	public void addreply(ReplyDTO dto,HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		HttpSession session=req.getSession();
+		if(!"".equals(session.getAttribute("nicknm"))) dto.setNickname((String)session.getAttribute("nicknm"));
+		int chk=dao.chkreply(dto.getNickname());
+		if(chk>0){
+			PrintWriter out = resp.getWriter();
+			StringBuffer st = new StringBuffer();
+			st.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
+			st.append("<item>");
+			st.append("<success>" + chk + "</success>");
+			st.append("</item>");
+			out.write(st.toString());
+		}
+		else{
+			dao.addreply(dto);
+			int cnt=dao.peoplecnt(dto.getNo());
+			Double sum=dao.sumeval(dto.getNo());
+			Double avg=(double)(sum/cnt);
+			avg=((int)(avg*10))/10.0;
+			dto.setEval(avg);
+			dao.editeval(dto);
+		}
+//		double eval=dao.geteval(dto.getNo());
+//		System.out.println(eval);
+		
+//		return "temp";
+	}
+	
 	
 	@RequestMapping("search")
 	public String search(String text,Model model) {
+		if("".equals(text)) text="인생맛집";
 		List<StoreDTO> list=dao.search(text);
-		model.addAttribute("broadcast",list);
+		if(list.size()==0){
+			String not="nothing";
+			model.addAttribute("nothing",not);
+		}
+		else{
+			model.addAttribute("broadcast",list);
+		}
 		return "main";
 	}
 	

@@ -61,7 +61,6 @@ $("#write-done").on("click",function(){
 	else{
 		
 		var db="title="+$("#write-title").val()+"&content="+$(".note-editable").html();
-		alert(db);
         $.ajax({
            url:"addboard",
            type:"post",

@@ -112,7 +112,7 @@ $('#emailcheck').on('click',function (){
    
    if(leng==0){
       $('#emailMsg').text("사용하실 E-Mail 주소를 입력해주세요");
-      var msg=$("#emailMsg")
+      var msg=$("#emailMsg");
       msg.animate({ opacity: '1'}, "slow");
       msg.animate({ opacity: '0'}, "slow");
       msg.animate({ opacity: '1'}, "slow");
@@ -127,7 +127,7 @@ $('#emailcheck').on('click',function (){
          }
          if(cnt!=2){
             $('#emailMsg').text("E-Mail 형식이 아닙니다.");
-            var msg=$("#emailMsg")
+            var msg=$("#emailMsg");
             msg.animate({ opacity: '1'}, "slow");
             msg.animate({ opacity: '0'}, "slow");
             msg.animate({ opacity: '1'}, "slow");
@@ -145,7 +145,7 @@ $('#emailcheck').on('click',function (){
                   success=parseInt(success);
                   if(success>0) {
                      $('#emailMsg').text("이미 사용중인 E-mail 입니다");
-                     var msg=$("#emailMsg")
+                     var msg=$("#emailMsg");
                      msg.animate({ opacity: '1'}, "slow");
                      msg.animate({ opacity: '0'}, "slow");
                      msg.animate({ opacity: '1'}, "slow");
@@ -153,7 +153,7 @@ $('#emailcheck').on('click',function (){
                   }
                   else {
                      $('#emailMsg').text("사용가능한 E-mail 입니다");
-                     var msg=$("#emailMsg")
+                     var msg=$("#emailMsg");
                      msg.animate({ opacity: '1'}, "slow");
                      msg.animate({ opacity: '0'}, "slow");
                      msg.animate({ opacity: '1'}, "slow");

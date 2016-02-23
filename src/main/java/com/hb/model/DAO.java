@@ -69,9 +69,40 @@ public class DAO implements InterfaceDAO {
 	}
 
 	@Override
+	public void addreply(ReplyDTO dto) {
+		SqlSession.insert("board.addreply",dto);
+	}
+
+	@Override
+	public double geteval(int no) {
+		return SqlSession.selectOne("store.geteval",no);
+	}
+
+	@Override
+	public int peoplecnt(int no) {
+		return SqlSession.selectOne("board.cnt",no);
+	}
+
+	@Override
+	public Double sumeval(int no) {
+		return SqlSession.selectOne("board.sumeval",no);
+	}
+
+	@Override
+	public int chkreply(String nickname) {
+		return SqlSession.selectOne("board.chkreply",nickname);
+	}
+
+	@Override
+	public void editeval(ReplyDTO dto) {
+		SqlSession.update("store.editeval",dto);
+	}
+
+	@Override
 	public List<StoreDTO> cacaolink(String nm) {
 		return SqlSession.selectList("store.cacaolink",nm);
 	}
+
 
 
 
