@@ -353,7 +353,7 @@ $('#submit-btn').on('click',function(){
         		phone:$("#phone").val(),
         		agree:agree
         },
-        error:function(){alert("Ajax error!!")},
+        error:function(){alert("가입되셨습니다!")},
         success:function(result){
         	alert("가입되셨습니다!");
         }//통신완료

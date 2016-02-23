@@ -5,17 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<link rel="stylesheet" href="css/board/metisMenu.min.css">
-    <link rel="stylesheet" href="css/board/dataTables.bootstrap.css">
-    <link rel="stylesheet" href="css/board/font-awesome.min.css">
-	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
-	<script src="js/jquery-1.11.3.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="https://maps.google.com/maps/api/js?sensor=true"></script>
-	<script src="js/map/jquery.ui.map.js"></script>
-	<script src="js/map/jquery.ui.map.extensions.js"></script>
-	<script src="js/map/map.js"></script>
-	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 <body>
 	<!--#storedetail-->
@@ -187,14 +176,6 @@
 		</div>
 		<!-- /.col-lg-12 -->
 	</div>
-	<!-- /.row -->
-	<script src="js/jquery.mCustomScrollbar.min.js"></script>
-	<script src="js/board/metisMenu.min.js"></script>
-    <script src="js/board/jquery.dataTables.min.js"></script>
-    <script src="js/board/dataTables.bootstrap.min.js"></script>
-    <script src="js/board/sb-admin-2.js"></script>
-    <script src="js/board/responsive.js"></script>
-	<script src="js/star.js"></script>
 	<script src="js/detail.js"></script>
 </body>
 </html>

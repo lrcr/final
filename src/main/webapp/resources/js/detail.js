@@ -19,6 +19,7 @@ $(":radio").on("click",function(){
 });
 
 $(".eval-btn").on("click",function(){
+	alert("ok");
 	var inputid=$(this).parent().siblings("input").attr("id");
 	var ment=$("#"+inputid).val();
 	var no=parseInt(inputid);
@@ -43,14 +44,14 @@ $(".eval-btn").on("click",function(){
 		$.ajax({
             url:"addreply",
             type:"post",
-            data: "eval="+eval+"&ment="+ment+"&no="+no,
-            dataType:"xml",
+            data: {eval:eval,ment:ment,no:no},
             error:function(){alert("Ajax error!!")},
             success:function(result){
-            	success =$(result).find("success").text();
-                success=parseInt(success);
-                if(success>0) {
+                if(result=="1") {
                 	alert("이미 평가하셨습니다!");
+                }
+                else{
+                	$("#detail-fieldset").html(result);
                 }
             	
             }//통신완료

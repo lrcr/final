@@ -65,8 +65,9 @@ public class Ccontroller {
 			st.append("<success>" + chk + "</success>");
 			st.append("</item>");
 			out.write(st.toString());
+			return null;
 		}
-		else{//안썼을 경우
+		else {//안썼을 경우
 			dao.addreply(dto);
 			int cnt=dao.peoplecnt(dto.getNo());
 			Double sum=dao.sumeval(dto.getNo());
@@ -77,9 +78,18 @@ public class Ccontroller {
 			List<ReplyDTO> list=dao.getreply(dto);
 			model.addAttribute("myno",dto.getNo());
 			model.addAttribute("reply",list);
+			return "tmp";
 		}
-		
-		return "tmp";
+//		else{
+//		PrintWriter out = resp.getWriter();
+//		StringBuffer st = new StringBuffer();
+//		st.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
+//		st.append("<item>");
+//		st.append("<success>" + chk + "</success>");
+//		st.append("</item>");
+//		out.write(st.toString());
+//		return null;
+//		}
 	}
 	
 	
@@ -133,7 +143,6 @@ public class Ccontroller {
 	public String broadcast(Model model) {// 방송맛집
 		List<StoreDTO> list = dao.loadstore();
 		model.addAttribute("broadcast", list);
-
 		return "main";
 	}
 
@@ -150,6 +159,7 @@ public class Ccontroller {
 	@RequestMapping(value = "join", method = RequestMethod.POST)
 	public void join(MemberDTO dto) {// 회원가입
 		dao.join(dto);
+		
 	}
 
 	@RequestMapping(value = "login", method = RequestMethod.POST) // 로그인
