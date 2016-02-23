@@ -102,10 +102,15 @@ public class DAO implements InterfaceDAO {
 	public List<ReplyDTO> getreply(ReplyDTO dto) {
 		return SqlSession.selectList("board.getreply",dto);
 	}
+	@Override
+	public MemberDTO oneMember(String nNm) {
+		return SqlSession.selectOne("member.oneMember", nNm);
+	}
 
-	
-
-
+	@Override
+	public void updateMember(MemberDTO dto) {
+		SqlSession.update("member.infoUpdate", dto);
+	}
 
 
 }

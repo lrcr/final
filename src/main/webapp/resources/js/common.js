@@ -26,7 +26,8 @@ $(document).ready(function() {
 		}
 	});
 });
-function cacaolink(a,store_name){
+function cacaolink(a,store_name,img){
+	//alert(a+","+store_name+","+img)
 	// 사용할 앱의 JavaScript 키를 설정해 주세요.
     Kakao.init('160294267f9390d543bcdaab1b98c0ce');
 
@@ -35,7 +36,7 @@ function cacaolink(a,store_name){
       container: '#kakao-link-btn',
       label: a,
       image: {
-        src: 'http://dn.api1.kage.kakao.co.kr/14/dn/btqaWmFftyx/tBbQPH764Maw2R6IBhXd6K/o.jpg',
+        src: 'http://192.168.10.46:7070/project3/images/storeimg/'+img+'.jpg',
         width: '300',
         height: '200'
       },

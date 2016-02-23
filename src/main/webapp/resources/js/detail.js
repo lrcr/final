@@ -71,6 +71,7 @@ function evaluate(no){
             	
             }//통신완료
          });//ajax끝
+
 	}
 	starcnt=0;
 }

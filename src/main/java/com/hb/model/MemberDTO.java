@@ -13,7 +13,6 @@ public class MemberDTO {
 	public String getPw() {
 		return pw;
 	}
-	
 	public String getAgree() {
 		return agree;
 	}
@@ -26,7 +25,6 @@ public class MemberDTO {
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
-	
 	public void setAgree(String agree) {
 		this.agree = agree;
 	}
@@ -41,6 +39,4 @@ public class MemberDTO {
 		return "MemberDTO [email=" + email + ", pw=" + pw + ", nicknm=" + nicknm + ", phone=" + phone + ", agree="
 				+ agree + "]";
 	}
-	
-
 }

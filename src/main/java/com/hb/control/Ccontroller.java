@@ -143,7 +143,6 @@ public class Ccontroller {
 	@RequestMapping(value = "join", method = RequestMethod.POST)
 	public void join(MemberDTO dto) {// 회원가입
 		dao.join(dto);
-		
 	}
 
 	@RequestMapping(value = "login", method = RequestMethod.POST) // 로그인
@@ -199,5 +198,25 @@ public class Ccontroller {
 			out.write(st.toString());
 		}
 	}
+	
+
+	  
+	  @RequestMapping(value="/myInfo", method=RequestMethod.POST) //나의 정보 호출
+		public String myInfo(Model model, HttpServletRequest req) {
+		  HttpSession session=req.getSession();
+		  req.getCharacterEncoding();
+		  String nNm = (String)session.getAttribute("nicknm");
+		  MemberDTO dto = dao.oneMember(nNm);
+		  model.addAttribute("myinfo", dto);
+		  return "myPage";
+		}
+	  
+	  @RequestMapping(value="/goUpdate", method=RequestMethod.POST) // 나의 정보 수정
+		public String goUpdate(MemberDTO dto, Model model, HttpServletRequest req) {
+		  HttpSession session = req.getSession();
+		  session.setAttribute("nicknm", dto.getNicknm());
+		  	dao.updateMember(dto);
+			return "redirect:/";
+		}
 
 }

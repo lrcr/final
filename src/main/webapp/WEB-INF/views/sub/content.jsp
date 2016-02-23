@@ -6,7 +6,7 @@
 	<c:if test="${nothing !=null }">
 		<div class="col-lg-12"><h1>검색결과가 없습니다ㅠ</h1></div>
 	</c:if>
-	<c:forEach items="${broadcast}" var="dto">
+	<c:forEach items="${broadcast}" var="dto" varStatus="storecnt">
 		<!--sample1-->
 		<div class="col-sm-6 col-md-3 tv-detail" id="${dto.no}th-store">
 			<div class="thumbnail">
@@ -44,6 +44,9 @@
 				</div>
 			</div>
 		</div>
+		<c:if test="${(storecnt.count mod 4)==0}">
+			<div class="clearfix visible-md-block visible-lg-block"></div>
+		</c:if>
 	</c:forEach>
 </div>
 </div>

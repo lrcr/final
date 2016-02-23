@@ -22,5 +22,6 @@ public interface InterfaceDAO {
 	public void editeval(ReplyDTO dto);
 	public List<StoreDTO> cacaolink(String nm);
 	public List<ReplyDTO> getreply(ReplyDTO dto);
-	
+	public MemberDTO oneMember(String nNm);
+	public void updateMember(MemberDTO dto);
 }

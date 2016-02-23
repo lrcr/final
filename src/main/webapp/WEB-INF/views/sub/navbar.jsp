@@ -1,5 +1,38 @@
 <%@ page contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="true"%>
+<script>
+	$(document).ready(function() {
+
+		//     $(".vvv").on("submit",function(){
+		//         $.ajax({
+		//         	type: "post",
+		//         	url: "goSearch.go",
+		//         	data:  {title:$(".form-control").val()} , 
+		//         	success: function(result){
+		//         	$(".modal-body").html(result);
+		//         	}
+		//         })
+		//         return false;
+		//         });
+
+		//     $('.form-control').keydown(function(e) {
+		//         if (e.keyCode == 49) f();       
+		//     });
+
+		$(".myinfo").on("click", function() {
+			$.ajax({ 
+				type : "POST", 
+				url : "myInfo",
+				//data:{nick:"Aa"},
+				success : function(result) {
+					$(".modal-body2").html(result);
+				}
+			});
+		});
+
+	});
+</script>
 <nav class="navbar navbar-default navbar-collapse navbar-fixed-top nav_blk" id="nav_navbar">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -12,7 +45,6 @@
 			<ul class="nav navbar-nav">
 				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">메뉴<span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="#">방송 프로그램</a></li>
 						<li><a href="#">지역별</a></li>
 						<li><a href="#">업종별</a></li>
 					</ul>
@@ -33,7 +65,7 @@
 							class="caret"></span>
 						</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">나의 정보</a></li>
+							<li><a class="myinfo" data-toggle="modal" data-target="#myInfo">나의 정보</a></li>
 							<li><a href="#">나의 맛집</a></li>
 							<li><a href="#">예약 확인</a></li>
 						</ul>
@@ -63,5 +95,22 @@
 		<button type="button" class="nav_btn nav_btn_bottom hid">
 			<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
 		</button>
+	</div>
+
+	<div class="modal fade" id="myInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" style="width:90%">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">×</span><input class="btn btn-default" type="submit" value="Submit"><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">내 정보</h4>
+				</div>
+				<div class="modal-body2"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
 	</div>
 </nav>

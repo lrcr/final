@@ -5,7 +5,7 @@
 
 <mapper namespace="member">
   <select id="selectAll" resultType="com.hb.model.MemberDTO">
-    select * from guest2 order by sabun
+    select * from member order by email
   </select>
   
   <select id="selectmail" resultType="Integer">
@@ -13,16 +13,25 @@
   </select>
   
   <select id="selectnm" resultType="Integer">
-     select count(*) as cnt from member where nickname=#{nicknm}
+     select count(*) as cnt from member where nicknm=#{nicknm}
   </select>
   
 
   <select id="login" parameterType="com.hb.model.MemberDTO" resultType="String">
-     select nickname from member where email=#{email} and pw=#{pw}
+     select nicknm from member where email=#{email} and pw=#{pw}
   </select>
   
   <insert id="join" parameterType="com.hb.model.MemberDTO">
      insert into member values (#{email},#{pw},#{nicknm},#{phone},#{agree})
   </insert>
+
+  
+  <select id="oneMember" resultType="com.hb.model.MemberDTO">
+  	select * from member where nicknm = #{nNm}
+  </select>
+  
+  <update id="infoUpdate" parameterType="com.hb.model.MemberDTO">
+  	update member set pw = #{pw}, nicknm = #{nicknm}, phone = #{phone} where email = #{email}
+  </update>
   
 </mapper>

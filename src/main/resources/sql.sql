@@ -1,18 +1,18 @@
 --sql 명령어는 여기다 저장
 --data는 resource에 메모장(cvs)으로 저장
 
-drop table member;
+drop table member purge;
 --회원정보 테이블
 create table member(
 email varchar2(30) primary key,
 pw varchar2(30) not null,
-nickname varchar2(50) not null,
+nicknm varchar2(50) not null,
 phone number(15) not null,
 agree varchar2(10) not null
 );
 
 --맛집정보 테이블
-drop table rest;
+drop table rest purge;
 create table rest(
 no number(5) NOT NULL,
 nm varchar2(50) PRIMARY KEY,
@@ -33,7 +33,7 @@ eval number(5,1) --평점
 
 
 --공지사항 테이블
-drop table board;
+drop table board purge;
 create table board(
 no number(30) primary key,
 title varchar2(500) not null,
@@ -44,7 +44,7 @@ submit date not null
 );
 
 --댓글 테이블
-drop table reply;
+drop table reply purge;
 create table reply(
 no number(10) not null,
 nickname varchar2(100) not null,
