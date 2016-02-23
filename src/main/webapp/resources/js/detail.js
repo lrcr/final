@@ -1,3 +1,19 @@
+$(".detail-info").on("click",function(){
+	var no=parseInt($(this).attr("id"));
+	$.ajax({
+        url:"detail",
+        type:"post",
+        data: {no:no},
+        error:function(){alert("Ajax error!!")},
+        success:function(result){
+        	$("#detail-fieldset").html(result);
+        	
+        	
+        }//통신완료
+     });//ajax끝
+});
+
+
 $(":radio").on("click",function(){
 	eval=$(this).val();
 });
@@ -39,6 +55,5 @@ $(".eval-btn").on("click",function(){
             	
             }//통신완료
          });//ajax끝
-
 	}
 });

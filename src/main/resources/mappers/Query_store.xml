@@ -20,10 +20,6 @@
 		select * from rest where addr like '%'||#{search}||'%' or nm like '%'||#{search}||'%' or keyword like '%'||#{search}||'%' or info like '%'||#{search}||'%' or tv like '%'||#{search}||'%' or indu like '%'||#{search}||'%'
 	</select>
 	
-	<select id="geteval" resultType="Double">
-		select eval rest where no=#{no}
-	</select>
-	
 	<update id="editeval" parameterType="com.hb.model.ReplyDTO">
 		update rest set eval=#{eval} where no=#{no} 
 	</update>

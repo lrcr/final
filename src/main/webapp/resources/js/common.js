@@ -41,7 +41,7 @@ function cacaolink(a,store_name){
       },
       webButton: {
         text: store_name,
-        url: 'http://192.168.10.165:8080/project3/cacao?nm='+store_name // 앱 설정의 웹 플랫폼에 등록한 도메인의 URL이어야 합니다.
+        url: 'http://192.168.10.46:7070/project3/cacao?nm='+store_name // 앱 설정의 웹 플랫폼에 등록한 도메인의 URL이어야 합니다.
       }
     });
 }

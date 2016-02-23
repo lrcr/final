@@ -22,7 +22,7 @@
 								<thead>
 									<tr>
 										<th>[닉네임]${bdlist.nicknm }</th>
-										<th>[작성일]<fmt:formatDate value="${bdlist.submit }" pattern="20yy/MM/dd"/><br/></th>
+										<th>[작성일]<fmt:formatDate value="${bdlist.submit }" pattern="20yy/MM/dd"/></th>
 										<th class="col-hits">[조회수]${bdlist.hits}</th>
 									</tr>
 								</thead>

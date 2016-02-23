@@ -72,12 +72,7 @@ public class DAO implements InterfaceDAO {
 	public void addreply(ReplyDTO dto) {
 		SqlSession.insert("board.addreply",dto);
 	}
-
-	@Override
-	public double geteval(int no) {
-		return SqlSession.selectOne("store.geteval",no);
-	}
-
+	
 	@Override
 	public int peoplecnt(int no) {
 		return SqlSession.selectOne("board.cnt",no);
@@ -102,6 +97,13 @@ public class DAO implements InterfaceDAO {
 	public List<StoreDTO> cacaolink(String nm) {
 		return SqlSession.selectList("store.cacaolink",nm);
 	}
+
+	@Override
+	public List<ReplyDTO> getreply(ReplyDTO dto) {
+		return SqlSession.selectList("board.getreply",dto);
+	}
+
+	
 
 
 

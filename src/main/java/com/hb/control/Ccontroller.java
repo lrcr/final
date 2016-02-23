@@ -52,12 +52,12 @@ public class Ccontroller {
  		return "main";
  	}
 	
-	@RequestMapping(value="addreply", method=RequestMethod.POST)
-	public void addreply(ReplyDTO dto,HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	@RequestMapping(value="addreply", method=RequestMethod.POST)//평점, 댓글달기
+	public String addreply(ReplyDTO dto,HttpServletRequest req, HttpServletResponse resp,Model model) throws IOException {
 		HttpSession session=req.getSession();
 		if(!"".equals(session.getAttribute("nicknm"))) dto.setNickname((String)session.getAttribute("nicknm"));
-		int chk=dao.chkreply(dto.getNickname());
-		if(chk>0){
+		int chk=dao.chkreply(dto.getNickname());//댓글 썼는지 유무 체크
+		if(chk>0){//썼을 경우
 			PrintWriter out = resp.getWriter();
 			StringBuffer st = new StringBuffer();
 			st.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
@@ -66,7 +66,7 @@ public class Ccontroller {
 			st.append("</item>");
 			out.write(st.toString());
 		}
-		else{
+		else{//안썼을 경우
 			dao.addreply(dto);
 			int cnt=dao.peoplecnt(dto.getNo());
 			Double sum=dao.sumeval(dto.getNo());
@@ -74,11 +74,12 @@ public class Ccontroller {
 			avg=((int)(avg*10))/10.0;
 			dto.setEval(avg);
 			dao.editeval(dto);
+			List<ReplyDTO> list=dao.getreply(dto);
+			model.addAttribute("myno",dto.getNo());
+			model.addAttribute("reply",list);
 		}
-//		double eval=dao.geteval(dto.getNo());
-//		System.out.println(eval);
 		
-//		return "temp";
+		return "tmp";
 	}
 	
 	
@@ -136,9 +137,14 @@ public class Ccontroller {
 		return "main";
 	}
 
-	@RequestMapping("detail") // 상세페이지
-	public void detail(int no) {
-		StoreDTO dto = dao.detail(no);
+	@RequestMapping(value="detail", method=RequestMethod.POST) // 상세페이지
+	public String detail(int no, ReplyDTO dto, Model model, HttpServletResponse resp) throws IOException {
+		StoreDTO storedto = dao.detail(no);
+		List<ReplyDTO> list=dao.getreply(dto);
+		model.addAttribute("store",storedto);
+		model.addAttribute("myno",dto.getNo());
+		model.addAttribute("reply",list);
+		return "tmp";
 	}
 
 	@RequestMapping(value = "join", method = RequestMethod.POST)
