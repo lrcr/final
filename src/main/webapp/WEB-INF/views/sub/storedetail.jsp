@@ -63,27 +63,26 @@
 											<tr>
 												<th><h4>[평점]</h4></th>
 												<th>
-													<span class="star-rating small"> 
-													<c:if test="${dto.eval < 1} ">
-														<i></i><i></i><i></i><i></i><i></i>
+												<span class="star-rating small">	
+													<c:if test="${dto.eval==5} ">
+														<i></i><i></i><i></i><i></i><i class="on"></i>
 													</c:if>
-													<c:if test="${dto.eval>=1 && dto.eval < 2} ">
-														<i class="on"></i><i></i><i></i><i></i><i></i>
-													</c:if>
-													<c:if test="${dto.eval>=2 && dto.eval < 3} ">
-														<i></i><i class="on"></i><i></i><i></i><i></i>
+													<c:if test="${dto.eval>=4 && dto.eval < 5} ">
+														<i></i><i></i><i></i><i class="on"></i><i></i>
 													</c:if>
 													<c:if test="${dto.eval>=3 && dto.eval < 4} ">
 														<i></i><i></i><i class="on"></i><i></i><i></i>
 													</c:if>
-													
-													<c:if test="${dto.eval>=4 && dto.eval < 5} ">
-														<i></i><i></i><i></i><i class="on"></i><i></i>
+													<c:if test="${dto.eval>=2 && dto.eval < 3} ">
+														<i></i><i class="on"></i><i></i><i></i><i></i>
 													</c:if>
-													<c:if test="${dto.eval==5} ">
-														<i></i><i></i><i></i><i></i><i class="on"></i>
+													<c:if test="${dto.eval>=1 && dto.eval < 2} ">
+														<i class="on"></i><i></i><i></i><i></i><i></i>
 													</c:if>
-													</span>
+													<c:if test="${dto.eval < 1}">
+														 <i></i><i></i><i></i><i></i><i></i>
+													</c:if>
+												</span>	
 												</th>
 												<th><h4>${dto.eval}</h4></th>
 												<th><h4>[분류]${dto.indu }</h4></th>

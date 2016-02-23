@@ -105,7 +105,6 @@ public class Ccontroller {
 	
 	@RequestMapping("addhit")
 	public void addhit(BoardDTO dto) {
-		System.out.println(dto.getNo());
 		dao.addhit(dto);
 	}
 	

@@ -16,28 +16,27 @@
 				<div class="caption">
 					<h3 class="cont-nm">${dto.nm}</h3>
 					<p>${dto.tv}</p>
-					<p><p>${dto.eval}</p>
-						<span class="star-rating small"> 
-						<c:if test="${dto.eval < 1.0} ">
-							<i></i><i></i><i></i><i></i><i></i>
-						</c:if>
-						<c:if test="${dto.eval >=1.0 && dto.eval < 2.0} ">
-							<i class="on"></i><i></i><i></i><i></i><i></i>
-						</c:if>
-						<c:if test="${dto.eval==2.0 } ">
-							<i></i><i class="on"></i><i></i><i></i><i></i>
-						</c:if>
-						<c:if test="${dto.eval>=3 && dto.eval < 4} ">
-							<i></i><i></i><i class="on"></i><i></i><i></i>
-						</c:if>
-						
-						<c:if test="${dto.eval>=4 && dto.eval < 5} ">
-							<i></i><i></i><i></i><i class="on"></i><i></i>
-						</c:if>
-						<c:if test="${dto.eval==5} ">
-							<i></i><i></i><i></i><i></i><i class="on"></i>
-						</c:if>
-						</span>
+					<p>
+						<span class="star-rating small">	
+							<c:if test="${dto.eval==5} ">
+								<i></i><i></i><i></i><i></i><i class="on"></i>
+							</c:if>
+							<c:if test="${dto.eval>=4 && dto.eval < 5} ">
+								<i></i><i></i><i></i><i class="on"></i><i></i>
+							</c:if>
+							<c:if test="${dto.eval>=3 && dto.eval < 4} ">
+								<i></i><i></i><i class="on"></i><i></i><i></i>
+							</c:if>
+							<c:if test="${dto.eval>=2 && dto.eval < 3} ">
+								<i></i><i class="on"></i><i></i><i></i><i></i>
+							</c:if>
+							<c:if test="${dto.eval>=1 && dto.eval < 2} ">
+								<i class="on"></i><i></i><i></i><i></i><i></i>
+							</c:if>
+							<c:if test="${dto.eval < 1}">
+								 <i></i><i></i><i></i><i></i><i></i>
+							</c:if>
+						</span>	
 					</p>
 					<p><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#storedetail${dto.no}">상세정보 </a></p>
 				</div>
