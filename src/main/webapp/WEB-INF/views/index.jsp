@@ -18,8 +18,11 @@
 	$(document).ready(function() {
 		$(".sub_menu_d").each(function(i, e) {mainSubBack(i,e);});
 		$(".onoff > img").click(function() {onoff();});
-		$(".sub_menu a").each(function(i,e){
-			$(e).click(function(){listlink($(this).text())});
+		$(".sub_menu_2 a").each(function(i,e){
+			$(e).click(function(){listlink($(this).find(".sub_text ").text())});
+		});
+		$(".sub_menu .sub_menu_d").each(function(i,e){
+			$(e).click(function(){listlink($(this).find(".sub_text ").text())});
 		});
 		$(window).resize(function() {
 			$(".main_menu").each(function(i, e) {
@@ -60,64 +63,60 @@
 			<div class="main_index">
 				<div class="main_menu"><span class="main_text">먹<span class="hid">는방송</span></span></div>
 				<div class="main_menu"><span class="main_text">방<span class="hid">방곳곳</span></span></div>
-				<div class="main_menu"><span class="main_text">의<span class="hid">기양양</span></span></div>
-				<div class="main_menu"><span class="main_text">달<span class="hid">라잡이</span></span></div>
+				<div class="main_menu"><span class="main_text">의<span class="hid">식주식</span></span></div>
+				<div class="main_menu"><span class="main_text">달<span class="hid">려간다</span></span></div>
 				<div class="main_menu"><span class="main_text">인<span class="hid">기맛집</span></span></div>
 			</div>
 			<div class="sub_menu sub_menu_1 hid">
-				<a href="#" class="sub_menu_d"><span class="main_text">식신로드</span></a> 
-				<a href="#" class="sub_menu_d"><span class="main_text">테이스티로드</span></a> 
-				<a href="#" class="sub_menu_d"><span class="main_text">백종원의 3대천왕</span></a> 
-				<a href="#" class="sub_menu_d"><span class="main_text">맛있는 녀석들</span></a> 
-				<a href="#" class="sub_menu_d"><span class="main_text">찾아라 맛잇는TV</span></a>
+				<div class="sub_menu_d"><span class="sub_text ">식신로드</span></div> 
+				<div class="sub_menu_d"><span class="sub_text ">테이스티로드</span></div> 
+				<div class="sub_menu_d"><span class="sub_text ">백종원의 3대천왕</span></div> 
+				<div class="sub_menu_d"><span class="sub_text ">맛있는 녀석들</span></div> 
+				<div class="sub_menu_d"><span class="sub_text ">찾아라 맛있는TV</span></div>
 			</div>
-			<div class="sub_menu sub_menu_2 mCustomScrollbar hid container-fluid">
+			<div class="sub_menu sub_menu_2 hid mCustomScrollbar container-fluid">
 				<div class="map_bg">
-					<div class="incheon col-xs-6"><a href="#">인천광역시</a></div>
-					<div class="kangwon col-xs-6"><a href="#">강원도</a></div>
-					<div class="gyunggi col-xs-6"><a href="#">경기도</a></div>
-					<div class="seoul col-xs-6"><a href="#">서울특별시</a></div>
-					<div class="chungnam col-xs-6"><a href="#">충청남도</a></div>
-					<div class="sejong col-xs-6"><a href="#">세종특별자치시</a></div>
-					<div class="chungbuk col-xs-6"><a href="#">충청북도</a></div>
-					<div class="daejeon col-xs-6"><a href="#">대전광역시</a></div>
-					<div class="gyeongnam col-xs-6"><a href="#">경상남도</a></div>
-					<div class="gyungbuk col-xs-6"><a href="#">경상북도</a></div>
-					<div class="daegu col-xs-6"><a href="#">대구광역시</a></div>
-					<div class="jeonbuk col-xs-6"><a href="#">전라북도</a></div>
-					<div class="jeonnam col-xs-6"><a href="#">전라남도</a></div>
-					<div class="kwangju col-xs-6"><a href="#">광주광역시</a></div>
-					<div class="ulsan col-xs-6"><a href="#">울산광역시</a></div>
-					<div class="jeju col-xs-6"><a href="#">제주특별자치도</a></div>
-					<div class="busan col-xs-6"><a href="#">부산광역시</a></div>
+					<div class="incheon col-xs-6"><a href="#"><span class="sub_text ">인천광역시</span></a></div>
+					<div class="kangwon col-xs-6"><a href="#"><span class="sub_text ">강원도</span></a></div>
+					<div class="gyunggi col-xs-6"><a href="#"><span class="sub_text ">경기도</span></a></div>
+					<div class="seoul col-xs-6"><a href="#"><span class="sub_text ">서울특별시</span></a></div>
+					<div class="chungnam col-xs-6"><a href="#"><span class="sub_text ">충청남도</span></a></div>
+					<div class="sejong col-xs-6"><a href="#"><span class="sub_text ">세종특별자치시</span></a></div>
+					<div class="chungbuk col-xs-6"><a href="#"><span class="sub_text ">충청북도</span></a></div>
+					<div class="daejeon col-xs-6"><a href="#"><span class="sub_text ">대전광역시</span></a></div>
+					<div class="gyeongnam col-xs-6"><a href="#"><span class="sub_text ">경상남도</span></a></div>
+					<div class="gyungbuk col-xs-6"><a href="#"><span class="sub_text ">경상북도</span></a></div>
+					<div class="daegu col-xs-6"><a href="#"><span class="sub_text ">대구광역시</span></a></div>
+					<div class="jeonbuk col-xs-6"><a href="#"><span class="sub_text ">전라북도</span></a></div>
+					<div class="jeonnam col-xs-6"><a href="#"><span class="sub_text ">전라남도</span></a></div>
+					<div class="kwangju col-xs-6"><a href="#"><span class="sub_text ">광주광역시</span></a></div>
+					<div class="ulsan col-xs-6"><a href="#"><span class="sub_text ">울산광역시</span></a></div>
+					<div class="jeju col-xs-6"><a href="#"><span class="sub_text ">제주특별자치도</span></a></div>
+					<div class="busan col-xs-6"><a href="#"><span class="sub_text ">부산광역시</span></a></div>
 				</div>
 			</div>
 			<div class="sub_menu sub_menu_3 hid">
-				<a href="#" class="sub_menu_d"><span class="main_text">한식</span></a>
-				<a href="#" class="sub_menu_d"><span class="main_text">일식</span></a> 
-				<a href="#" class="sub_menu_d"><span class="main_text">중식</span></a> 
-				<a href="#" class="sub_menu_d"><span class="main_text">양식</span></a> 
-				<a href="#" class="sub_menu_d"><span class="main_text">분식</span></a> 
-				<a href="#" class="sub_menu_d"><span class="main_text">치킨</span></a> 
-				<a href="#" class="sub_menu_d"><span class="main_text">육류</span></a> 
-				<a href="#" class="sub_menu_d"><span class="main_text">디저트</span></a>
+				<div class="sub_menu_d"><span class="sub_text ">한식</span></div>
+				<div class="sub_menu_d"><span class="sub_text ">일식</span></div> 
+				<div class="sub_menu_d"><span class="sub_text ">중식</span></div> 
+				<div class="sub_menu_d"><span class="sub_text ">양식</span></div> 
+				<div class="sub_menu_d"><span class="sub_text ">분식</span></div> 
+				<div class="sub_menu_d"><span class="sub_text ">치킨</span></div> 
+				<div class="sub_menu_d"><span class="sub_text ">육류</span></div> 
+				<div class="sub_menu_d"><span class="sub_text ">디저트</span></div>
 			</div>
-			<div class="sub_menu sub_menu_4 hid">
-				<a href="#" class="sub_menu_d"><span class="main_text">한식</span></a>
-				<a href="#" class="sub_menu_d"><span class="main_text">일식</span></a> 
-				<a href="#" class="sub_menu_d"><span class="main_text">중식</span></a> 
-				<a href="#" class="sub_menu_d"><span class="main_text">양식</span></a> 
-				<a href="#" class="sub_menu_d"><span class="main_text">분식</span></a> 
-				<a href="#" class="sub_menu_d"><span class="main_text">치킨</span></a> 
-				<a href="#" class="sub_menu_d"><span class="main_text">육류</span></a> 
-				<a href="#" class="sub_menu_d"><span class="main_text">디저트</span></a>
+			<div class="sub_menu sub_menu_4 hid container-fluid">
+				<div class="sub_menu_d col-xs-6"><span class="sub_text ">예약 가능</span></div>
+				<div class="sub_menu_d col-xs-6"><span class="sub_text ">배달 가능</span></div>
 			</div>
 			<div class="sub_menu sub_menu_5 hid">
-				<a href="#" class="sub_menu_d"><span class="main_text">★★★★★</span></a>
-				<a href="#" class="sub_menu_d"><span class="main_text">★★★★</span></a> 
-				<a href="#" class="sub_menu_d"><span class="main_text">★★★</span></a> 
-				<a href="#" class="sub_menu_d"><span class="main_text">★★</span></a> 
-				<a href="#" class="sub_menu_d"><span class="main_text">★</span></a> 
+			<div class="sub_5box">
+				<div class="sub_menu_d sub_5_1"><span class="sub_text ">5</span></div>
+				<div class="sub_menu_d sub_5_2"><span class="sub_text ">4</span></div> 
+				<div class="sub_menu_d sub_5_3"><span class="sub_text ">3</span></div> 
+				<div class="sub_menu_d sub_5_4"><span class="sub_text ">2</span></div> 
+				<div class="sub_menu_d sub_5_5"><span class="sub_text ">1</span></div>
+			</div> 
 			</div>
 			<div id="player" class="main_player hid"></div>
 		</div>
@@ -128,6 +127,7 @@
 	<div class="main_support">
 		<img src="images/support.png" width="80%" />
 	</div>
+	<script src="js/jquery.mCustomScrollbar.min.js"></script>
 	<script src="js/login-join/join.js"></script>
 	<script src="js/login-join/login.js"></script>
 	<script src="js/star.js"></script>

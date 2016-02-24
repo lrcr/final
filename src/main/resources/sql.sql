@@ -55,12 +55,14 @@ submit date not null
 );
 
 --°Ô½ÃÆÇ ½ÃÄö½º
+drop sequence seq;
 create sequence seq
 increment by 1
 start with 1
 ;
 
 --´ñ±Û ½ÃÄö½º
+drop sequence ment;
 create sequence ment
 increment by 1
 start with 1

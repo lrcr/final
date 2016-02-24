@@ -2,9 +2,9 @@ var main_back = [ "#f1ac1d", "#dc0030", "#b10058", "#7c378a", "#3465aa", "#09a27
 var main_vid = [ "fFZwgPcW7FM", "ly6J5BQkXgA", "4OFAY0Du65A", "Tqa9LGsC5SU", "u_f2gzaDTKA" ];
 var main_sub_back = [ "#ee6334", "#ff8200", "#ed1369", "#777777", "#00aba8", "#666633", "#13cced", "#456c6c", "#4dbf13", "#794b80", "#ec3b4b", "#00fdfd" ];
 var main_sub_rgb = [ "238,99,52", "255,130,0", "237,19,105", "77,191,19", "0,171,168", "102,102,51", "19,204,237", "255,130,0", "121,75,128", "69,108,108",
-		"236,59,75", "0,253,253", "119,119,119","238,99,52", "255,130,0", "237,19,105", "77,191,19", "0,171,168", "102,102,51", "19,204,237", "255,130,0", "121,75,128", "69,108,108",
-		"236,59,75", "0,253,253", "119,119,119","238,99,52", "255,130,0", "237,19,105", "77,191,19", "0,171,168", "102,102,51", "19,204,237", "255,130,0", "121,75,128", "69,108,108",
-		"236,59,75", "0,253,253", "119,119,119" ];
+		"236,59,75", "0,253,253", "119,119,119", "238,99,52", "255,130,0", "237,19,105", "77,191,19", "0,171,168", "102,102,51", "19,204,237", "255,130,0",
+		"121,75,128", "69,108,108", "236,59,75", "0,253,253", "119,119,119", "238,99,52", "255,130,0", "237,19,105", "77,191,19", "0,171,168", "102,102,51",
+		"19,204,237", "255,130,0", "121,75,128", "69,108,108", "236,59,75", "0,253,253", "119,119,119" ];
 /* YouTube Player API */
 var videoid;
 function createYouTubeAPI(vid) {
@@ -53,26 +53,39 @@ function changeVideoId(vid) {
 	player.loadVideoById(vid);
 }
 
-var col_arr = [ "tv", "addr", "indu", "", "eval" ];
-var col;
-var val;
+var col_arr = [ "tv", "addr", "indu", "reserve", "eval" ];
+var col = "";
+var val = "";
 function listlink(val_a) {
-	if(val_a=="★") val = 1;
-	val = val_a;
+	if (val_a == "예약 가능")
+		val = "ON";
+	else if (val_a == "배달 가능") {
+		col = "delivery";
+		val = "ON";
+	} else {
+		val = val_a;
+	}
 	location.href = "listlink?col=" + col + "&val=" + val;
 }
+
 /* 서브메뉴 배경색 */
 function mainSubBack(i, e) {
-	if ($(window).width() < 768){
-		$(e).css({ "background" : "rgba(" + main_sub_rgb[i] + ",0.7)" });
-	}else{
-		$(e).css({ "background" : "rgba(" + main_sub_rgb[i] + ",0.4)" });
+	if (i > 14)
+		$(e).css({ "background" : "#ff5162" })
+	else {
+		if ($(window).width() < 768) {
+			$(e).css({ "background" : "rgba(" + main_sub_rgb[i] + ",0.7)" });
+		} else {
+			$(e).css({ "background" : "rgba(" + main_sub_rgb[i] + ",0.4)" });
+		}
 	}
-	$(e).hover(function() {
-		$(this).css({ "background" : "rgba(" + main_sub_rgb[i] + ",1)" });
-	}, function() {
-		$(this).css({ "background" : "rgba(" + main_sub_rgb[i] + ",0.4)" });
-	});
+	if (i < 15) {
+		$(e).hover(function() {
+			$(this).css({ "background" : "rgba(" + main_sub_rgb[i] + ",1)" });
+		}, function() {
+			$(this).css({ "background" : "rgba(" + main_sub_rgb[i] + ",0.4)" });
+		});
+	}
 }
 /* 동영상 on/off */
 function onoff() {
@@ -103,10 +116,17 @@ function indexLoad(i, e) {
 		$(".main_menu").removeClass("this_view");
 		$("#player,.sub_menu").addClass("hid");
 		$(this).addClass("this_view");
+		if (i == 4) {
+			$(".sub_menu_5 .sub_menu_d").each(function(iv) {
+				$(".sub_5_" + (iv + 1)).animate({ "height" : ((5 - iv) * 20) + "%", "left" : (iv * 20) + "%" }, 1500);
+			});
+		} else {
+			$(".sub_menu_5 .sub_menu_d").css({ "height" : "0", "left" : "0" });
+		}
 		if ($(window).width() < 768) {
-			$(".main_index").css({"height":"30px" ,"line-height":"30px"});
-			$(".main_menu").stop().animate({ "opacity" : 1, "width" : "20%","height":"30px" ,"line-height":"30px"}, 400);
-			$(".sub_menu_" + (i + 1)).css({"margin-left": "0"}).removeClass("hid");
+			$(".main_index").css({ "height" : "30px", "line-height" : "30px" });
+			$(".main_menu").stop().animate({ "opacity" : 1, "width" : "20%", "height" : "30px", "line-height" : "30px" }, 400);
+			$(".sub_menu_" + (i + 1)).css({ "margin-left" : "0" }).removeClass("hid");
 		} else {
 			$(".main_menu").stop().animate({ "opacity" : 1, "width" : "2.5%" }, 400);
 			$(this).stop().animate({ "opacity" : 0.4, "width" : "90%" }, 400, function() {

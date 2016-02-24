@@ -113,7 +113,7 @@
 			<input type="radio" name="rating" value="5" onclick="starval(5);"><i></i>
 		</span>
 		<span>
-			<a id="kakao-link-btn" href="javascript:cacaolink('${store.keyword}','${store.nm}');">
+			<a id="kakao-link-btn" href="javascript:cacaolink('${store.keyword}','${store.nm}','${store.no}');">
 				<img src="http://dn.api1.kage.kakao.co.kr/14/dn/btqa9B90G1b/GESkkYjKCwJdYOkLvIBKZ0/o.jpg" width="30px" />
 			</a>
 		</span>

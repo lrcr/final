@@ -122,8 +122,8 @@
  									<input type="radio" name="rating" value="4"><i></i> 
  									<input type="radio" name="rating" value="5"><i></i>
   								</span>		  								
- 								<span><a id="kakao-link-btn" href="javascript:cacaolink('${dto.keyword}','${dto.nm}');">
- 									<img src="http://dn.api1.kage.kakao.co.kr/14/dn/btqa9B90G1b/GESkkYjKCwJdYOkLvIBKZ0/o.jpg" width="30px"/>
+ 								<span><a id="kakao-link-btn" href="javascript:cacaolink('${dto.keyword}','${dto.nm}','${dto.no}');">
+ 									<img src="http://dn.api1.kage.kakao.co.kr/14/dn/btqa9B90G1b/GESkkYjKCwJdYOkLvIBKZ0/o.jpg" width="50px"/>
  								</a></span>
   							</div >		  							
 							
