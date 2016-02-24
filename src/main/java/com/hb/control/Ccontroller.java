@@ -54,6 +54,7 @@ public class Ccontroller {
 	
 	@RequestMapping(value="addreply", method=RequestMethod.POST)//평점, 댓글달기
 	public String addreply(ReplyDTO dto,HttpServletRequest req, HttpServletResponse resp,Model model) throws IOException {
+		//req.getContentType("utf-8");
 		HttpSession session=req.getSession();
 		if(!"".equals(session.getAttribute("nicknm"))) dto.setNickname((String)session.getAttribute("nicknm"));
 		int chk=dao.chkreply(dto);//댓글 썼는지 유무 체크

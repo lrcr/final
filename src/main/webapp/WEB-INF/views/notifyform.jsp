@@ -28,7 +28,6 @@
 		<%@include file="sub/login.jsp"%>
 		<%@include file="sub/join.jsp"%>
 		<div id="tv_box_in" class="mCustomScrollbar">
-		<div id="tv_box_in">
 			<%@include file="sub/notify.jsp" %>
 		</div>
 		<%@include file="sub/notifymodal.jsp" %>

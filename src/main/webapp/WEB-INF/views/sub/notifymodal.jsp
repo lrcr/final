@@ -6,7 +6,7 @@
 
 	<div class="modal fade detailmodal" id="boarddetail${bdlist.no}" tabindex="-1"
 		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"
@@ -74,7 +74,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-				<button id="notify-edit" class="btn btn-default" type="button">수정</button>
+				<input id="notify-edit" class="btn btn-default" type="button" value="수정하기">
 				<button id="notify-save" class="btn btn-default" type="button">미리보기</button>
 				<button id="write-done" type="button" class="btn btn-primary"
 					data-dismiss="modal">완료</button>
