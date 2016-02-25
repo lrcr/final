@@ -49,6 +49,7 @@
 			});
 		});
 		$(".main_menu").each(function(i, e) {indexLoad(i,e)});
+		$("#stop-btn").tooltip({trigger: 'hover click','placement': 'left'});//동영상끄기 버튼 툴팁
 	});
 </script>
 
@@ -121,7 +122,7 @@
 			<div id="player" class="main_player hid"></div>
 		</div>
 		<div class="onoff">
-			<img alt="배경동영상 끄기" src="images/onoff.png" width="15px">
+			<img alt="배경동영상 끄기" src="images/onoff.png" width="15px" data-toggle="tooltip"  title="" data-original-title="동영상끄기" id="stop-btn">
 		</div>
 	</div>
 	<div class="main_support">

@@ -75,3 +75,9 @@ function evaluate(no){
 	}
 	starcnt=0;
 }
+
+$("#share-kakao").on("mouseover",function(){
+	
+	$(this).tooltip({trigger: 'hover click','placement': 'bottom'});
+	
+});

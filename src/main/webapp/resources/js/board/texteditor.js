@@ -7,7 +7,6 @@
     
   });
   
-  
   $("#notify-edit").on("click",function(){
     $('#summernote').summernote({
        lang: 'ko-KR', // default: 'en-US'
@@ -71,20 +70,7 @@ $("#write-done").on("click",function(){
 	}
 	else{
 		var content=$(".note-editable").html();
-		var leng=content.length;
-		if(leng>=4000){
-			for(var i=0; i<(leng/4000)+1;i++)
-				{
-					var content_i=content.substr(0,4000);
-				}
-			
-			var content_2=content.substr(4000,(content.length)-1);
-			alert(content_1);
-			alert(content_2);
-			alert(content_1.length);
-			alert(content_2.length);
-			alert(content_1.length+content_2.length);
-		}
+		
 		var db="title="+$("#write-title").val()+"&content="+$(".note-editable").html();
         $.ajax({
            url:"addboard",
@@ -96,9 +82,6 @@ $("#write-done").on("click",function(){
         	  location.replace("/project3/notify");
            }//통신완료
         });//ajax끝
-		
-		
-		
 	}
 });
 //$(":file").attr("disabled",true);

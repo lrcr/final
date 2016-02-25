@@ -64,11 +64,21 @@
 							role="button" aria-expanded="false"> ${nicknm}님<span
 							class="caret"></span>
 						</a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a class="myinfo" data-toggle="modal" data-target="#myInfo">나의 정보</a></li>
-							<li><a href="#">나의 맛집</a></li>
-							<li><a href="#">예약 확인</a></li>
-						</ul>
+						<c:if test="${sessionScope.nicknm != '관리자'}">
+							<ul class="dropdown-menu" role="menu">
+								<li><a class="myinfo" data-toggle="modal" data-target="#myInfo">나의 정보</a></li>
+								<li><a href="#">나의 맛집</a></li>
+								<li><a href="#">예약 확인</a></li>
+							</ul>
+						</c:if>
+						<c:if test="${sessionScope.nicknm == '관리자'}">
+							<ul class="dropdown-menu" role="menu">
+								<li><a class="myinfo" data-toggle="modal" data-target="#myInfo">나의 정보</a></li>
+								<li><a href="#">나의 맛집</a></li>
+								<li><a href="#">예약 확인</a></li>
+								<li><a href="#">관리자홈</a></li>
+							</ul>
+						</c:if>
 					</c:if></li>
 				<li id="signup-nav"><c:if test="${sessionScope.nicknm eq null}">
 						<a href="#" id="go-join" data-toggle="modal"

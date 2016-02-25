@@ -40,16 +40,32 @@ $("#login-btn").on("click",function(){
                 success=parseInt(success);
                 if(success>0) {
 	                 alert(nicknm+"님 환영합니다!");
-	                 $("#login-nav").html(
-	                 "<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">"
-						+nicknm+"님 <span class=\"caret\"></span>"+
-					"</a>"+
-					"<ul class=\"dropdown-menu\" role=\"menu\">"+
-						"<li><a href=\"#\">나의 정보</a></li>"+
-						"<li><a href=\"#\">나의 맛집</a></li>"+
-						"<li><a href=\"#\">예약 확인</a></li>"+
-					"</ul>"
-					);
+	                 if(nicknm!="관리자"){
+		                 $("#login-nav").html(
+			                 "<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">"
+								+nicknm+"님 <span class=\"caret\"></span>"+
+							"</a>"+
+							"<ul class=\"dropdown-menu\" role=\"menu\">"+
+								"<li><a href=\"#\">나의 정보</a></li>"+
+								"<li><a href=\"#\">나의 맛집</a></li>"+
+								"<li><a href=\"#\">예약 확인</a></li>"+
+							"</ul>"
+							);
+	                 }
+	                 else if(nicknm=="관리자"){
+	                	 $("#login-nav").html(
+	    		                 "<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">"
+	    							+nicknm+"님 <span class=\"caret\"></span>"+
+	    						"</a>"+
+	    						"<ul class=\"dropdown-menu\" role=\"menu\">"+
+	    							"<li><a href=\"#\">나의 정보</a></li>"+
+	    							"<li><a href=\"#\">나의 맛집</a></li>"+
+	    							"<li><a href=\"#\">예약 확인</a></li>"+
+	    							"<li><a href=\"#\">관리자홈</a></li>"+
+	    						"</ul>"
+	    						);
+	                 }
+	                 
 	                 $("#signup-nav").html(
 	                		 "<a href=\"logout\" id=\"logout\">로그아웃</a>"
 	                 );
