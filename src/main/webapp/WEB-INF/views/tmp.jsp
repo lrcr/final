@@ -147,10 +147,12 @@
 						<table
 							class="table table-striped table-bordered table-hover dataTables-example">
 							<thead>
+							<tr>
 								<th>닉네임</th>
 								<th>내용</th>
 								<th>점수</th>
 								<th>작성일</th>
+							</tr>
 							</thead>
 							<tbody>
 								<c:if test="${store.no==myno }">

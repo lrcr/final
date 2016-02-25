@@ -37,7 +37,7 @@
                     
                     <div class="form-group col-lg-12">
                       <div class="input-group">
-                        <input type="text" class="form-control joinbox" id="nicknameinput" name="nickname"  placeholder="Nick Name">
+                        <input type="text" class="form-control joinbox" id="nicknameinput" name="nicknm"  placeholder="Nick Name">
                         <span class="input-group-btn">
                           <input type="button" class="btn btn-default" value="중복체크" id="nmcheck">
                         </span>

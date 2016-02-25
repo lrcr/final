@@ -35,16 +35,16 @@ public class Ccontroller {
 		return "index";
 	}
 	
+	@RequestMapping("/mobile") // 모바일페이지
+	public String mobile() {
+		return "index";
+	}
+
 	@RequestMapping("test") // 맛집리스트(임시)
 	public String testnav() {
 		return "main";
 	}
-	
-	@RequestMapping("/mobile") // 모바일페이지
- 	public String mobile() {
- 		return "index";
- 	}
-	
+
  	@RequestMapping("/cacao") // 카카오링크
  	public String cacao(String nm, Model model) {
  		List<StoreDTO> list=dao.cacaolink(nm);
@@ -188,7 +188,7 @@ public class Ccontroller {
 
 	@RequestMapping(value = "nicknmchk", method = RequestMethod.POST) // 닉네임
 	public void nicknmchk(HttpServletRequest req, HttpServletResponse resp, String nicknm) throws IOException {
-		int chknicknm = dao.nicknmchk(req.getParameter("nickname"));
+		int chknicknm = dao.nicknmchk(nicknm);
 		if (chknicknm > 0) { //중복체크
 			PrintWriter out = resp.getWriter();
 			StringBuffer st = new StringBuffer();
@@ -200,22 +200,23 @@ public class Ccontroller {
 		}
 	}
 	
-
-	  
 	  @RequestMapping(value="/myInfo", method=RequestMethod.POST) //나의 정보 호출
 		public String myInfo(Model model, HttpServletRequest req) {
 		  HttpSession session=req.getSession();
 		  req.getCharacterEncoding();
 		  String nNm = (String)session.getAttribute("nicknm");
+		  logger.debug("nNm:{}"+nNm);
 		  MemberDTO dto = dao.oneMember(nNm);
+		  logger.debug("myinfo:{}"+dto);
 		  model.addAttribute("myinfo", dto);
-		  return "myPage";
+		  return "mypage";
 		}
 	  
 	  @RequestMapping(value="/goUpdate", method=RequestMethod.POST) // 나의 정보 수정
 		public String goUpdate(MemberDTO dto, Model model, HttpServletRequest req) {
 		  HttpSession session = req.getSession();
 		  session.setAttribute("nicknm", dto.getNicknm());
+		  logger.debug("myinfoup:{}"+dto);
 		  	dao.updateMember(dto);
 			return "redirect:/";
 		}

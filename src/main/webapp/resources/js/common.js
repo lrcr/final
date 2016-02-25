@@ -20,16 +20,32 @@ $(document).ready(function() {
 			$("#nav_navbar").css({ "top" : "0" }).addClass("nav_blk");
 			$("body").css({ "padding-top" : "51px" });
 			$(".nav_btn_bottom").addClass("hid");
-//			stopVideo();
-		}else{
-			
+			// stopVideo();
+		} else {
+
 		}
 	});
+
+	/** 나의정보 */
+	$(".myinfo").on("click", function() {
+		$.ajax({ 
+			url : "myInfo", 
+			type : "post", 
+			error : function() {
+			$("#tv_box_out").html("<img src=\"images/error.png\" alt=\"에러페이지\" />");
+		}, success : function(result) {
+			$(".myinfo-cont").html(result);
+
+		} });
+	});
+	
+	
 });
-function cacaolink(a,store_name,img_no){
-	//alert(a+","+store_name+","+img)
+
+/** 카카오링크 연동 */
+function cacaolink(a, store_name, img_no) {
 	// 사용할 앱의 JavaScript 키를 설정해 주세요.
-    Kakao.init('160294267f9390d543bcdaab1b98c0ce');
+	Kakao.init('160294267f9390d543bcdaab1b98c0ce');
 
     // 카카오톡 링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
     Kakao.Link.createTalkLinkButton({

@@ -81,7 +81,7 @@ $("#write-done").on("click",function(){
            success:function(result){
         	  location.replace("/project3/notify");
            }//통신완료
-        });//ajax끝
+        });//ajax끝		
 	}
 });
 //$(":file").attr("disabled",true);

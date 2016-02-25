@@ -38,7 +38,7 @@ code {font-size:80%;}
 	.main_support,.nav_btn_top,.nav_btn_bottom {display:none;}
 }
 @media screen and (min-width:768px) and (max-width:991px) { /* 작은 기기들 (태블릿, 768px 이상) screen-sm*/
-	.nav>li>a {padding:10px 6px;}
+	.nav>li>a {padding:10px 10px;}
 	.navbar-nav>li>a {padding-top:15px; padding-bottom:15px;}
 }
 

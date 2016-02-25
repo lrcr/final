@@ -31,7 +31,7 @@
   </select>
   
   <update id="infoUpdate" parameterType="com.hb.model.MemberDTO">
-  	update member set pw = #{pw}, nicknm = #{nicknm}, phone = #{phone} where email = #{email}
+  	update member set pw = #{pw}, nicknm = #{nicknm}, phone = #{phone}, agree=#{agree} where email = #{email}
   </update>
   
 </mapper>
