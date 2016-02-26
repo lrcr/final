@@ -118,7 +118,9 @@ function indexLoad(i, e) {
 		$(this).addClass("this_view");
 		if (i == 4) {
 			$(".sub_menu_5 .sub_menu_d").each(function(iv) {
-				$(".sub_5_" + (iv + 1)).animate({ "height" : ((5 - iv) * 20) + "%", "left" : (iv * 20) + "%" }, 1500);
+				$(".sub_5_" + (iv + 1)).animate({ "height" : ((5 - iv) * 20) + "%", "left" : (iv * 20) + "%" }, 1500,function(){
+					
+				}).append("<span class=\"sub_5_star\"><img src=\"./images/star/star"+(5-iv)+".png\" /></span>");
 			});
 		} else {
 			$(".sub_menu_5 .sub_menu_d").css({ "height" : "0", "left" : "0" });

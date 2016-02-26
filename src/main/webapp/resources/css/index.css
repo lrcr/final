@@ -16,8 +16,9 @@
 .sub_menu_3 .sub_menu_d:nth-child(4) {height:66.66%;}
 .sub_menu_3 .sub_menu_d:nth-child(8) {width:50%;}
 .sub_menu_4 .sub_menu_d {margin:0; width:50%;height:100%;}
-.sub_menu_5 .sub_5box {position:relative; width:80%; height:80%; margin:5% auto; border-bottom:2px solid #9a9a9a;}
+.sub_menu_5 .sub_5box {position:relative; width:80%; height:80%; margin:5% auto 0; border-bottom:2px solid #9a9a9a;}
 .sub_menu_5 .sub_menu_d {position:absolute; bottom:0; background:#ff5162; width:50px; padding:0; margin-left:5%; border-radius:10px 10px 5px 5px;}
+.sub_menu_5 .sub_5_star {position:absolute; bottom:0; left:0;}
 .sub_menu a {display:inline-block; vertical-align:middle; text-decoration:none; color:inherit;}
 .main_text {color:#fff;}
 .sub_text {font-family: 'Hanna', serif;}

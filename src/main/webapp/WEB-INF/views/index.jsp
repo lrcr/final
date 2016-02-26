@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://bootswatch.com/slate/bootstrap.min.css">
 <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
 <link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/star.css">
 <link rel="stylesheet" href="css/index.css">
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -117,7 +118,7 @@
 				<div class="sub_menu_d sub_5_3"><span class="sub_text ">3</span></div> 
 				<div class="sub_menu_d sub_5_4"><span class="sub_text ">2</span></div> 
 				<div class="sub_menu_d sub_5_5"><span class="sub_text ">1</span></div>
-			</div> 
+			</div>
 			</div>
 			<div id="player" class="main_player hid"></div>
 		</div>

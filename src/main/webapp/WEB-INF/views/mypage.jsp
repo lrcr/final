@@ -16,38 +16,33 @@
 	</div>
 	<div class="myinfo_pw hid">
 		<div class="form-group">
-			<label class="col-sm-2 control-label" for="myinfopassword1">비밀번호</label>
+			<label class="col-sm-2 control-label" for="myinfopw1">비밀번호</label>
 			<div class="col-sm-9">
-				<input type="password" class="form-control" id="myinfopassword1">
+				<input type="password" class="form-control" id="myinfopw1">
+				<label class="control-label myinfo_pw1msg"></label>
 			</div>
-			<label class="control-label myinfo_pw1msg"></label>
 		</div>
 		<div class="form-group">
-			<label class="col-sm-2 control-label" for="myinfopassword2">비밀번호 확인</label>
+			<label class="col-sm-2 control-label" for="myinfopw2">비밀번호 확인</label>
 			<div class="col-sm-9">
-				<input type="password" class="form-control" id="myinfopassword2" name="pw" value="${myinfo.pw}">
+				<input type="password" class="form-control" id="myinfopw2" name="pw" value="${myinfo.pw}">
+				<label class="control-label myinfo_pw2msg"></label>
 			</div>
-			<label class="control-label myinfo_pw2msg"></label>
 		</div>
 	</div>
 	<div class="form-group">
 		<label class="col-sm-2 control-label" for="myinfonicknm">닉네임</label>
 		<div class="col-sm-9">
-			<div class="input-group">
-				<input type="text" class="form-control" id="myinfonicknm" name="nicknm" value="${myinfo.nicknm}">
-				<div class="input-group-btn">
-					<button type="button" class="btn btn-default myinfo_nmcheck">중복체크</button>
-				</div>
-			</div>
+			<input type="text" class="form-control" id="myinfonicknm" name="nicknm" value="${myinfo.nicknm}" >
 			<label class="control-label myinfo_nmmsg"></label>
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="col-sm-2 control-label" for="myinfophone">전화번호</label>
+		<label class="col-sm-2 control-label" for="myinfoph">전화번호</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="myinfophone" name="phone" value="${myinfo.phone}">
+			<input type="text" class="form-control" id="myinfoph" name="phone" value="${myinfo.phone}">
+			<label class="control-label myinfo_phmsg"></label>
 		</div>
-		<label class="control-label myinfo_phmsg"></label>
 	</div>
 	<c:if test="${myinfo.agree eq 'ok'}">
 		<c:set var="active_ok" value="active" />
@@ -74,129 +69,199 @@
 	// 비밀번호 변경
 	$("#myInfo .infopwch").on("click", function() {
 		$("#myInfo .myinfo_pw").removeClass("hid");
-		$("#myinfopassword2").val("");
+		$("#myinfopw1").val("").focus();
+		$("#myinfopw2").val("");
 		$(this).hide()
+	});
+
+	$('#myinfonicknm').on('focusout', function() {
+		var nmval = $(this).val();
+		var leng = nmval.length;
+		if (leng == 0) {
+			$('.myinfo_nmmsg').text("변경할 닉네임을 입력하세요");
+		} else if (leng != 0) {
+			$('myinfo_nmmsg').text("");
+		}
+	});
+
+	$('#myinfopw1').on('focusout', function() {
+		var pwval = $('#myinfopw1').val();
+		var leng = pwval.length;
+
+		var sutja, munja;
+		sutja = false;
+		munja = false;
+
+		for (var i = 0; i < pwval.length; i++) {
+			var idx = pwval.charAt(i).charCodeAt();
+			if (idx > 47 && idx < 58) {
+				sutja = true;
+			} else if (idx > 64 && idx < 123) {
+				munja = true;
+			}
+		}
+
+		if (!(munja && sutja)) {
+			$(".myinfo_pw1msg").text("영문과 숫자를 조합 해야 합니다.");
+			$("#myinfopw1").val("").focus();
+		}
+
+		//비밀번호 자리 수
+		else if (leng<4||leng>12) {
+			$(".myinfo_pw1msg").text("4자리 이상 12자리 이하로 입력 하세요");
+			$("#myinfopw1").val("").focus();
+			return false;
+		} else {
+			$(".myinfo_pw1msg").text("");
+		}
+	});
+
+	$('#myinfopw2').on('focusout', function() {
+		var pw1val = $('#myinfopw1').val();
+		var pw2val = $('#myinfopw2').val();
+
+		if (pw2val == "") {
+			$(".myinfo_pw2msg").text("변경할 비밀번호를 입력하세요");
+			$("#myinfopw1").val("").focus();
+		} else if (pw1val != pw2val) {
+			$(".myinfo_pw2msg").text("비밀번호가 일치하지 않습니다");
+			$("#myinfopw2").val("").focus();
+		} else {
+			$(".myinfo_pw2msg").text("");
+		}
+	});
+
+	$('#myinfoph').on('focusout', function() {
+		var phnmval = $(this).val();
+		var leng = phnmval.length;
+
+		if (leng == 0) {
+			$(".myinfo_phmsg").text("변경할 번호를 입력하세요");
+			$("#myinfoph").focus();
+		} else {
+			var chksum = 0;
+			for (var i = 0; i < phnmval.length; i++) {
+				var idx = phnmval.charAt(i).charCodeAt();
+				if (!(idx > 47 && idx < 58)) {
+					chksum = chksum + 1;
+				}
+			}
+
+			if (chksum == 0) {
+				$(".myinfo_phmsg").text("");
+			} else {
+				$(".myinfo_phmsg").text("숫자 이외에는 입력이 불가합니다");
+				$("#myinfoph").val("").focus();
+			}
+		}
 	});
 
 	//submit 클릭시
 	$(".updateInfo").on("click", function() {
 		var nm = $("#myinfonicknm").val().length;
-		var pw1 = $("#myinfopassword1").val().length;
-		var pw2 = $("#myinfopassword2").val().length;
-		var ph = $("#myinfophone").val().length;
-		console.log("nm:"+nm);
-		console.log("pw1:"+pw1);
-		console.log("pw2:"+pw2);
-		console.log("ph:"+ph);
-1		if ($("#myInfo .myinfo_pw").hasClass("hid")){
+		var pw1 = $("#myinfopw1").val().length;
+		var pw2 = $("#myinfopw2").val().length;
+		var ph = $("#myinfoph").val().length;
+		console.log("nmok:" + nmok);
+		console.log("nmchk:" + nmchk);
+		if (!($("#myInfo .myinfo_pw").hasClass("hid"))) {
 			if (pw1 == 0) {
-				$(".myinfo_pw1msg").text("비밀번호를 입력하세요");
+				$(".myinfo_pw1msg").text("변경할 비밀번호를 입력하세요");
+				$("#myinfopw1").val("").focus();
 				var msg = $(".myinfo_pw1msg");
-				msg.animate({opacity : '1'}, "slow");
-				msg.animate({opacity : '0'}, "slow");
-				msg.animate({opacity : '1'}, "slow");
+				msg.animate({ opacity : '1' }, "slow");
+				msg.animate({ opacity : '0' }, "slow");
+				msg.animate({ opacity : '1' }, "slow");
 				return false;
-			}else if (pw2 == 0) {
+			} else if (pw2 == 0) {
 				$(".myinfo_pw2msg").text("비밀번호를 한번 더 입력하세요");
+				$("#myinfopw2").val("").focus();
 				var msg = $(".myinfo_pw2msg");
-				msg.animate({opacity : '1'}, "slow");
-				msg.animate({opacity : '0'}, "slow");
-				msg.animate({opacity : '1'}, "slow");
+				msg.animate({ opacity : '1' }, "slow");
+				msg.animate({ opacity : '0' }, "slow");
+				msg.animate({ opacity : '1' }, "slow");
 				return false;
 			}
 		}
 		if ($(".myinfo_pw1msg").text() != "") {
 			var msg = $(".myinfo_pw1msg");
-			msg.animate({opacity : '1'}, "slow");
-			msg.animate({opacity : '0'}, "slow");
-			msg.animate({opacity : '1'}, "slow");
+			msg.animate({ opacity : '1' }, "slow");
+			msg.animate({ opacity : '0' }, "slow");
+			msg.animate({ opacity : '1' }, "slow");
 			return false;
 		}
 		if ($(".myinfo_pw2msg").text() != "") {
 			var msg = $(".myinfo_pw2msg");
-			msg.animate({opacity : '1'}, "slow");
-			msg.animate({opacity : '0'}, "slow");
-			msg.animate({opacity : '1'}, "slow");
+			msg.animate({ opacity : '1' }, "slow");
+			msg.animate({ opacity : '0' }, "slow");
+			msg.animate({ opacity : '1' }, "slow");
 			return false;
 		}
-		if ($("#myinfopassword1").text() != $("#myinfopassword2").text()) {
+		if ($("#myinfopw1").text() != $("#myinfopw2").text()) {
 			$(".myinfo_pw2msg").text("비밀번호가 일치하지 않습니다");
+			$("#myinfopw2").val("").focus();
 			var msg = $(".myinfo_pw2msg");
-			msg.animate({opacity : '1'}, "slow");
-			msg.animate({opacity : '0'}, "slow");
-			msg.animate({opacity : '1'}, "slow");
+			msg.animate({ opacity : '1' }, "slow");
+			msg.animate({ opacity : '0' }, "slow");
+			msg.animate({ opacity : '1' }, "slow");
 			return false;
 		}
-		if (nm == 1) {
-			alert("한개");
-			$(".myinfo_nmmsg").text("닉네임을 입력하세요");
+		if (nm == 0) {
+			$(".myinfo_nmmsg").text("변경할 닉네임을 입력하세요");
+			$("#myinfonicknm").val("").focus();
 			var msg = $(".myinfo_nmmsg");
-			msg.animate({opacity : '1'}, "slow");
-			msg.animate({opacity : '0'}, "slow");
-			msg.animate({opacity : '1'}, "slow");
+			msg.animate({ opacity : '1' }, "slow");
+			msg.animate({ opacity : '0' }, "slow");
+			msg.animate({ opacity : '1' }, "slow");
 			return false;
 		}
 		if (ph == 0) {
-			$(".phmsg").text("번호를 입력하세요");
-			var msg = $(".phmsg");
-			msg.animate({opacity : '1'}, "slow");
-			msg.animate({opacity : '0'}, "slow");
-			msg.animate({opacity : '1'}, "slow");
+			$(".myinfo_phmsg").text("변경할 번호를 입력하세요");
+			$("#myinfoph").val("").focus();
+			var msg = $(".myinfo_phmsg");
+			msg.animate({ opacity : '1' }, "slow");
+			msg.animate({ opacity : '0' }, "slow");
+			msg.animate({ opacity : '1' }, "slow");
 			return false;
 		}
-		if ($(".phmsg").text() != "") {
-			var msg = $(".phmsg");
-			msg.animate({opacity : '1'}, "slow");
-			msg.animate({opacity : '0'}, "slow");
-			msg.animate({opacity : '1'}, "slow");
+		if ($(".myinfo_phmsg").text() != "") {
+			var msg = $(".myinfo_phmsg");
+			msg.animate({ opacity : '1' }, "slow");
+			msg.animate({ opacity : '0' }, "slow");
+			msg.animate({ opacity : '1' }, "slow");
 			return false;
 		}
 	});
 	// 닉네임 중복체크
-	$('.myinfo_nmcheck').on('click', function() {
-		var idval = $('#myinfonicknm').val();
-		var leng = idval.length;
 
-		if (leng == 0) {
-			$('.myinfo_nmmsg').text("사용하실 닉네임을 입력해주세요");
-			var msg = $(".myinfo_nmmsg")
-			msg.animate({opacity : '1'}, "slow");
-			msg.animate({opacity : '0'}, "slow");
-			msg.animate({opacity : '1'}, "slow");
-		}
-
-		else if (leng != 0) {
-			var em = $('#myinfonicknm').serialize();
-			$.ajax({
-				url : "nicknmchk",
-				type : "post",
-				data : em,
-				dataType : "xml",
-				error : function() {
-					alert("Ajax error!!")
-				},
-				success : function(result) {
-					success = $(result).find("success").text();
-					success = parseInt(success);
-					if (success > 0) {
-						$('.myinfo_nmmsg').text("이미 사용중인 닉네임 입니다");
-						var msg = $(".myinfo_nmmsg");
-						msg.animate({opacity : '1'}, "slow");
-						msg.animate({opacity : '0'}, "slow");
-						msg.animate({opacity : '1'}, "slow");
-						$('#nicknamelinput').val('');
-					} else {
-						$('.myinfo_nmmsg').text("사용가능한 닉네임 입니다");	
-						var msg = $(".myinfo_nmmsg");
-						msg.animate({opacity : '1'}, "slow");
-						msg.animate({opacity : '0'}, "slow");
-						msg.animate({opacity : '1'}, "slow");
-						nmok = 1;
-						nmchk = idval;
-					}
-				}//통신완료
+	$("#myinfonicknm").on("keyup", function() {
+		var idval = $(this).val();
+		var em = $('#myinfonicknm').serialize();
+		var idx;
+		for (var i = 0; i < idval.length; i++) {
+			idx = $(this).val().charCodeAt(i);
+			console.log(idx);
+			if (idx == 32) {
+				$(this).val("");
+			}
+			$.ajax({ url : "nicknmchk", type : "post", data : em, dataType : "xml", error : function() {
+				alert("Ajax error!!")
+			}, success : function(result) {
+				success = $(result).find("success").text();
+				success = parseInt(success);
+				if(idx==32) {
+					$('.myinfo_nmmsg').text("공백은 사용할수 없습니다");
+				}else if (success > 0) {
+					$('.myinfo_nmmsg').text("이미 사용중인 닉네임 입니다");
+					var msg = $(".myinfo_nmmsg");
+					$("#myinfonicknm").val("");
+				} else {
+					$('.myinfo_nmmsg').text("사용가능한 닉네임 입니다");
+					var msg = $(".myinfo_nmmsg");
+				}
+			}//통신완료
 			});//ajax끝
-		}
 
+		}
 	});
 </script>
