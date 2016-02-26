@@ -24,4 +24,8 @@ public interface InterfaceDAO {
 	public List<ReplyDTO> getreply(ReplyDTO dto);
 	public MemberDTO oneMember(String nNm);
 	public void updateMember(MemberDTO dto);
+	public void addbookmark(StoreDTO dto);
+	public int cntbm(StoreDTO dto);
+	public List<StoreDTO> getbmlist(String nickname);
+	public StoreDTO getListOne(int no);
 }

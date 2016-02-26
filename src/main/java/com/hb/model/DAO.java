@@ -112,5 +112,25 @@ public class DAO implements InterfaceDAO {
 		SqlSession.update("member.infoUpdate", dto);
 	}
 
+	@Override
+	public void addbookmark(StoreDTO dto) {
+		SqlSession.insert("store.addbookmark", dto);
+	}
+
+	@Override
+	public int cntbm(StoreDTO dto) {
+		return SqlSession.selectOne("store.cntbm", dto);
+	}
+
+	@Override
+	public List<StoreDTO> getbmlist(String nickname) {
+		return SqlSession.selectList("store.getbmlist", nickname);
+	}
+
+	@Override
+	public StoreDTO getListOne(int no) {
+		return SqlSession.selectOne("store.getlistone", no);
+	}
+
 
 }

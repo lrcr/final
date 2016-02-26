@@ -3,8 +3,12 @@ package com.hb.control;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -51,7 +55,53 @@ public class Ccontroller {
  		model.addAttribute("broadcast",list);
  		return "main";
  	}
+ 	
+ 	@RequestMapping(value="bookmark", method=RequestMethod.POST)//즐겨찾기 추가
+ 	public void bookmark(StoreDTO dto, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+ 		HttpSession session=req.getSession();
+ 		PrintWriter out = resp.getWriter();
+		
+ 		String nickname=(String)session.getAttribute("nicknm");
+ 		if("".equals(nickname)||nickname==null){
+ 			StringBuffer st = new StringBuffer();
+			st.append("needlogin");
+			out.write(st.toString());
+ 		}
+ 		else{
+ 			int cntbm=dao.cntbm(dto);
+ 			if(cntbm!=0){
+ 				StringBuffer st = new StringBuffer();
+				st.append("no");
+				out.write(st.toString());
+ 			}
+ 			else{
+ 				dto.setNm(nickname);
+				dao.addbookmark(dto);
+				StringBuffer st = new StringBuffer();
+				st.append("ok");
+				out.write(st.toString());
+ 			}
+ 		}
+	}
 	
+ 	@RequestMapping("bookmarklist")//북마크 리스트
+ 	public String bmlist(HttpServletRequest req, Model model) {
+ 		HttpSession session=req.getSession();
+ 		String nickname=(String)session.getAttribute("nicknm");
+ 		List<StoreDTO> list_tmp=dao.getbmlist(nickname);
+ 		List<StoreDTO> result=new ArrayList<StoreDTO>();
+ 		StoreDTO dto;
+ 		int no;
+ 		for(int i=0; i<list_tmp.size();i++){
+ 			no=list_tmp.get(i).getNo();
+ 			dto=dao.getListOne(no);
+ 			result.add(dto);
+ 		}
+ 		model.addAttribute("broadcast",result);
+ 		return "main";
+	}
+ 	
+ 	
 	@RequestMapping(value="addreply", method=RequestMethod.POST)//평점, 댓글달기
 	public String addreply(ReplyDTO dto,HttpServletRequest req, HttpServletResponse resp,Model model) throws IOException {
 		req.setCharacterEncoding("utf-8");
@@ -78,7 +128,7 @@ public class Ccontroller {
 		}
 	}
 	
-	@RequestMapping("search")
+	@RequestMapping("search")//검색기능
 	public String search(String text,Model model) {
 		if("".equals(text)) text="인생맛집";
 		List<StoreDTO> list=dao.search(text);
@@ -106,7 +156,7 @@ public class Ccontroller {
 	
 	@RequestMapping(value="addboard", method=RequestMethod.POST)//글쓰기
 	public void addboard(BoardDTO dto,HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		if(!("".equals(dto.getTitle())||"".equals(dto.getContent()))){
+		if(!("".equals(dto.getTitle())||dto.getTitle()==null||"".equals(dto.getContent())||dto.getContent()==null)){
 			HttpSession session=req.getSession();
 			String nicknm=(String)session.getAttribute("nicknm");
 			dto.setNicknm(nicknm);
@@ -131,7 +181,7 @@ public class Ccontroller {
 		return "main";
 	}
 
-	@RequestMapping(value="detail", method=RequestMethod.POST) // 상세페이지
+	@RequestMapping(value="detail", method=RequestMethod.POST) // 음식점 상세페이지
 	public String detail(int no, ReplyDTO dto, Model model, HttpServletResponse resp) throws IOException {
 		List<ReplyDTO> list=dao.getreply(dto);
 		StoreDTO storedto = dao.detail(no);
@@ -186,7 +236,7 @@ public class Ccontroller {
 		}
 	}
 
-	@RequestMapping(value = "nicknmchk", method = RequestMethod.POST) // 닉네임
+	@RequestMapping(value = "nicknmchk", method = RequestMethod.POST) // 닉네임 중복 체크
 	public void nicknmchk(HttpServletRequest req, HttpServletResponse resp, String nicknm) throws IOException {
 		int chknicknm = dao.nicknmchk(nicknm);
 		if (chknicknm > 0) { //중복체크

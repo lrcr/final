@@ -54,6 +54,22 @@ seq number(10) primary key,
 submit date not null
 );
 
+--북마크 테이블
+drop table bookmark purge;
+create table bookmark(
+seq number(10) primary key,
+no number(10) not null,
+nickname varchar(4000) not null
+);
+
+--북마크 시퀀스
+drop sequence bseq;
+create sequence bseq
+increment by 1
+start with 1
+;
+
+
 --게시판 시퀀스
 drop sequence seq;
 create sequence seq

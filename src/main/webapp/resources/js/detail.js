@@ -61,7 +61,6 @@ function evaluate(no){
             data: {eval:starcnt,ment:ment,no:no},
             error:function(){alert("Ajax error!!")},
             success:function(result){
-            	alert(result);
                 if(result=="") {
                 	alert("이미 평가하셨습니다!");
                 }
@@ -81,3 +80,28 @@ $("#share-kakao").on("mouseover",function(){
 	$(this).tooltip({trigger: 'hover click','placement': 'bottom'});
 	
 });
+
+function bookmark(no){
+	if(no!=""){
+		$.ajax({
+            url:"bookmark",
+            type:"post",
+            data: {no:no},
+            error:function(){alert("로그인이 필요합니다")},
+            success:function(result){
+                if(result=="ok") {
+                	alert("추가완료");
+                }
+                else if(result=="no"){
+                	alert("이미 추가하셨습니다");
+                }
+                else if(result=="needlogin"){
+                	alert("로그인이 필요합니다");
+                }
+            	
+            }//통신완료
+         });//ajax끝
+	}
+}
+
+

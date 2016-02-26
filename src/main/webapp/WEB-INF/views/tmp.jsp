@@ -35,11 +35,13 @@
 					<tr>
 						<th><h4>[전화번호]</h4></th>
 						<th><h4>${store.tel}</h4></th>
-						<th><h4>[예약정보]</h4></th>
+						<th>
+							<a class="btn btn-primary" href="javascript:bookmark(${store.no});">즐겨찾기</a>
+						</th>
 						<th><h4>
-								<c:if test="${store.reserve eq 'OFF'}">없음</c:if>
-								<c:if test="${store.reserve eq 'ON'}">예약가능</c:if>
-							</h4></th>
+							</h4>
+							<c:if test="${store.reserve eq 'ON'}"><input type="button" class="btn btn-primary" value="예약하기"></c:if>
+							</th>
 					</tr>
 				</thead>
 				<thead>

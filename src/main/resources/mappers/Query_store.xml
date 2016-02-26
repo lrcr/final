@@ -27,4 +27,21 @@
 	<select id="cacaolink" resultType="com.hb.model.StoreDTO">
  		select * from rest where nm=#{nm}
 	</select>
+	
+	<insert id="addbookmark" parameterType="com.hb.model.StoreDTO">
+		insert into bookmark values(bseq.nextval,#{no},#{nm})
+	</insert>
+	
+	<select id="cntbm" parameterType="com.hb.model.StoreDTO" resultType="Integer">
+		select count(*) as cnt from bookmark where no=#{no}
+	</select>
+	
+	<select id="getbmlist" resultType="com.hb.model.StoreDTO">
+		select no from bookmark where nickname=#{nickname}
+	</select>
+	
+	<select id="getlistone" resultType="com.hb.model.StoreDTO">
+		select * from rest where no=#{no}
+	</select>
+	
 </mapper>
