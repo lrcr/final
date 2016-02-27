@@ -106,7 +106,7 @@
 
 
 	<div class="col-lg-12">
-		<strong class="choice col-lg-9"><h4>제 점수는요</h4></strong>
+		<strong class="choice col-lg-7"><h4>제 점수는요</h4></strong>
 		<span class="star-rating small col-lg-3 right">
 			<input type="radio" name="rating" value="1" onclick="starval(1);" ><i></i>
 			<input type="radio" name="rating" value="2" onclick="starval(2);" ><i></i>
@@ -114,9 +114,9 @@
 			<input type="radio" name="rating" value="4" onclick="starval(4);" ><i></i>
 			<input type="radio" name="rating" value="5" onclick="starval(5);" ><i></i>
 		</span>
-		<span>
-			<a class="kakao-link-btn tool-tip" data-toggle="tooltip"  title="" data-original-title="카카오톡 공유"  href="javascript:cacaolink('${store.keyword}','${store.nm}','${store.no}');">
-				<img src="http://dn.api1.kage.kakao.co.kr/14/dn/btqa9B90G1b/GESkkYjKCwJdYOkLvIBKZ0/o.jpg" width="30px" />
+		<span class="col-lg-offset-1 col-lg-1 text-right">
+			<a id="kakao-link-btn" class="tool-tip" data-toggle="tooltip" title="" data-original-title="카카오톡 공유"  href="javascript:cacaolink('${store.keyword}','${store.nm}','${store.no}');">
+				<img src="http://dn.api1.kage.kakao.co.kr/14/dn/btqa9B90G1b/GESkkYjKCwJdYOkLvIBKZ0/o.jpg" width="50px" />
 			</a>
 		</span>
 	</div>

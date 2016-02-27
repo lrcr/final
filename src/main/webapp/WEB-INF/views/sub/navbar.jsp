@@ -17,15 +17,23 @@
 				<li><a href="#">맛집추천</a></li>
 				<li><a href="notify">공지사항</a></li>
 				<li id="login-nav">
-					<c:if test="${sessionScope.nicknm eq null}">
-						<a href="#" id="go-login" data-toggle="modal"
-							data-target="#sign-in">로그인</a>
-					</c:if> 
-					<c:if test="${sessionScope.nicknm != null}">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"
-							role="button" aria-expanded="false"> ${nicknm}님<span
-							class="caret"></span>
-						</a>
+				<c:if test="${sessionScope.nicknm eq null}">
+					<a href="#" id="go-login" data-toggle="modal" data-target="#sign-in">로그인</a>
+					<span class="hid">
+					<a href="#" class="dropdown-toggle navnicknm" data-toggle="dropdown" role="button" aria-expanded="false">
+						${nicknm}님<span class="caret"></span>
+					</a>
+					</span>
+					<ul class="dropdown-menu hid" role="menu">
+						<li><a class="myinfo"data-toggle="modal" data-target="#myInfo">나의 정보</a></li>
+						<li><a href="#">나의 맛집</a></li>
+						<li><a href="#">예약 확인</a></li>
+					</ul>
+				</c:if> 
+				<c:if test="${sessionScope.nicknm != null}">
+					<a href="#" class="dropdown-toggle navnicknm" data-toggle="dropdown" role="button" aria-expanded="false">
+					${nicknm}님<span class="caret"></span>
+					</a>
 						<c:if test="${sessionScope.nicknm != '관리자'}">
 							<ul class="dropdown-menu" role="menu">
 								<li><a class="myinfo" data-toggle="modal" data-target="#myInfo">나의 정보</a></li>
@@ -41,14 +49,16 @@
 								<li><a href="#">관리자홈</a></li>
 							</ul>
 						</c:if>
-					</c:if></li>
+					</c:if>
+					</li>
 				<li id="signup-nav"><c:if test="${sessionScope.nicknm eq null}">
 						<a href="#" id="go-join" data-toggle="modal"
 							data-target="#sign-up">회원가입</a>
 					</c:if>
 					 <c:if test="${sessionScope.nicknm != null}">
 						<a href="logout" id="logout">로그아웃</a>
-					</c:if></li>
+					</c:if>
+				</li>
 				<li>
 					<form class="navbar-form navbar-right" action="search" method="post" role="search">
 						<div class="input-group">

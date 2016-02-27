@@ -140,7 +140,7 @@
 			$("#myinfoph").focus();
 		} else {
 			var chksum = 0;
-			for (var i = 0; i < phnmval.length; i++) {
+			for (var i = 0; i < leng; i++) {
 				var idx = phnmval.charAt(i).charCodeAt();
 				if (!(idx > 47 && idx < 58)) {
 					chksum = chksum + 1;
@@ -181,6 +181,14 @@
 				msg.animate({ opacity : '0' }, "slow");
 				msg.animate({ opacity : '1' }, "slow");
 				return false;
+			}else if ($("#myinfopw1").val() != $("#myinfopw2").val()) {
+				$(".myinfo_pw2msg").text("비밀번호가 일치하지 않습니다");
+				$("#myinfopw2").val("").focus();
+				var msg = $(".myinfo_pw2msg");
+				msg.animate({ opacity : '1' }, "slow");
+				msg.animate({ opacity : '0' }, "slow");
+				msg.animate({ opacity : '1' }, "slow");
+				return false;
 			}
 		}
 		if ($(".myinfo_pw1msg").text() != "") {
@@ -197,17 +205,16 @@
 			msg.animate({ opacity : '1' }, "slow");
 			return false;
 		}
-		if ($("#myinfopw1").text() != $("#myinfopw2").text()) {
-			$(".myinfo_pw2msg").text("비밀번호가 일치하지 않습니다");
-			$("#myinfopw2").val("").focus();
-			var msg = $(".myinfo_pw2msg");
+		if (nm == 0) {
+			$(".myinfo_nmmsg").text("변경할 닉네임을 입력하세요");
+			$("#myinfonicknm").val("").focus();
+			var msg = $(".myinfo_nmmsg");
 			msg.animate({ opacity : '1' }, "slow");
 			msg.animate({ opacity : '0' }, "slow");
 			msg.animate({ opacity : '1' }, "slow");
 			return false;
-		}
-		if (nm == 0) {
-			$(".myinfo_nmmsg").text("변경할 닉네임을 입력하세요");
+		}else if (nm > 7){
+			$(".myinfo_nmmsg").text("6자 이하로 입력해주세요");
 			$("#myinfonicknm").val("").focus();
 			var msg = $(".myinfo_nmmsg");
 			msg.animate({ opacity : '1' }, "slow");
@@ -231,16 +238,30 @@
 			msg.animate({ opacity : '1' }, "slow");
 			return false;
 		}
+		alert("수정되었습니다");
 	});
 	// 닉네임 중복체크
-
+	var nicknm = "";
+	$("#myinfonicknm").on("focus",function(){
+		var nicknim = $.trim($(".navnicknm").text());
+			if(nicknim ==="") location.reload(true);
+			for (var i=0; i<nicknim.length-1; i++){
+				nicknm += nicknim.charAt(i);
+			}
+	}).on("blur",function(){nicknm="";});
 	$("#myinfonicknm").on("keyup", function() {
+		console.log(nicknm);
 		var idval = $(this).val();
+		if(nicknm==idval){
+			$('.myinfo_nmmsg').text("지금 사용하고 계신 닉네임입니다");
+		}else if (idval.length > 7){
+				$(".myinfo_nmmsg").text("6자 이하로 입력해주세요");
+// 				$("#myinfonicknm").val("").focus();
+		}else{
 		var em = $('#myinfonicknm').serialize();
 		var idx;
 		for (var i = 0; i < idval.length; i++) {
 			idx = $(this).val().charCodeAt(i);
-			console.log(idx);
 			if (idx == 32) {
 				$(this).val("");
 			}
@@ -261,7 +282,7 @@
 				}
 			}//통신완료
 			});//ajax끝
-
+		}
 		}
 	});
 </script>

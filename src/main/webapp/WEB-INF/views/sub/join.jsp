@@ -12,7 +12,6 @@
               </div>
               <div class="modal-body">
                 <form class="form-horizontal">
-                  <fieldset>
                     
                     <div class="form-group col-lg-12">
                       <div class="input-group">

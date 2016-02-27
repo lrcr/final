@@ -27,18 +27,26 @@ $(document).ready(function() {
 	});
 
 	/** 나의정보 */
-	$(".myinfo").on("click", function() {
-		$.ajax({ 
-			url : "myInfo", 
-			type : "post", 
-			error : function() {
-			$("#tv_box_out").html("<img src=\"images/error.png\" alt=\"에러페이지\" />");
-		}, success : function(result) {
-			$(".myinfo-cont").html(result);
-
-		} });
-	});
-	
+	$(".myinfo").on("click",function myinfoview() {
+//		function myinfoview(){
+			var nicknim = $.trim($(".navnicknm").text());
+			if(nicknim ==="") location.reload(true);
+			var nicknm = "";
+			for (var i=0; i<nicknim.length-1; i++){
+				nicknm += nicknim.charAt(i);
+			}
+			$.ajax({ 
+				url : "myInfo", 
+				type : "post",
+				data : "nicknm="+nicknm,
+				error : function() {
+					$("#tv_box_out").html("<img src=\"images/error.png\" alt=\"에러페이지\" />");
+				}, success : function(result) {
+					$(".myinfo-cont").html(result);
+				} 
+			});
+		});
+//}
 	
 });
 
