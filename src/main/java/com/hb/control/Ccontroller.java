@@ -100,12 +100,10 @@ public class Ccontroller {
 	}
 
 	@RequestMapping(value = "addreply", method = RequestMethod.POST) // 평점, 댓글달기
-	public String addreply(ReplyDTO dto, HttpServletRequest req, HttpServletResponse resp, Model model)
-			throws IOException {
+	public String addreply(ReplyDTO dto, HttpServletRequest req, HttpServletResponse resp, Model model) throws IOException {
 		req.setCharacterEncoding("utf-8");
 		HttpSession session = req.getSession();
-		if (!"".equals(session.getAttribute("nicknm")))
-			dto.setNickname((String) session.getAttribute("nicknm"));
+		if (!"".equals(session.getAttribute("nicknm"))) dto.setNickname((String) session.getAttribute("nicknm"));
 		int chk = dao.chkreply(dto);// 댓글 썼는지 유무 체크
 		if (chk > 0) {// 썼을 경우
 			return null;
@@ -128,8 +126,7 @@ public class Ccontroller {
 
 	@RequestMapping("search") // 검색기능
 	public String search(String text, Model model) {
-		if ("".equals(text))
-			text = "인생맛집";
+		if ("".equals(text)) text = "인생맛집";
 		List<StoreDTO> list = dao.search(text);
 		if (list.size() == 0) {
 			String not = "nothing";
@@ -154,8 +151,7 @@ public class Ccontroller {
 
 	@RequestMapping(value = "addboard", method = RequestMethod.POST) // 글쓰기
 	public void addboard(BoardDTO dto, HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		if (!("".equals(dto.getTitle()) || dto.getTitle() == null || "".equals(dto.getContent())
-				|| dto.getContent() == null)) {
+		if (!("".equals(dto.getTitle()) || dto.getTitle() == null || "".equals(dto.getContent()) || dto.getContent() == null)) {
 			HttpSession session = req.getSession();
 			String nicknm = (String) session.getAttribute("nicknm");
 			dto.setNicknm(nicknm);
