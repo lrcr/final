@@ -4,6 +4,7 @@ $("#go-login").on("click",function(){
 		 $(".login-label").text("");
 	}
 });
+
 $("#login-btn").on("click",function(){
 	var id=$("#loginid").val();
 	var pw=$("#loginpw").val();
@@ -33,12 +34,12 @@ $("#login-btn").on("click",function(){
 	        dataType:"xml",
 	        error:function(){alert("잘못된 로그인 정보입니다")},
 	        success:function(result){
+	        	
 	        	var nicknm=decodeURIComponent($(result).find("nicknm").text());
 	        	success =$(result).find("login").text();
                 success=parseInt(success);
                 if(success>0) {
 	                 alert(nicknm+"님 환영합니다!");
-//	                 location.reload();
 					if(nicknm!="관리자"){
 						$("#go-login").hide();
 						var span = $("#login-nav span").html();
@@ -62,8 +63,8 @@ $("#login-btn").on("click",function(){
 	    						"<ul class=\"dropdown-menu\" role=\"menu\">"+
 	    							"<li><a href=\"#\" class=\"myinfo\" data-toggle=\"modal\" data-target=\"#myInfo\">나의 정보</a></li>" +
 	    							"<li><a href=\"bookmarklist\">나의 맛집</a></li>"+
-	    							"<li><a href=\"#\">예약 확인</a></li>"+
-	    							"<li><a href=\"#\">관리자홈</a></li>"+
+	    							"<li><a href=\"reservelist\">예약 확인</a></li>"+
+	    							"<li><a href=\"admin\">관리자홈</a></li>"+
 	    						"</ul>"
 	    						);
 	                 }
@@ -72,8 +73,7 @@ $("#login-btn").on("click",function(){
 	                		 "<a href=\"logout\" id=\"logout\">로그아웃</a>"
 	                 );
 	                 
-	                 $("#write-check").html("<button type=\"button\" class=\"btn btn-primary btn-lg write-login\" data-toggle=\"modal\" data-target=\"#writemodal\">"+
-						"글쓰기</button>");
+	                 $(".req-login-check").html("<button type=\"button\" class=\"btn btn-primary\"data-toggle=\"modal\" data-target=\"#community-write\">글쓰기</button>");
 	               
 	                 $(".disabled-input").attr("disabled",false);
 	                 $(".disabled-input").attr("placeholder","댓글을 입력하세요");

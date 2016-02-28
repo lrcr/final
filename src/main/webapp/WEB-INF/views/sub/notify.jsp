@@ -48,22 +48,5 @@
 <!-- /.row -->
 
 
-<div class="col-lg-12">
-	<div class="col-lg-6" id="write-check">
-		<c:if test="${sessionScope.nicknm != null}">
-			<button type="button" class="btn btn-primary btn-lg write-login"
-				data-toggle="modal" data-target="#writemodal">글쓰기</button>
-		</c:if>
-		<c:if test="${sessionScope.nicknm == null}">
-			<input type="button" class="btn btn-primary not-login" value="글쓰기">
-		</c:if>
-	</div>
-</div>
-
-
-
-
-
-
 
 

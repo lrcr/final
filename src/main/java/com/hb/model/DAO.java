@@ -131,7 +131,46 @@ public class DAO implements InterfaceDAO {
 	public StoreDTO getListOne(int no) {
 		return SqlSession.selectOne("store.getlistone", no);
 	}
-	
+
+	@Override
+	public int getmaxno() {
+		return SqlSession.selectOne("board.getmaxno");
+	}
+
+	@Override
+	public void addrec(BoardDTO dto) {
+		SqlSession.insert("board.addrec",dto);
+	}
+
+	@Override
+	public List<BoardDTO> reclist() {
+		return SqlSession.selectList("board.reclist");
+	}
+
+	@Override
+	public void addrechit(BoardDTO dto) {
+		SqlSession.update("board.addrechit", dto);
+	}
+
+	@Override
+	public BoardDTO getrecdetail(int no) {
+		return SqlSession.selectOne("board.getrecdetail", no);
+	}
+
+	@Override
+	public List<MemberDTO> memberlist() {
+		return SqlSession.selectList("member.selectAll");
+	}
+
+	@Override
+	public void modifyuser(MemberDTO dto) {
+		SqlSession.update("member.modify",dto);
+	}
+
+	@Override
+	public List<StoreDTO> storelist() {
+		return SqlSession.selectList("store.selectAll");
+	}
 	@Override
 	public MemberDTO oneMeEmail(String email) {
 		return SqlSession.selectOne("member.oneMeEmail", email);

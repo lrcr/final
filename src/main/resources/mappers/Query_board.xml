@@ -35,4 +35,24 @@
 	<select id="getreply" resultType="com.hb.model.ReplyDTO">
 		select * from reply where no=#{no}
 	</select>
+	
+	<select id="getmaxno" resultType="Integer">
+		select max(no) from recommend
+	</select>
+	
+	<insert id="addrec" parameterType="com.hb.model.BoardDTO">
+		insert into recommend values (rec.nextval,#{title},null,#{nicknm},0,sysdate)
+	</insert>
+	
+	<select id="reclist" resultType="com.hb.model.BoardDTO">
+		select no, title, content, nicknm, hits, submit, rownum from (select * from recommend order by rownum desc)recommend order by no
+	</select>
+	
+	<update id="addrechit" parameterType="com.hb.model.BoardDTO">
+		update recommend set hits=hits+1 where no=#{no}
+	</update>
+	
+	<select id="getrecdetail" resultType="com.hb.model.BoardDTO">
+		select * from recommend where no=#{no}
+	</select>
 </mapper>

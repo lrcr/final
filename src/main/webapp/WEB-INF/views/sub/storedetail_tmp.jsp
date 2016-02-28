@@ -39,8 +39,8 @@
 						<th>
 						<form action="reserve" class="reserveForm" method="post">
 						<c:if test="${store.reserve eq 'ON'}">
-							<input type="text" name="storeno" value="${store.no}" />
-							<input type="text" name="email" value="${sessionScope.email}" />
+							<input type="hidden" name="storeno" value="${store.no}" />
+							<input type="hidden" name="email" value="${sessionScope.email}" />
 							<button type="submit" class="btn btn-primary btn_reserve" >예약하기</button>
 						</c:if>
 						</form>

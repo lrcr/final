@@ -1,5 +1,4 @@
 $(".detail-info").on("click",function(){
-	$.getScript('js/detail.js');
 	var no=parseInt($(this).attr("id"));
 	$.ajax({
         url:"detail",

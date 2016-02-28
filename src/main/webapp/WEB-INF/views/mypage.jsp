@@ -253,15 +253,15 @@
 	});
 	// 닉네임 중복체크
 	var nicknm = "";
-	$("#myinfonicknm").on("focus",function(){
-		var nicknim = $.trim($(".navnicknm").text());
-			if(nicknim ==="") location.reload(true);
+	var nicknim = $.trim($(".navnicknm").text());
 			for (var i=0; i<nicknim.length-1; i++){
 				nicknm += nicknim.charAt(i);
 			}
+	$("#myinfonicknm").on("focus",function(){
+	console.log(nicknm);
+			if(nicknim ==="") location.reload(true);
 	}).on("blur",function(){nicknm="";});
 	$("#myinfonicknm").on("keyup", function() {
-		console.log(nicknm);
 		var idval = $(this).val();
 		if(nicknm==idval){
 			$('.myinfo_nmmsg').text("지금 사용하고 계신 닉네임입니다");

@@ -15,21 +15,19 @@
         maxHeight: null,             // set maximum height of editor
         focus: true                  // set focus to editable area after initializing summernote
     });
+    
     $("#write-title").attr("disabled",false);
-    if($(this).val()=="돌아가기"){
-		$("#write-done").attr("disabled",false);
-		$("#notify-save").attr("disabled",false);
-		$(this).val("수정하기");
-    }
+    $("#write-done").attr("disabled",false);
+    $("#notify-save").attr("disabled",false);
+    $("#notify-edit").attr("disabled",true);
   });
   
     $("#notify-save").on("click",function(){
       var makrup = $('#summernote').summernote('code');
       $('#summernote').summernote('destroy');
       $("#write-done").attr("disabled",true);
-      $("#notify-edit").val("돌아가기");
+      $("#notify-edit").attr("disabled",false);
       $(this).attr("disabled",true);
-      
       $("#write-title").attr("disabled",true);
     });
     
@@ -43,7 +41,7 @@ $(".write-login").on("click",function(){
 		 $("#write-title").attr("disabled",false);
 		 $("#write-done").attr("disabled",false);
 		 $("#notify-save").attr("disabled",false);
-		 $("#notify-edit").val("수정하기");
+		 $("#notify-edit").attr("disabled",true);
 		 $('#summernote').summernote({
 		       lang: 'ko-KR', // default: 'en-US'
 		        height: 300,                 // set editor height
@@ -84,5 +82,5 @@ $("#write-done").on("click",function(){
         });//ajax끝		
 	}
 });
-//$(":file").attr("disabled",true);
+$(".note-image-input").attr("disabled",true);
 $(".modal").css("overflow","auto");

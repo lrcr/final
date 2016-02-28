@@ -43,6 +43,18 @@ hits number(30) not null,
 submit date not null
 );
 
+--추천게시판 테이블
+drop table recommend purge;
+create table recommend(
+no number(30) primary key,
+title varchar2(1000) not null,
+content varchar2(100),
+nicknm varchar2(100) not null,
+hits number(30) not null,
+submit date not null
+);
+
+
 --댓글 테이블
 drop table reply purge;
 create table reply(
@@ -83,9 +95,16 @@ start with 1
 ;
 
 
---게시판 시퀀스
+--공지사항 시퀀스
 drop sequence seq;
 create sequence seq
+increment by 1
+start with 1
+;
+
+--추천게시판 시퀀스
+drop sequence rec;
+create sequence rec
 increment by 1
 start with 1
 ;
@@ -97,7 +116,7 @@ increment by 1
 start with 1
 ;
 
---댓글 시퀀스
+--예약 시퀀스
 drop sequence reserve_seq;
 create sequence reserve_seq increment by 1 start with 1;
 

@@ -44,4 +44,8 @@
 		select * from rest where no=#{no}
 	</select>
 	
+	<select id="selectAll" resultType="com.hb.model.StoreDTO">
+		select * from rest order by no
+	</select>
+	
 </mapper>

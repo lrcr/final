@@ -28,6 +28,14 @@ public interface InterfaceDAO {
 	public int cntbm(StoreDTO dto);
 	public List<StoreDTO> getbmlist(String nickname);
 	public StoreDTO getListOne(int no);
+	public int getmaxno();
+	public void addrec(BoardDTO dto);
+	public List<BoardDTO> reclist();
+	public void addrechit(BoardDTO dto);
+	public BoardDTO getrecdetail(int no);
+	public List<MemberDTO> memberlist();
+	public void modifyuser(MemberDTO dto);
+	public List<StoreDTO> storelist();
 	public MemberDTO oneMeEmail(String email);
 	public void addReserve(ReserveDTO dto);
 	public void updateReserve(ReserveDTO dto);

@@ -34,6 +34,10 @@
   	update member set pw = #{pw}, nicknm = #{nicknm}, phone = #{phone}, agree=#{agree} where email = #{email}
   </update>
   
+  <update id="modify" parameterType="com.hb.model.MemberDTO">
+  	update member set pw = #{pw}, phone = #{phone}, agree=#{agree} where email = #{email}
+  </update>
+  
   <select id="oneMeEmail" resultType="com.hb.model.MemberDTO">
   	select email, nicknm, agree, phone from member where email = #{email}
   </select>
