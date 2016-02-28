@@ -4,11 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,6 +23,7 @@ import com.hb.model.BoardDTO;
 import com.hb.model.InterfaceDAO;
 import com.hb.model.MemberDTO;
 import com.hb.model.ReplyDTO;
+import com.hb.model.ReserveDTO;
 import com.hb.model.StoreDTO;
 
 @Controller
@@ -193,18 +191,20 @@ public class Ccontroller {
 
 	@RequestMapping(value = "login", method = RequestMethod.POST) // 로그인
 	public void login(MemberDTO dto, HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		String nicknm = dao.login(dto);
+		MemberDTO mdto = dao.login(dto);
 		int success = 0;
-		if (!("".equals(nicknm))) {
+		if (!("".equals(mdto.getNicknm()))) {
 			success = 1;
 			HttpSession session = req.getSession();
-			session.setAttribute("nicknm", nicknm);
+			session.setAttribute("nicknm", mdto.getNicknm());
+			session.setAttribute("email", mdto.getEmail());
 			PrintWriter out = resp.getWriter();
 			StringBuffer st = new StringBuffer();
 			st.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
 			st.append("<item>");
 			st.append("<login>" + success + "</login>");
-			st.append("<nicknm>" + URLEncoder.encode(nicknm, "UTF-8") + "</nicknm>");
+			st.append("<nicknm>" + URLEncoder.encode(mdto.getNicknm(), "UTF-8") + "</nicknm>");
+			st.append("<email>" + URLEncoder.encode(mdto.getEmail(), "UTF-8") + "</email>");
 			st.append("</item>");
 			out.write(st.toString());
 		}
@@ -263,8 +263,51 @@ public class Ccontroller {
 		return "redirect:/";
 	}
 
-	@RequestMapping(value = "/reserve") // 예약하기
-	public String reserve(MemberDTO dto, Model model) {
+	@RequestMapping(value = "/reserve", method = RequestMethod.POST) // 예약확인
+	public String reserve(String storeno, String email, String no, Model model) {
+		if(no==null) no="0";
+		logger.debug("storeno:{}" + storeno+",email:{}"+email+",no:{}"+no);
+		int sno = Integer.parseInt(storeno);
+		StoreDTO sdto = dao.detail(sno);
+		MemberDTO mdto = dao.oneMeEmail(email);
+		ReserveDTO rdto = dao.reserveOne(no);
+		model.addAttribute("store",sdto);
+		model.addAttribute("member",mdto);
+		model.addAttribute("reserve",rdto);
 		return "reserve";
+	}
+	
+	@RequestMapping(value = "/reservechk", method = RequestMethod.POST) // 예약/수정하기
+	public String reservechk(ReserveDTO dto, String reup, Model model) {
+		logger.debug("reup:{}" + reup);
+		if("chk".equals(reup)|| reup=="chk") {
+			dao.addReserve(dto);
+			logger.debug("입력성공:{}");
+		}
+		else if("up".equals(reup) || reup=="up"){ 
+			dao.updateReserve(dto);
+			logger.debug("dto:{no}"+dto.getNo());
+		}else logger.debug("실패:{}");
+		return "redirect:/reservelist";
+	}
+	
+	@RequestMapping(value = "/reservelist") // 나의 예약리스트
+	public String reservelist(Model model,HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		String semail = (String)session.getAttribute("email");
+		List<ReserveDTO> list = dao.reservelist(semail);
+		logger.debug("email:{}" + semail);
+		if(list.size()==0){
+			return "redirect:/broadcast";
+		}
+		model.addAttribute("reserve",list);
+		return "reservelist";
+	}
+	
+	@RequestMapping(value = "/detailpage", method = RequestMethod.POST) // 음식점 상세정보
+	public String detailpage(int storeno, Model model) {
+		StoreDTO dto = dao.detail(storeno);
+		model.addAttribute("dto", dto);
+		return "sub/reservelistover";
 	}
 }

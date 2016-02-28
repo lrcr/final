@@ -29,7 +29,7 @@ public class DAO implements InterfaceDAO {
 	}
 
 	@Override
-	public String login(MemberDTO dto) {
+	public MemberDTO login(MemberDTO dto) {
 		return SqlSession.selectOne("member.login", dto);
 	}
 
@@ -131,6 +131,32 @@ public class DAO implements InterfaceDAO {
 	public StoreDTO getListOne(int no) {
 		return SqlSession.selectOne("store.getlistone", no);
 	}
+	
+	@Override
+	public MemberDTO oneMeEmail(String email) {
+		return SqlSession.selectOne("member.oneMeEmail", email);
+	}
 
+	@Override
+	public void addReserve(ReserveDTO dto) {
+		SqlSession.insert("reserve.addreserve", dto);
+		
+	}
+
+	@Override
+	public void updateReserve(ReserveDTO dto) {
+		SqlSession.insert("reserve.updatereserve", dto);
+		
+	}
+
+	@Override
+	public List<ReserveDTO> reservelist(String email) {
+		return SqlSession.selectList("reserve.reservelist", email);
+	}
+
+	@Override
+	public ReserveDTO reserveOne(String no) {
+		return SqlSession.selectOne("reserve.reserveone", no);
+	}
 
 }

@@ -107,7 +107,7 @@
 				<div class="sub_menu_d"><span class="sub_text">육류</span></div> 
 				<div class="sub_menu_d"><span class="sub_text">디저트</span></div>
 			</div>
-			<div class="sub_menu sub_menu_4 hid container-fluid">
+			<div class="sub_menu sub_menu_4 hid">
 				<div class="sub_menu_d col-xs-6"><span class="sub_text">예약 가능</span></div>
 				<div class="sub_menu_d col-xs-6"><span class="sub_text">배달 가능</span></div>
 			</div>

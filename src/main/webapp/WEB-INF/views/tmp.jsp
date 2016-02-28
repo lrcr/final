@@ -22,9 +22,7 @@
 	<div class="col-lg-12" style="height: 10px"></div>
 	<div class="col-lg-12">
 		<div class="col-lg-12 well">
-			<p>
 			<h4>${store.info}</h4>
-			</p>
 		</div>
 	</div>
 
@@ -38,10 +36,15 @@
 						<th>
 							<a class="btn btn-primary" href="javascript:bookmark(${store.no});">즐겨찾기</a>
 						</th>
-						<th><h4>
-							</h4>
-							<c:if test="${store.reserve eq 'ON'}"><input type="button" class="btn btn-primary" value="예약하기"></c:if>
-							</th>
+						<th>
+						<c:if test="${store.reserve eq 'ON'}">
+							<form action="reserve" class="reserveForm">
+								<input type="hidden" name="storeno" value="${store.no}" />
+								<input type="hidden" name="email" value="${sessionScope.email}" />
+								<button type="submit" class="btn btn-primary btn_reserve" >예약하기</button>
+							</form>
+						</c:if>
+						</th>
 					</tr>
 				</thead>
 				<thead>
@@ -178,6 +181,12 @@
 		</div>
 		<!-- /.col-lg-12 -->
 	</div>
-	<script type="text/javascript">$(".tool-tip").tooltip({trigger: 'hover click','placement': 'top'});</script>
+	<script type="text/javascript">
+	$(".tool-tip").tooltip({trigger: 'hover click','placement': 'top'});
+	$(".reserveForm").on("submit",function(){
+		alert(야야야);
+		return;
+	})
+	</script>
 </body>
 </html>

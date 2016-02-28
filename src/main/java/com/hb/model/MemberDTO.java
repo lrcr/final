@@ -1,8 +1,7 @@
 package com.hb.model;
 
 public class MemberDTO {
-	String email, pw, nicknm, agree; 
-	int phone;
+	String email, pw, nicknm, agree, phone; 
 	
 	public String getEmail() {
 		return email;
@@ -16,7 +15,7 @@ public class MemberDTO {
 	public String getAgree() {
 		return agree;
 	}
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 	public void setEmail(String email) {
@@ -28,7 +27,7 @@ public class MemberDTO {
 	public void setAgree(String agree) {
 		this.agree = agree;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	public void setNicknm(String nicknm) {

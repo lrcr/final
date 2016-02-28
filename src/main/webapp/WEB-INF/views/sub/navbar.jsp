@@ -26,8 +26,8 @@
 					</span>
 					<ul class="dropdown-menu hid" role="menu">
 						<li><a class="myinfo"data-toggle="modal" data-target="#myInfo">나의 정보</a></li>
-						<li><a href="#">나의 맛집</a></li>
-						<li><a href="#">예약 확인</a></li>
+						<li><a href="bookmarklist">나의 맛집</a></li>
+						<li><a href="reservelist">예약 확인</a></li>
 					</ul>
 				</c:if> 
 				<c:if test="${sessionScope.nicknm != null}">
@@ -37,15 +37,15 @@
 						<c:if test="${sessionScope.nicknm != '관리자'}">
 							<ul class="dropdown-menu" role="menu">
 								<li><a class="myinfo" data-toggle="modal" data-target="#myInfo">나의 정보</a></li>
-								<li><a href="#">나의 맛집</a></li>
-								<li><a href="#">예약 확인</a></li>
+								<li><a href="bookmarklist">나의 맛집</a></li>
+								<li><a href="reservelist">예약 확인</a></li>
 							</ul>
 						</c:if>
 						<c:if test="${sessionScope.nicknm == '관리자'}">
 							<ul class="dropdown-menu" role="menu">
 								<li><a class="myinfo" data-toggle="modal" data-target="#myInfo">나의 정보</a></li>
 								<li><a href="bookmarklist">나의 맛집</a></li>
-								<li><a href="#">예약 확인</a></li>
+								<li><a href="reservelist">예약 확인</a></li>
 								<li><a href="#">관리자홈</a></li>
 							</ul>
 						</c:if>

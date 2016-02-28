@@ -1,4 +1,5 @@
 $(".detail-info").on("click",function(){
+	$.getScript('js/detail.js');
 	var no=parseInt($(this).attr("id"));
 	$.ajax({
         url:"detail",
@@ -105,3 +106,24 @@ function bookmark(no){
 }
 
 
+
+
+function reserve(storeno,email){
+	if(email=="" || email ==undefined || email==null){
+		alert("로그인이 필요합니다");
+		$("#storedetail").modal("hide");
+		$("#sign-in").modal();
+	}else{
+		$.ajax({
+            url:"reserve",
+            type:"post",
+            data: {storeno:storeno,email:email},
+            async : false,
+            error:function(){alert("로그인이 필요합니다")},
+            success:function(result){
+            	console.log("ok");
+            	
+            }
+         });
+	}
+}

@@ -8,7 +8,7 @@ public interface InterfaceDAO {
 	public int emailchk(String email);
 	public int nicknmchk(String nicknm);
 	public void join(MemberDTO dto);
-	public String login(MemberDTO dto);
+	public MemberDTO login(MemberDTO dto);
 	public StoreDTO detail(int no);
 	public void addboard(BoardDTO dto);
 	public List<BoardDTO> boardlist();
@@ -28,4 +28,9 @@ public interface InterfaceDAO {
 	public int cntbm(StoreDTO dto);
 	public List<StoreDTO> getbmlist(String nickname);
 	public StoreDTO getListOne(int no);
+	public MemberDTO oneMeEmail(String email);
+	public void addReserve(ReserveDTO dto);
+	public void updateReserve(ReserveDTO dto);
+	public List<ReserveDTO> reservelist(String email);
+	public ReserveDTO reserveOne(String no);
 }

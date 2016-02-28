@@ -9,8 +9,9 @@
 <title>True맛집</title>
 <link rel="stylesheet" href="https://bootswatch.com/slate/bootstrap.min.css">
 <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
-<link rel="stylesheet" href="css/fullcalendar.min.css">
+<link rel="stylesheet" href="css/reserve/fullcalendar.min.css">
 <link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/reserve/reserve.css">
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/reserve/moment.min.js"></script>
@@ -24,45 +25,62 @@
 		<%@include file="sub/login.jsp"%>
 		<%@include file="sub/join.jsp"%>
 		<div id="tv_box_in" class="mCustomScrollbar">
-			<div class="container-fluid">
+			<div class="container-fluid reservePage">
 				<div class="panel panel-success">
+					<c:if test="${reserve eq null}">
+						<c:set var="tit" value="예약하기"></c:set>
+					</c:if>
+					<c:if test="${reserve ne null}">
+						<c:set var="tit" value="수정하기"></c:set>
+					</c:if>
 					<div class="panel-heading">
-						<h3 class="panel-title">예약하기</h3>
+						<h3 class="panel-title">${tit}</h3>
 					</div>
-					<div class="panel-body">
-						<form class="form-horizontal">
+					<form class="form-horizontal" action="reservechk" method="post">
+						<div class="panel-body">
 							<div class="row">
 								<div class="col-sm-6">
 									<div class="thumbnail">
 										<div class="row">
-											<div class="col-xs-12 text-center"><img src="images/star/star1.png" /></div>
-											<div class="col-xs-12 text-center">가게명</div>
+											<div class="col-xs-12 text-center reserve_name">${store.nm}</div>
+											<div class="col-xs-12 text-center reserveImg">
+												<img src="images/storeimg/${store.no}.jpg" />
+												<input type="hidden" name="storeno" value="${store.no}" />
+											</div>
+											<p class="form-control-static col-xs-12 text-center">
+												<c:if test="${reserve eq null}">
+													<span class="nalja"></span>
+													<span class="sigan"></span>
+													<span class="inwon"></span>
+												</c:if>
+												<c:if test="${reserve ne null}">
+													<span class="nalja">${reserve.nalja}</span>
+													<span class="sigan">${reserve.sigan}</span>
+													<span class="inwon">${reserve.inwon}명</span>
+												</c:if>
+											</p>
 										</div>
 									</div>
 									<div class="thumbnail">
-									<div id="calendar"></div>
-									
+										<div id="calendar"></div>
+										<!-- 달력 -->
 									</div>
 									<div class="thumbnail">
-										<div class="form-group" style="border: 1px solid #ff0000;">
-											<label for="seltime" class="col-xs-2 control-label" style="border: 1px solid #fff000;">시간</label>
+										<div class="form-group">
+											<label for="seltime" class="col-xs-2 control-label">시간</label>
 											<div class="col-xs-3">
 												<select class="form-control" id="seltime">
-													<option>09:00</option>
-													<option>2</option>
-													<option>3</option>
-													<option>4</option>
-													<option>5</option>
+													<c:forEach var="i" begin="10" end="18">
+														<option>${i}:00</option>
+													</c:forEach>
 												</select>
 											</div>
 											<label for="selpep" class="col-xs-2 control-label">인원</label>
-											<div class="col-xs-2">
+											<div class="col-xs-3">
 												<select class="form-control" id="selpep">
-													<option>1</option>
-													<option>2</option>
-													<option>3</option>
-													<option>4</option>
-													<option>5</option>
+													<c:forEach begin="1" end="15" varStatus="status">
+														<option>${status.count}</option>
+													</c:forEach>
 												</select>
 											</div>
 										</div>
@@ -70,63 +88,93 @@
 								</div>
 								<div class="col-sm-6">
 									<div class="thumbnail">
-									<p class="text-success well well-sm">예약자정보</p>
+										<p class="text-success well well-sm">예약자정보</p>
 										<div class="form-group">
 											<label for="reserveName" class="col-sm-3 control-label">예약자</label>
 											<div class="col-sm-8">
-												<input type="text" class="form-control" id="reserveName" placeholder="이름을 입력하세요">
+												<input type="text" class="form-control" id="reserveName" name="name" placeholder="이름은 필수입니다" value="${reserve.name}">
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="reservePhone" class="col-sm-3 control-label">연락처</label>
 											<div class="col-sm-8">
-												<input type="text" class="form-control" id="reservePhone" placeholder="번호를 입력하세요">
+												<input type="text" class="form-control" id="reservePhone" placeholder="번호는 필수입니다" value="${member.phone}">
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="reserveEmail" class="col-sm-3 control-label">이메일</label>
 											<div class="col-sm-8">
-												<input type="text" class="form-control" id="reserveEmail" placeholder="이메일을 입력하세요">
+												<input type="text" class="form-control" id="reserveEmail" name="email" placeholder="이메일은 필수입니다" value="${member.email}" readonly="readonly">
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="reserveMsg" class="col-sm-3 control-label">요청사항</label>
 											<div class="col-sm-8">
-												<textarea class="form-control" rows="3" id="treserveMsg" placeholder="하고싶은 말을 적어주세요"></textarea>
+												<textarea class="form-control" rows="3" id="treserveMsg" name="opinion" placeholder="하고싶은 말을 적어주세요">${reserve.opinion}</textarea>
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="col-sm-3 control-label">예약내용</label>
-											<div class="col-sm-8">
-												<p class="form-control-static">email@example.com</p>
+											<label class="col-xs-3 control-label">예약내용</label>
+											<div class="col-xs-8">
+												<p class="form-control-static reserveCont">
+													<c:if test="${reserve eq null}">
+														<span class="nalja"></span>
+														<span class="sigan"></span>
+														<span class="inwon"></span>
+														<input type="hidden" name="nalja" value="" />
+														<input type="hidden" name="sigan" value="" />
+														<input type="hidden" name="inwon" value="" />
+													</c:if>
+													<c:if test="${reserve ne null}">
+														<span class="nalja">${reserve.nalja}</span>
+														<span class="sigan">${reserve.sigan}</span>
+														<span class="inwon">${reserve.inwon}명</span>
+														<input type="hidden" name="nalja" value="${reserve.nalja}" />
+														<input type="hidden" name="sigan" value="${reserve.sigan}" />
+														<input type="hidden" name="inwon" value="${reserve.inwon}" />
+													</c:if>
+												</p>
 											</div>
 										</div>
 									</div>
 									<div class="thumbnail">
 										<p class="text-success well well-sm">음식점정보</p>
 										<div class="form-group">
-											<label class="col-sm-3 control-label">상호명</label>
-											<div class="col-sm-8">
-												<p class="form-control-static">email@example.com</p>
+											<label class="col-xs-3 control-label">상호명</label>
+											<div class="col-xs-8">
+												<p class="form-control-static">${store.nm}</p>
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="col-sm-3 control-label">주소</label>
-											<div class="col-sm-8">
-												<p class="form-control-static">email@example.com</p>
+											<label class="col-xs-3 control-label">주소</label>
+											<div class="col-xs-8">
+												<p class="form-control-static">${store.addr}</p>
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="col-sm-3 control-label">전화번호</label>
-											<div class="col-sm-8">
-												<p class="form-control-static">email@example.com</p>
+											<label class="col-xs-3 control-label">전화번호</label>
+											<div class="col-xs-8">
+												<p class="form-control-static">${store.tel}</p>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</form>
-					</div>
+						</div>
+						<div class="panel-footer">
+							<div class="text-center">
+								<c:if test="${reserve eq null}">
+									<input type="hidden" name="reup" value="chk" />
+									<button type="submit" class="btn btn-success btn_reserve">예약하기</button>
+								</c:if>
+								<c:if test="${reserve ne null}">
+									<input type="hidden" name="no" value="${reserve.no}" />
+									<input type="hidden" name="reup" value="up" />
+									<button type="submit" class="btn btn-success btn_reserve">수정하기</button>
+								</c:if>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>

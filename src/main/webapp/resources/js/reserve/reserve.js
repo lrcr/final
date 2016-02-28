@@ -1,40 +1,62 @@
-/**
- * 
- */
-$(document).ready(function() {
+$(document).ready(function(){
 	var today = $.fullCalendar.moment(new Date());
-			$('#calendar').fullCalendar({
-				height: 450,
-						header : { left : 'prev', right : 'next today', center : 'title', },
-						dayNamesShort : [ "일", "월", "화", "수", "목", "금", "토" ],
-						views : { month : { // name of view
-						titleFormat : 'YYYY년  M월' // other view-specific
-						// options here
-						} },
-						defaultDate : today.format(),//'2016-01-12',
-						dayClick : function(date, jsEvent, view) {
-
-							alert('Clicked on: ' + date.format());
-
-							// change the day's background color just for fun
-							$(this).css('background-color', 'red');
-
-						},
-						editable : true,
-						eventLimit : true, // allow "more" link when too many
-						// events
-						events : [ 
-						        { title : 'All Day Event', start : '2016-01-01' },
-						        { title : 'Long Event', start : '2016-01-07', end : '2016-01-10' },
-								{ id : 999, title : 'Repeating Event', start : '2016-01-09T16:00:00' },
-								{ id : 999, title : 'Repeating Event', start : '2016-01-16T16:00:00' },
-								{ title : 'Conference', start : '2016-01-11', end : '2016-01-13' },
-								{ title : 'Meeting', start : '2016-01-12T10:30:00', end : '2016-01-12T12:30:00' },
-								{ title : 'Lunch', start : '2016-01-12T12:00:00' }, 
-								{ title : 'Meeting', start : '2016-01-12T14:30:00' },
-								{ title : 'Happy Hour', start : '2016-01-12T17:30:00' }, 
-								{ title : 'Dinner', start : '2016-01-12T20:00:00' },
-								{ title : 'Birthday Party', start : '2016-01-13T07:00:00' },
-								{ title : 'Click for Google', url : 'http://google.com/', start : '2016-01-28' } ] });
-
-		});
+	$('#calendar').fullCalendar({
+		height:450,
+		header:{
+			left:'prev',
+			center:'title',
+			right:'today next',
+		},
+		views:{
+			month:{
+				titleFormat:'YYYY년  M월'
+			}
+		},
+		defaultDate:today.format(), // '2016-01-12',
+		dayClick:function(date,jsEvent,view){
+			$(".fc-day").css("background","transparent").text("");
+			$(this).text("예약")
+			$(".nalja").text(date.format());
+			$("input[name=nalja]").val(date.format());
+			$(this).css({
+				"background-color":"#62c462",
+				"color":"#fff"
+			});
+			
+		},
+		eventLimit:true
+	});
+	lastdel();
+	$(".fc-prev-button,.fc-next-button, .fc-today-button").on("click",function(){
+		lastdel();
+	});
+	$("#seltime").on("change",function(){
+		$(".sigan").text($(this).val());
+		$("input[name=sigan]").val($(this).val());
+	});
+	$("#selpep").on("change",function(){
+		$(".inwon").text($(this).val()+"명");
+		$("input[name=inwon]").val($(this).val());
+	});
+	$(".btn_reserve").on("click",function(){
+		var res = true;
+		var nalja = $(".reservePage input[nema=nalja]").val();
+		var sigan = $(".reservePage input[name=sigan]").val();
+		var inwon = $(".reservePage input[name=inwon]").val();
+		if(nalja==""||sigan==""||inwon==""){
+			alert("날짜/시간/인원을 선택해 주세요");
+			res=false;
+		}else{
+			$(".reservePage input[type=text]").each(function(i,e){
+				if($(e).val()=="") {
+					$(this).focus();
+					res = false;
+				}
+			});
+		}
+		return res;
+	});
+});
+function lastdel(){
+	if($(".fc-content-skeleton:last").children().children().children().children().eq(0).hasClass("fc-other-month")) $(".fc-row:last").css("display","none");
+}

@@ -71,7 +71,7 @@
 		$("#myInfo .myinfo_pw").removeClass("hid");
 		$("#myinfopw1").val("").focus();
 		$("#myinfopw2").val("");
-		$(this).hide()
+		$(this).hide();
 	});
 
 	$('#myinfonicknm').on('focusout', function() {
@@ -103,13 +103,13 @@
 
 		if (!(munja && sutja)) {
 			$(".myinfo_pw1msg").text("영문과 숫자를 조합 해야 합니다.");
-			$("#myinfopw1").val("").focus();
+			$("#myinfopw1").focus();
 		}
 
 		//비밀번호 자리 수
 		else if (leng<4||leng>12) {
 			$(".myinfo_pw1msg").text("4자리 이상 12자리 이하로 입력 하세요");
-			$("#myinfopw1").val("").focus();
+			$("#myinfopw1").focus();
 			return false;
 		} else {
 			$(".myinfo_pw1msg").text("");
@@ -122,10 +122,10 @@
 
 		if (pw2val == "") {
 			$(".myinfo_pw2msg").text("변경할 비밀번호를 입력하세요");
-			$("#myinfopw1").val("").focus();
+			$("#myinfopw1").focus();
 		} else if (pw1val != pw2val) {
 			$(".myinfo_pw2msg").text("비밀번호가 일치하지 않습니다");
-			$("#myinfopw2").val("").focus();
+			$("#myinfopw2").focus();
 		} else {
 			$(".myinfo_pw2msg").text("");
 		}
@@ -138,7 +138,7 @@
 		if (leng == 0) {
 			$(".myinfo_phmsg").text("변경할 번호를 입력하세요");
 			$("#myinfoph").focus();
-		} else {
+		}else if(leng<16){ 
 			var chksum = 0;
 			for (var i = 0; i < leng; i++) {
 				var idx = phnmval.charAt(i).charCodeAt();
@@ -151,8 +151,11 @@
 				$(".myinfo_phmsg").text("");
 			} else {
 				$(".myinfo_phmsg").text("숫자 이외에는 입력이 불가합니다");
-				$("#myinfoph").val("").focus();
+				$("#myinfoph").focus();
 			}
+		}else {
+			$(".myinfo_phmsg").text("15자 이하로 입력해주세요");
+			$("#myinfoph").focus();
 		}
 	});
 
@@ -224,6 +227,14 @@
 		}
 		if (ph == 0) {
 			$(".myinfo_phmsg").text("변경할 번호를 입력하세요");
+			$("#myinfoph").val("").focus();
+			var msg = $(".myinfo_phmsg");
+			msg.animate({ opacity : '1' }, "slow");
+			msg.animate({ opacity : '0' }, "slow");
+			msg.animate({ opacity : '1' }, "slow");
+			return false;
+		}else if(ph > 15){
+			$(".myinfo_phmsg").text("15자 이하로 입력해주세요");
 			$("#myinfoph").val("").focus();
 			var msg = $(".myinfo_phmsg");
 			msg.animate({ opacity : '1' }, "slow");

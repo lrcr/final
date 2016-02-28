@@ -4,7 +4,6 @@ $("#go-login").on("click",function(){
 		 $(".login-label").text("");
 	}
 });
-
 $("#login-btn").on("click",function(){
 	var id=$("#loginid").val();
 	var pw=$("#loginpw").val();
@@ -34,7 +33,6 @@ $("#login-btn").on("click",function(){
 	        dataType:"xml",
 	        error:function(){alert("잘못된 로그인 정보입니다")},
 	        success:function(result){
-	        	
 	        	var nicknm=decodeURIComponent($(result).find("nicknm").text());
 	        	success =$(result).find("login").text();
                 success=parseInt(success);
@@ -88,8 +86,6 @@ $("#login-btn").on("click",function(){
 	        }//통신완료
 	     });//ajax끝
 });
-
-
 
 
 

@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+.reserveImg {position:relative; cursor:pointer; }
+.reserveImg img {width:100%; max-width:350px; height:100%; max-height:200px;}
+.reserveTmp {position:absolute;top:0; width:100%; height:100%; background:rgba(0,0,0,0.7);}
+.form-control[readonly] {background:#fff;}
+
+.reserve_name {font-size:25px; font-weight:bold; padding:10px;}
+
+/* 달력*/
+.fc table {background:#fff; color:#272b30;}
+.fc td, .fc th {vertical-align:middle; text-align:center;}
+.fc-content-skeleton table {background:transparent;}
+.fc-ltr .fc-basic-view .fc-day-number {text-align:center;}
+.fc-toolbar {padding:10px; margin:0;}
+.fc-center h2 {font-family: 'Hanna', serif; color:#c8c8c8;}
+.fc-toolbar button {background:transparent;}
+/* .fc-toolbar {display:none;} */
+.fc-state-default{border-color:#e6e6e6 #e6e6e6 #bfbfbf;}
+/* .fc-icon-left-single-arrow:after {content:"\02039"; font-weight:700; font-size:200%; top:-7%; left:3%;} */
+.fc button {color:#c8c8c8;}

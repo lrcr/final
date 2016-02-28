@@ -27,12 +27,12 @@
 <body>
 	<div id="tv_box_out">
 		<%@include file="sub/navbar.jsp"%>
-		<%@include file="sub/login.jsp"%>
-		<%@include file="sub/join.jsp"%>
 		<div id="tv_box_in" class="mCustomScrollbar">
 			<%@include file="sub/content.jsp"%>
 		</div>
 		<%@include file="sub/storedetail.jsp"%>
+		<%@include file="sub/login.jsp"%>
+		<%@include file="sub/join.jsp"%>
 	</div>
 	<div class="main_support">
 		<img src="images/support.png" width="80%" />

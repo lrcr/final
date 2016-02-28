@@ -7,7 +7,7 @@ create table member(
 email varchar2(30) primary key,
 pw varchar2(30) not null,
 nicknm varchar2(50) not null,
-phone number(15) not null,
+phone varchar2(15) not null,
 agree varchar2(10) not null
 );
 
@@ -62,6 +62,19 @@ no number(10) not null,
 nickname varchar(4000) not null
 );
 
+--¿¹¾à Å×ÀÌºí
+drop table reserve purge;
+create table reserve(
+no number primary key,
+storeno number(5) not null,
+email varchar2(30) not null,
+name varchar2(30) not null,
+nalja varchar2(10) not null,
+sigan varchar2(5) not null,
+inwon number(3) not null,
+opinion varchar2(300)
+);
+
 --ºÏ¸¶Å© ½ÃÄö½º
 drop sequence bseq;
 create sequence bseq
@@ -84,5 +97,8 @@ increment by 1
 start with 1
 ;
 
+--´ñ±Û ½ÃÄö½º
+drop sequence reserve_seq;
+create sequence reserve_seq increment by 1 start with 1;
 
 

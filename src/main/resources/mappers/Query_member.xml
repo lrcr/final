@@ -17,8 +17,8 @@
   </select>
   
 
-  <select id="login" parameterType="com.hb.model.MemberDTO" resultType="String">
-     select nicknm from member where email=#{email} and pw=#{pw}
+  <select id="login" parameterType="com.hb.model.MemberDTO" resultType="com.hb.model.MemberDTO">
+     select nicknm, email from member where email=#{email} and pw=#{pw}
   </select>
   
   <insert id="join" parameterType="com.hb.model.MemberDTO">
@@ -33,5 +33,9 @@
   <update id="infoUpdate" parameterType="com.hb.model.MemberDTO">
   	update member set pw = #{pw}, nicknm = #{nicknm}, phone = #{phone}, agree=#{agree} where email = #{email}
   </update>
+  
+  <select id="oneMeEmail" resultType="com.hb.model.MemberDTO">
+  	select email, nicknm, agree, phone from member where email = #{email}
+  </select>
   
 </mapper>
