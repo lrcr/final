@@ -23,7 +23,7 @@
 		<%@include file="sub/login.jsp"%>
 		<%@include file="sub/join.jsp"%>
 		<div id="tv_box_in" class="mCustomScrollbar">
-			<div class="container-fluid">
+			<div class="container-fluid reservelist">
 				<div class="panel panel-success">
 					<div class="panel-heading">
 						<h3 class="panel-title">예약확인</h3>
@@ -31,7 +31,7 @@
 					<div class="panel-body">
 						<div class="row">
 							<c:forEach var="dto" items="${reserve}">
-								<div class="col-sm-6">
+								<div class="col-sm-6 col-md-4 col-lg-3">
 									<div class="thumbnail">
 										<div class="text-center reserveImg" onmouseover="javascript:storeover(${dto.storeno},${dto.no});" onmouseout="javascript:storeout(${dto.no});" onclick="javascript:reserveone(${dto.no});">
 											<img src="images/storeimg/${dto.storeno}.jpg" />
@@ -39,19 +39,19 @@
 										</div>
 										<form class="form-horizontal reserveOne${dto.no}" action="reserve" method="post">
 											<div class="form-group">
-												<label class="col-xs-3 control-label">예약자</label>
+												<label class="col-xs-4 text-right control-label">예약자</label>
 												<div class="col-xs-8">
 													<p class="form-control-static">${dto.name}</p>
 												</div>
 											</div>
 											<div class="form-group">
-												<label class="col-xs-3 control-label">예약일</label>
+												<label class="col-xs-4 text-right control-label">예약일</label>
 												<div class="col-xs-8">
 													<p class="form-control-static">${dto.nalja}&nbsp;${dto.sigan}</p>
 												</div>
 											</div>
 											<div class="form-group">
-												<label class="col-xs-3 control-label">예약인원</label>
+												<label class="col-xs-4 text-right control-label">예약인원</label>
 												<div class="col-xs-8">
 													<p class="form-control-static">${dto.inwon}명</p>
 												</div>

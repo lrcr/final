@@ -33,7 +33,7 @@
 	<div class="form-group">
 		<label class="col-sm-2 control-label" for="myinfonicknm">닉네임</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="myinfonicknm" name="nicknm" value="${myinfo.nicknm}" >
+			<input type="text" class="form-control" id="myinfonicknm" name="nicknm" value="${myinfo.nicknm}">
 			<label class="control-label myinfo_nmmsg"></label>
 		</div>
 	</div>
@@ -254,12 +254,15 @@
 	// 닉네임 중복체크
 	var nicknm = "";
 	var nicknim = $.trim($(".navnicknm").text());
-			for (var i=0; i<nicknim.length-1; i++){
-				nicknm += nicknim.charAt(i);
-			}
+	for (var i=0; i<nicknim.length-1; i++){
+		nicknm += nicknim.charAt(i);
+	}
+	if(nicknm=="관리자"){
+		$("#myinfonicknm").prop("readonly","readonly");
+	}	
 	$("#myinfonicknm").on("focus",function(){
-	console.log(nicknm);
-			if(nicknim ==="") location.reload(true);
+		console.log(nicknm);
+		if(nicknim ==="") location.reload(true);
 	}).on("blur",function(){nicknm="";});
 	$("#myinfonicknm").on("keyup", function() {
 		var idval = $(this).val();

@@ -103,26 +103,3 @@ function bookmark(no){
          });//ajax끝
 	}
 }
-
-
-
-
-function reserve(storeno,email){
-	if(email=="" || email ==undefined || email==null){
-		alert("로그인이 필요합니다");
-		$("#storedetail").modal("hide");
-		$("#sign-in").modal();
-	}else{
-		$.ajax({
-            url:"reserve",
-            type:"post",
-            data: {storeno:storeno,email:email},
-            async : false,
-            error:function(){alert("로그인이 필요합니다")},
-            success:function(result){
-            	console.log("ok");
-            	
-            }
-         });
-	}
-}

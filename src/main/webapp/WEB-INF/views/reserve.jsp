@@ -16,6 +16,7 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/reserve/moment.min.js"></script>
 <script src="js/reserve/fullcalendar.min.js"></script>
+<script src="js/jquery.bootstrap-pureAlert.min.js"></script>
 <script src="js/common.js"></script>
 <script src="js/reserve/reserve.js"></script>
 </head>
@@ -28,15 +29,17 @@
 			<div class="container-fluid reservePage">
 				<div class="panel panel-success">
 					<c:if test="${reserve eq null}">
-						<c:set var="tit" value="예약하기"></c:set>
+						<c:set var="tit" value="예약" />
+						<c:set var="name" value="${member.nicknm}" />
 					</c:if>
 					<c:if test="${reserve ne null}">
-						<c:set var="tit" value="수정하기"></c:set>
+						<c:set var="tit" value="수정" />
+						<c:set var="name" value="${reserve.name}" />
 					</c:if>
 					<div class="panel-heading">
-						<h3 class="panel-title">${tit}</h3>
+						<h3 class="panel-title reserve_title">${tit}</h3>
 					</div>
-					<form class="form-horizontal" action="reservechk" method="post">
+					<form class="form-horizontal reserve_form" action="reservechk" method="post">
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-sm-6">
@@ -70,6 +73,7 @@
 											<label for="seltime" class="col-xs-2 control-label">시간</label>
 											<div class="col-xs-3">
 												<select class="form-control" id="seltime">
+													<option>선택</option>
 													<c:forEach var="i" begin="10" end="18">
 														<option>${i}:00</option>
 													</c:forEach>
@@ -78,6 +82,7 @@
 											<label for="selpep" class="col-xs-2 control-label">인원</label>
 											<div class="col-xs-3">
 												<select class="form-control" id="selpep">
+													<option>선택</option>
 													<c:forEach begin="1" end="15" varStatus="status">
 														<option>${status.count}</option>
 													</c:forEach>
@@ -92,7 +97,7 @@
 										<div class="form-group">
 											<label for="reserveName" class="col-sm-3 control-label">예약자</label>
 											<div class="col-sm-8">
-												<input type="text" class="form-control" id="reserveName" name="name" placeholder="이름은 필수입니다" value="${reserve.name}">
+												<input type="text" class="form-control" id="reserveName" name="name" placeholder="이름은 필수입니다" value="${name}">
 											</div>
 										</div>
 										<div class="form-group">
@@ -142,7 +147,7 @@
 										<div class="form-group">
 											<label class="col-xs-3 control-label">상호명</label>
 											<div class="col-xs-8">
-												<p class="form-control-static">${store.nm}</p>
+												<p class="form-control-static storename">${store.nm}</p>
 											</div>
 										</div>
 										<div class="form-group">
@@ -165,7 +170,7 @@
 							<div class="text-center">
 								<c:if test="${reserve eq null}">
 									<input type="hidden" name="reup" value="chk" />
-									<button type="submit" class="btn btn-success btn_reserve">예약하기</button>
+									<button type="button" class="btn btn-success btn_reserve">예약하기</button>
 								</c:if>
 								<c:if test="${reserve ne null}">
 									<input type="hidden" name="no" value="${reserve.no}" />
