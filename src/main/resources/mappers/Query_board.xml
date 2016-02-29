@@ -41,7 +41,7 @@
 	</select>
 	
 	<insert id="addrec" parameterType="com.hb.model.BoardDTO">
-		insert into recommend values (rec.nextval,#{title},null,#{nicknm},0,sysdate)
+		insert into recommend values (rec.nextval,#{title},#{content},#{nicknm},0,sysdate)
 	</insert>
 	
 	<select id="reclist" resultType="com.hb.model.BoardDTO">

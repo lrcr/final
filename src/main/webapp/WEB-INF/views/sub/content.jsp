@@ -47,6 +47,9 @@
 		<c:if test="${(storecnt.count mod 4)==0}">
 			<div class="clearfix visible-md-block visible-lg-block"></div>
 		</c:if>
+		<c:if test="${(storecnt.count mod 2)==0}">
+			<div class="clearfix visible-sm-block"></div>
+		</c:if>
 	</c:forEach>
 </div>
 </div>

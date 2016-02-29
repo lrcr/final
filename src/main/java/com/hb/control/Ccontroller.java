@@ -21,7 +21,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -68,8 +67,11 @@ public class Ccontroller {
 	public String community(@RequestParam("imgfile") MultipartFile file, HttpServletRequest req) {
 		// 		System.out.println(file.getOriginalFilename());
 		if(!("".equals(file.getOriginalFilename())) || file.getOriginalFilename() != null){
-			String realpath = "C:\\git\\zfinal\\src\\main\\webapp\\resources\\upload\\";//github local repository를 C>>git으로 만들어야함!
-			int fnm = dao.getmaxno();
+			
+			String realpath = req.getSession().getServletContext().getRealPath("/");//github local repository를 C>>git으로 만들어야함!
+//			String realpath=req.getSession().getServletContext().getRealPath("/resources")+"upload\\";
+			System.out.println();
+			String fnm = "/resources/upload/"+dao.getmaxno();
 			File f = new File(realpath + fnm + ".png");
 			try{
 				file.transferTo(f);
@@ -87,7 +89,8 @@ public class Ccontroller {
 		dto.setNicknm((String) session.getAttribute("nicknm"));
 		dao.addrec(dto);
 		int fno = dao.getmaxno();
-		String fnm = "C:\\git\\zfinal\\src\\main\\webapp\\resources\\recommend\\" + fno + ".txt";
+		String fnm = req.getSession().getServletContext().getRealPath("/")+"/resources/recommend/" + fno + ".txt";
+//		String fnm=req.getSession().getServletContext().getRealPath("/resources")+"recommend\\"+fno+".txt";
 		File file = new File(fnm);
 		OutputStream out = new FileOutputStream(file);
 		out.write(dto.getContent().getBytes());
@@ -104,17 +107,17 @@ public class Ccontroller {
 	}
 
 	@RequestMapping(value = "getrecdetail", method = RequestMethod.POST)
-	public String getrecdetail(int no, Model model) throws Exception {
+	public String getrecdetail(int no, Model model,HttpServletRequest req) throws Exception {
 		BoardDTO dto = dao.getrecdetail(no);
-		String fnm = "C:\\git\\zfinal\\src\\main\\webapp\\resources\\recommend\\" + no + ".txt";
-		FileInputStream fi = new FileInputStream(fnm);
-		InputStreamReader ir = new InputStreamReader(fi, "MS949");
-		String content = "";
-		int i = 0;
-		while((i = ir.read()) != -1){
-			content = content + (char) i;
-		}
-		dto.setContent(content);
+//		String fnm = req.getSession().getServletContext().getRealPath("/")+"/resources/recommend/" + no + ".txt";
+//		FileInputStream fi = new FileInputStream(fnm);
+//		InputStreamReader ir = new InputStreamReader(fi, "MS949");
+//		String content = "";
+//		int i = 0;
+//		while((i = ir.read()) != -1){
+//			content = content + (char) i;
+//		}
+//		dto.setContent(content);
 		model.addAttribute("recinfo", dto);
 		return "sub/community_modal_tmp";
 	}
